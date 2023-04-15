@@ -1,5 +1,5 @@
 //
-//  SkinsView.swift
+//  SkinsRegisteredView.swift
 //  ArithmeticPvP
 //
 //  Created by DIMbI4 on 23.03.2023.
@@ -7,8 +7,9 @@
 
 import UIKit
 
-class SkinsView: UIView {
+class SkinsRegisteredView: UIView {
     
+    // MARK: - Class Properties
     var skinsTableView: UITableView!
     var presentingVC: SkinsViewController!
     
@@ -18,6 +19,7 @@ class SkinsView: UIView {
     var ownedSkinsButton: UIBarButtonItem!
     var allSkinsButton: UIBarButtonItem!
     
+    // MARK: - Inits
     init(frame: CGRect, presentingVC: SkinsViewController) {
         super.init(frame: frame)
         self.presentingVC = presentingVC
@@ -27,7 +29,6 @@ class SkinsView: UIView {
         allSkinsButton = UIBarButtonItem(image: UIImage(systemName: "circle"), style: .plain, target: presentingVC, action: #selector(presentingVC.showSpecificSkinsButtonTapped(_:)))
         
         backgroundColor = .white
-//        backgroundColor = UIColor(patternImage: Design.shared.backgroundImage)
         
         createBalanceLabel()
         createTableView()
@@ -37,6 +38,7 @@ class SkinsView: UIView {
         super.init(coder: coder)
     }
     
+    // MARK: - Func for updating UI with specific data
     func updateView() {
         skinsTableView.reloadData()
         
@@ -45,6 +47,7 @@ class SkinsView: UIView {
         presentingVC.updateLeftBarButtonItem()
     }
     
+    // MARK: - Initializing views
     func createBalanceLabel() {
         balanceLabel = UILabel()
         
@@ -60,10 +63,10 @@ class SkinsView: UIView {
         skinsTableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            skinsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            skinsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            skinsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            skinsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+            skinsTableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            skinsTableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            skinsTableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            skinsTableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor)
         ])
         
         skinsTableView.register(SkinCell.self, forCellReuseIdentifier: "SkinCell")
@@ -72,8 +75,9 @@ class SkinsView: UIView {
     }
 }
 
-extension SkinsView: UITableViewDataSource, UITableViewDelegate {
+extension SkinsRegisteredView: UITableViewDataSource, UITableViewDelegate {
     
+    // MARK: - DataSource functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -94,6 +98,7 @@ extension SkinsView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    // MARK: - Func for configuring cell for the Skin
     func configureCell(_ cell: UITableViewCell, forSkinAt indexPath: IndexPath) {
         guard let cell = cell as? SkinCell else { return }
         
@@ -133,7 +138,9 @@ extension SkinsView: UITableViewDataSource, UITableViewDelegate {
         return 100
     }
     
+    // MARK: - Func for selecting specific skin cell
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        
         let skin: Skin
         if isShowOwnedSkins {
             skin = presentingVC.viewModel.ownedSkins[indexPath.row]
@@ -142,30 +149,10 @@ extension SkinsView: UITableViewDataSource, UITableViewDelegate {
         }
         
         let cell = tableView.cellForRow(at: indexPath) as? SkinCell
+        presentingVC.viewModel.currentSkin = skin
         presentingVC.showSkinAlert(for: skin, in: cell)
         
-//        if skin.isOwner && !skin.isSelected {
-//            presentingVC.viewModel.selectSkin(withID: skin.id) { [weak self] isSuccess in
-//                guard let self = self else { return }
-//                if isSuccess {
-//                    self.presentingVC.viewModel.updateState()
-//                } else {
-//                    print("something went wrong")
-//                }
-//            }
-//        }
         return nil
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let skin: Skin
-//        if isShowOwnedSkins {
-//            skin = presentingVC.viewModel.ownedSkins[indexPath.row]
-//        } else {
-//            skin = presentingVC.viewModel.skins[indexPath.row]
-//        }
-//
-//        let cell = tableView.cellForRow(at: indexPath) as? SkinCell
-//        presentingVC.showSkinAlert(for: skin, in: cell)
-//    }
 }

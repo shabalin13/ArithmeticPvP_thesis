@@ -11,6 +11,9 @@ import FirebaseAuth
 class NetworkService {
     
     enum NetworkServiceError: Error, LocalizedError {
+        
+        case authError
+        
         case loginRequestFailed
         case logoutRequestFailed
         case refreshTokenRequestFailed
@@ -47,6 +50,15 @@ class NetworkService {
         NSLog("idToken: \(idToken)")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.loginRequestFailed))
                 return
@@ -101,6 +113,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task =  URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.logoutRequestFailed))
                 return
@@ -133,6 +154,15 @@ class NetworkService {
                 request.setValue("Bearer \(idToken)", forHTTPHeaderField: "authorization")
                 
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    
+                    if let httpResponse = response as? HTTPURLResponse,
+                        httpResponse.statusCode == 401 {
+                        completion(.failure(.authError))
+                        UserDefaultsHelper.shared.removeCookie()
+                        UserDefaultsHelper.shared.removeExpiryDate()
+                        return
+                    }
+                    
                     if let _ = error {
                         completion(.failure(.refreshTokenRequestFailed))
                         return
@@ -187,6 +217,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.userInfoRequestFailed))
                 return
@@ -219,6 +258,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.userStatisticsRequestFailed))
                 return
@@ -250,6 +298,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.usernameChangeRequestFailed))
                 return
@@ -275,6 +332,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.userAchievementsRequestFailed))
                 return
@@ -308,6 +374,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.skinsListRequestFailed))
                 return
@@ -339,6 +414,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.skinSelectionRequestFailed))
                 return
@@ -375,6 +459,14 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
             
             if let _ = error {
                 completion(.failure(.skinBuyingRequestFailed))
@@ -418,6 +510,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.userBalanceRequestFailed))
                 return
@@ -451,6 +552,15 @@ class NetworkService {
         request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.waitingRoomInfoRequestFailed))
                 return
@@ -478,6 +588,15 @@ class NetworkService {
     func getSkinImage(from url: URL, completion: @escaping (Result<Data, NetworkServiceError>) -> Void) {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 401 {
+                completion(.failure(.authError))
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                return
+            }
+            
             if let _ = error {
                 completion(.failure(.imageDataMissing))
                 return

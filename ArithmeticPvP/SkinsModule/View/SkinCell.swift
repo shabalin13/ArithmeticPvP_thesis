@@ -9,6 +9,7 @@ import UIKit
 
 class SkinCell: UITableViewCell {
     
+    // MARK: - Class Properties
     var nameLabel: UILabel!
     var priceLabel: UILabel!
     var skinImageView: UIImageView!
@@ -37,6 +38,7 @@ class SkinCell: UITableViewCell {
         }
     }
     
+    // MARK: - Inits
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.accessoryType = .disclosureIndicator
@@ -47,6 +49,7 @@ class SkinCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    // MARK: - Func for updating configuration of cell
     func updateConfiguration() {
         nameLabel.text = name
         
@@ -59,7 +62,8 @@ class SkinCell: UITableViewCell {
         if let image = image {
             skinImageView.image = image
         } else {
-            skinImageView.image = UIImage(systemName: "photo.on.rectangle")
+            skinImageView.image = nil
+//            skinImageView.image = UIImage(systemName: "photo.on.rectangle")
         }
     }
 
@@ -67,6 +71,7 @@ class SkinCell: UITableViewCell {
 
 extension SkinCell {
     
+    // MARK: - Initializing views
     func initView() {
         createSkinImageView()
         createNameLabel()
@@ -76,8 +81,6 @@ extension SkinCell {
     func createSkinImageView() {
         skinImageView = UIImageView()
         contentView.addSubview(skinImageView)
-        
-//        skinImageView.backgroundColor = .green
         
         skinImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -94,8 +97,6 @@ extension SkinCell {
         nameLabel = UILabel()
         contentView.addSubview(nameLabel)
         
-//        nameLabel.backgroundColor = .red
-        
         nameLabel.textAlignment = .left
         nameLabel.font = UIFont.systemFont(ofSize: 20)
         
@@ -103,9 +104,7 @@ extension SkinCell {
         
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: skinImageView.trailingAnchor, constant: 30),
-            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
-//            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
@@ -113,21 +112,15 @@ extension SkinCell {
         priceLabel = UILabel()
         contentView.addSubview(priceLabel)
         
-//        priceLabel.backgroundColor = .blue
-        
         priceLabel.textAlignment = .right
         priceLabel.font = UIFont.systemFont(ofSize: 16)
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         
-//        var temp = priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
-//        temp.priority = .defaultHigh
         NSLayoutConstraint.activate([
             priceLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: contentView.safeAreaLayoutGuide.layoutFrame.width / 5),
             priceLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 20),
             priceLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//            priceLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
-//            priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
     }

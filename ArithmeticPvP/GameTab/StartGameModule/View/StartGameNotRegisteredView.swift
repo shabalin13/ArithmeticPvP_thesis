@@ -29,6 +29,7 @@ class StartGameNotRegisteredView: UIView {
         super.init(coder: coder)
     }
     
+    // MARK: - Initializing views
     private func initViews() {
         createErrorImageView()
         createErrorDescription()

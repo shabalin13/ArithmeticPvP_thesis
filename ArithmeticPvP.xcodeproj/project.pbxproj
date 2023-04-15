@@ -22,7 +22,7 @@
 		B63E8F6529BF1E3B00043EC5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6429BF1E3B00043EC5 /* SignInView.swift */; };
 		B63E8F6929BF4DE100043EC5 /* ProfileRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6829BF4DE100043EC5 /* ProfileRegisteredView.swift */; };
 		B64A238829CC3E3200232C56 /* SkinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238729CC3E3200232C56 /* SkinsViewModel.swift */; };
-		B64A238A29CC511600232C56 /* SkinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238929CC511600232C56 /* SkinsView.swift */; };
+		B64A238A29CC511600232C56 /* SkinsRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238929CC511600232C56 /* SkinsRegisteredView.swift */; };
 		B64A238C29CC658500232C56 /* SkinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238B29CC658500232C56 /* SkinCell.swift */; };
 		B64A238E29CDDFEE00232C56 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238D29CDDFEE00232C56 /* Achievement.swift */; };
 		B64A239029D425CE00232C56 /* SkinAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238F29D425CE00232C56 /* SkinAlertView.swift */; };
@@ -95,7 +95,7 @@
 		B63E8F6429BF1E3B00043EC5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B63E8F6829BF4DE100043EC5 /* ProfileRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRegisteredView.swift; sourceTree = "<group>"; };
 		B64A238729CC3E3200232C56 /* SkinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsViewModel.swift; sourceTree = "<group>"; };
-		B64A238929CC511600232C56 /* SkinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsView.swift; sourceTree = "<group>"; };
+		B64A238929CC511600232C56 /* SkinsRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsRegisteredView.swift; sourceTree = "<group>"; };
 		B64A238B29CC658500232C56 /* SkinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCell.swift; sourceTree = "<group>"; };
 		B64A238D29CDDFEE00232C56 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		B64A238F29D425CE00232C56 /* SkinAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinAlertView.swift; sourceTree = "<group>"; };
@@ -228,12 +228,9 @@
 		B64A238629CC3BF500232C56 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B6749D1C29BE4E0000BBD296 /* Skin.swift */,
-				B6749D1529BE4DB800BBD296 /* User.swift */,
-				B6749D1729BE4DD800BBD296 /* CurrentSkin.swift */,
-				B6749D1929BE4DE800BBD296 /* Statistics.swift */,
-				B64A238D29CDDFEE00232C56 /* Achievement.swift */,
 				B60A5ECE29E13F49005A8270 /* Game */,
+				B6AF4A6329EAD93F00DC7B95 /* SkinsTab */,
+				B6AF4A6429EAD95900DC7B95 /* ProfileTab */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -390,6 +387,25 @@
 			path = SVGImages;
 			sourceTree = "<group>";
 		};
+		B6AF4A6329EAD93F00DC7B95 /* SkinsTab */ = {
+			isa = PBXGroup;
+			children = (
+				B6749D1C29BE4E0000BBD296 /* Skin.swift */,
+			);
+			path = SkinsTab;
+			sourceTree = "<group>";
+		};
+		B6AF4A6429EAD95900DC7B95 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				B6749D1529BE4DB800BBD296 /* User.swift */,
+				B6749D1729BE4DD800BBD296 /* CurrentSkin.swift */,
+				B6749D1929BE4DE800BBD296 /* Statistics.swift */,
+				B64A238D29CDDFEE00232C56 /* Achievement.swift */,
+			);
+			path = ProfileTab;
+			sourceTree = "<group>";
+		};
 		B6F6CF3529C10B97001C8B68 /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,7 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				B63E8F5C29BE704100043EC5 /* SkinsViewController.swift */,
-				B64A238929CC511600232C56 /* SkinsView.swift */,
+				B64A238929CC511600232C56 /* SkinsRegisteredView.swift */,
 				B64A238B29CC658500232C56 /* SkinCell.swift */,
 				B64A238F29D425CE00232C56 /* SkinAlertView.swift */,
 				B64A239129D4B0B400232C56 /* SkinsErrorView.swift */,
@@ -605,7 +621,7 @@
 				B60A5EC929DEAAD6005A8270 /* GameView.swift in Sources */,
 				B63E8F6529BF1E3B00043EC5 /* SignInView.swift in Sources */,
 				B63E8F5D29BE704100043EC5 /* SkinsViewController.swift in Sources */,
-				B64A238A29CC511600232C56 /* SkinsView.swift in Sources */,
+				B64A238A29CC511600232C56 /* SkinsRegisteredView.swift in Sources */,
 				B6749D1F29BE4E3200BBD296 /* NetworkService.swift in Sources */,
 				B64A23C229DA13EB00232C56 /* PlayersProgress.swift in Sources */,
 				B6CBBD7129C4A47400BF7A4B /* InitialView.swift in Sources */,

@@ -19,6 +19,7 @@ class SkinsNotRegisteredView: UIView {
     init(frame: CGRect, presentingVC: SkinsViewController) {
         super.init(frame: frame)
         self.presentingVC = presentingVC
+        
         self.backgroundColor = .white
         
         initViews()
@@ -28,6 +29,7 @@ class SkinsNotRegisteredView: UIView {
         super.init(coder: coder)
     }
     
+    // MARK: - Initializing views
     private func initViews() {
         createErrorImageView()
         createErrorDescription()
@@ -69,7 +71,7 @@ class SkinsNotRegisteredView: UIView {
         errorDescription.numberOfLines = 0
         errorDescription.lineBreakMode = .byWordWrapping
         errorDescription.textAlignment = .center
-        errorDescription.font = UIFont.systemFont(ofSize: 24)
+        errorDescription.font = UIFont.systemFont(ofSize: 32)
     }
     
     private func updateErrorDescriptionConstraints() {
@@ -78,11 +80,13 @@ class SkinsNotRegisteredView: UIView {
         
         NSLayoutConstraint.activate([
             errorDescription.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            errorDescription.topAnchor.constraint(equalTo: errorImageView.bottomAnchor, constant: 30),
+            errorDescription.topAnchor.constraint(equalTo: errorImageView.bottomAnchor, constant: 15),
             errorDescription.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             errorDescription.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            errorDescription.bottomAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            errorDescription.bottomAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
     }
     
 }
+
+

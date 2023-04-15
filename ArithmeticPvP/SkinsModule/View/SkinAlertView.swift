@@ -9,6 +9,7 @@ import UIKit
 
 class SkinAlertView: UIView {
     
+    // MARK: - Class Properties
     var presentingVC: SkinsViewController!
     
     var skinImageView: UIImageView!
@@ -17,8 +18,7 @@ class SkinAlertView: UIView {
     var buyButton: UIButton!
     var cancelButton: UIButton!
     
-    var skin: Skin!
-    
+    // MARK: - Inits
     init(frame: CGRect, presentingVC: SkinsViewController) {
         super.init(frame: frame)
         self.presentingVC = presentingVC
@@ -30,9 +30,8 @@ class SkinAlertView: UIView {
         super.init(coder: coder)
     }
     
+    // MARK: - Func for updating UI with specific data
     func updateView(for skin: Skin, in cell: SkinCell?, with balance: Double) {
-        
-        self.skin = skin
         
         if let image = cell?.image {
             skinImageView.image = image
@@ -56,26 +55,25 @@ class SkinAlertView: UIView {
             buyButton.isEnabled = true
             buyButton.setTitle("Select", for: .normal)
         } else {
-            buyButton.setTitle("Selected", for: .normal)
             buyButton.backgroundColor = .systemGray4
             buyButton.isEnabled = false
+            buyButton.setTitle("Selected", for: .normal)
         }
     }
     
+    // MARK: - Initializing views
     func initViews() {
-        configureView()
+        
+        self.backgroundColor = .white
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 12
+        
         createSkinImageView()
         createNameLabel()
         createDescriptionLabel()
         createBuyButton()
         createCancelButton()
-    }
-    
-    func configureView() {
-        self.backgroundColor = .white
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 12
     }
     
     func createSkinImageView() {

@@ -9,15 +9,17 @@ import UIKit
 
 class SkinsViewController: UIViewController {
     
+    // MARK: - Class Properties
     var viewModel: SkinsViewModelProtocol
     
     var initialView: InitialView!
-    var skinsView: SkinsView!
+    var skinsRegisteredView: SkinsRegisteredView!
+    var skinsNotRegisteredView: SkinsNotRegisteredView!
     var skinAlertView: SkinAlertView!
     var skinsErrorView: SkinsErrorView!
-    var skinsNotRegisteredView: SkinsNotRegisteredView!
     var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: - Inits
     init(viewModel: SkinsViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -27,6 +29,7 @@ class SkinsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - View overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +40,11 @@ class SkinsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.updateState()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        allowUserInteraction()
     }
     
     // MARK: - ViewModel binding
@@ -55,7 +63,7 @@ class SkinsViewController: UIViewController {
         dismissSkinAlert()
         activityIndicator.stopAnimating()
         initialView.isHidden = true
-        skinsView.isHidden = true
+        skinsRegisteredView.isHidden = true
         skinsErrorView.isHidden = true
         skinsNotRegisteredView.isHidden = true
         
@@ -64,24 +72,38 @@ class SkinsViewController: UIViewController {
         
         switch viewModel.state.value {
         case .initial:
-            print("SkinsViewController initial")
+            NSLog("SkinsViewController initial")
             initialView.isHidden = false
         case .loading:
-            print("SkinsViewController initial")
+            NSLog("SkinsViewController initial")
             initialView.isHidden = false
             activityIndicator.startAnimating()
         case .registered:
-            print("SkinsViewController registered")
-            skinsView.updateView()
-            skinsView.isHidden = false
+            NSLog("SkinsViewController registered")
+            skinsRegisteredView.updateView()
+            skinsRegisteredView.isHidden = false
         case .notRegistered:
-            print("SkinsViewController not registered")
+            NSLog("SkinsViewController not registered")
             skinsNotRegisteredView.isHidden = false
         case .error(let error):
-            print("SkinsViewController error")
+            NSLog("SkinsViewController error")
             skinsErrorView.updateView(with: error)
             skinsErrorView.isHidden = false
         }
+    }
+    
+    // MARK: - Funcs for disable and allow user interaction when skin alert is opened or closed
+    private func allowUserInteraction() {
+        self.viewModel.currentSkin = nil
+        self.skinsRegisteredView.isUserInteractionEnabled = true
+        self.navigationController?.navigationBar.isUserInteractionEnabled = true
+        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+    }
+    
+    private func disableUserInteraction() {
+        self.skinsRegisteredView.isUserInteractionEnabled = false
+        self.navigationController?.navigationBar.isUserInteractionEnabled = false
+        self.tabBarController?.tabBar.isUserInteractionEnabled = false
     }
 
 }
@@ -94,7 +116,7 @@ extension SkinsViewController {
         navigationItem.title = "SKINS"
         
         createInitialView()
-        createSkinsView()
+        createSkinsRegisteredView()
         createSkinAlertView()
         createSkinsErrorView()
         createSkinsNotRegisteredView()
@@ -108,9 +130,9 @@ extension SkinsViewController {
         view.addSubview(initialView)
     }
     
-    private func createSkinsView() {
-        skinsView = SkinsView(frame: view.bounds, presentingVC: self)
-        view.addSubview(skinsView)
+    private func createSkinsRegisteredView() {
+        skinsRegisteredView = SkinsRegisteredView(frame: view.bounds, presentingVC: self)
+        view.addSubview(skinsRegisteredView)
     }
     
     private func createSkinAlertView() {
@@ -136,25 +158,25 @@ extension SkinsViewController {
         activityIndicator.isHidden = true
     }
     
+    // MARK: - Func for updating button for choosing which skins to display
     func updateLeftBarButtonItem() {
-        if skinsView.isShowOwnedSkins {
-            navigationItem.leftBarButtonItem = skinsView.ownedSkinsButton
+        if skinsRegisteredView.isShowOwnedSkins {
+            navigationItem.leftBarButtonItem = skinsRegisteredView.ownedSkinsButton
         } else {
-            navigationItem.leftBarButtonItem = skinsView.allSkinsButton
+            navigationItem.leftBarButtonItem = skinsRegisteredView.allSkinsButton
         }
     }
     
-    @objc func showSpecificSkinsButtonTapped(_ sender: UIBarButtonItem) {
-        skinsView.isShowOwnedSkins.toggle()
-        updateLeftBarButtonItem()
-        skinsView.updateView()
-    }
-    
+    // MARK: - Func for creating and displaying Skin Alert
     func showSkinAlert(for skin: Skin, in cell: SkinCell?) {
         
+        disableUserInteraction()
+        
         UIView.animate(withDuration: 0.25, animations: {
-            self.skinsView.alpha = 0.6
+            self.skinsRegisteredView.alpha = 0.6
         })
+        
+        skinAlertView.updateView(for: skin, in: cell, with: viewModel.balance)
         
         view.addSubview(skinAlertView)
         
@@ -166,41 +188,51 @@ extension SkinsViewController {
             skinAlertView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             skinAlertView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -100)
         ])
-        
-        skinAlertView.updateView(for: skin, in: cell, with: viewModel.balance)
     }
     
+    // MARK: - Func dismissing Skin Alert from view
     @objc func dismissSkinAlert() {
+        
+        allowUserInteraction()
+        
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25, animations: {
-                self.skinsView.alpha = 1
+                self.skinsRegisteredView.alpha = 1
                 self.skinAlertView.removeFromSuperview()
             })
         }
     }
     
+    // MARK: - Objc functions for buttons' actions
+    @objc func showSpecificSkinsButtonTapped(_ sender: UIBarButtonItem) {
+        skinsRegisteredView.isShowOwnedSkins.toggle()
+        updateLeftBarButtonItem()
+        skinsRegisteredView.updateView()
+    }
+    
     @objc func buyButtonTapped(_ sender: UIButton) {
-        if let title = sender.titleLabel?.text {
+        if let title = sender.titleLabel?.text, let skin = viewModel.currentSkin {
             if title == "Select" {
-                viewModel.selectSkin(with: skinAlertView.skin.id) { [weak self] isSuccess in
+                viewModel.selectSkin(with: skin.id) { [weak self] isSuccess in
                     guard let self = self else { return }
                     if isSuccess {
                         self.viewModel.updateState()
                     } else {
-                        print("something went wrong")
+                        NSLog("Cannot select skin for some reason")
                     }
                 }
             } else if title.starts(with: "Buy") {
-                viewModel.buySkin(with: skinAlertView.skin.id) { [weak self] isSuccess in
+                viewModel.buySkin(with: skin.id) { [weak self] isSuccess in
                     guard let self = self else { return }
                     if isSuccess {
                         self.viewModel.updateState()
                     } else {
-                        print("something went wrong")
+                        NSLog("Cannot buy skin for some reason")
                     }
                 }
             }
         }
+        allowUserInteraction()
     }
     
     @objc func reloadButtonTapped(_ sender: UIButton) {

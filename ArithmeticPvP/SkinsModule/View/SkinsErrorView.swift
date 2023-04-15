@@ -20,6 +20,7 @@ class SkinsErrorView: UIView {
     init(frame: CGRect, presentingVC: SkinsViewController) {
         super.init(frame: frame)
         self.presentingVC = presentingVC
+        
         self.backgroundColor = .white
         
         initViews()
@@ -29,10 +30,12 @@ class SkinsErrorView: UIView {
         super.init(coder: coder)
     }
     
-    func updateView(with error: Error) {
+    // MARK: - Func for updating UI with specific error data
+    func updateView(with error: NetworkService.NetworkServiceError) {
         errorDescription.text = "ERROR!\n\(error)\nPlease, try to reload this page!"
     }
     
+    // MARK: - Initializing views
     private func initViews() {
         createErrorImageView()
         createErrorDescription()
@@ -84,7 +87,7 @@ class SkinsErrorView: UIView {
         
         NSLayoutConstraint.activate([
             errorDescription.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            errorDescription.topAnchor.constraint(equalTo: errorImageView.bottomAnchor, constant: 30),
+            errorDescription.topAnchor.constraint(equalTo: errorImageView.bottomAnchor, constant: 15),
             errorDescription.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             errorDescription.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
         ])

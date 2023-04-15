@@ -11,9 +11,11 @@ protocol SkinsViewModelProtocol {
     
     var state: Observable<SkinsState> { get set }
     var router: SkinsRouterProtocol { get set }
+    
     var skins: [Skin] { get set }
     var ownedSkins: [Skin] { get }
     var balance: Double { get set }
+    var currentSkin: Skin? { get set }
     
     func updateState()
     func getSkinsList(cookie: String)
@@ -37,6 +39,7 @@ class SkinsViewModel: SkinsViewModelProtocol {
         }
     }
     var balance: Double = 0
+    var currentSkin: Skin?
     
     // MARK: - Init
     init(router: SkinsRouterProtocol) {
@@ -53,22 +56,7 @@ class SkinsViewModel: SkinsViewModelProtocol {
         }
     }
     
-    func getUserBalance(cookie: String) {
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            NetworkService.shared.getUserBalance(cookie: cookie) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let balance):
-                    self.balance = balance
-                    self.state.value = .registered
-                case .failure(let error):
-                    self.state.value = .error(error)
-                }
-            }
-        }
-    }
-    
+    // MARK: - Func for getting list of skins
     func getSkinsList(cookie: String) {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
@@ -86,6 +74,24 @@ class SkinsViewModel: SkinsViewModelProtocol {
         }
     }
     
+    // MARK: - Func for getting user balance
+    func getUserBalance(cookie: String) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            NetworkService.shared.getUserBalance(cookie: cookie) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let balance):
+                    self.balance = balance
+                    self.state.value = .registered
+                case .failure(let error):
+                    self.state.value = .error(error)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Func for getting skin image for the user
     func getSkinImage(from url: URL, completion: @escaping (Data) -> Void) {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
@@ -101,31 +107,37 @@ class SkinsViewModel: SkinsViewModelProtocol {
         }
     }
     
+    // MARK: - Func for selecting skin for the user
     func selectSkin(with id: Int, completion: @escaping (Bool) -> Void) {
         DispatchQueue.global().async {[weak self] in
             guard let self = self else { return }
-            NetworkService.shared.selectSkin(cookie: UserDefaultsHelper.shared.getCookie()!, id: id) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let isTrue):
-                    completion(isTrue)
-                case .failure(let error):
-                    self.state.value = .error(error)
+            if let cookie = UserDefaultsHelper.shared.getCookie() {
+                NetworkService.shared.selectSkin(cookie: cookie, id: id) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let isTrue):
+                        completion(isTrue)
+                    case .failure(let error):
+                        self.state.value = .error(error)
+                    }
                 }
             }
         }
     }
     
+    // MARK: - Func for buying skin for the user
     func buySkin(with id: Int, completion: @escaping (Bool) -> Void) {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
-            NetworkService.shared.buySkin(cookie: UserDefaultsHelper.shared.getCookie()!, id: id) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let isTrue):
-                    completion(isTrue)
-                case .failure(let error):
-                    self.state.value = .error(error)
+            if let cookie = UserDefaultsHelper.shared.getCookie() {
+                NetworkService.shared.buySkin(cookie: cookie, id: id) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let isTrue):
+                        completion(isTrue)
+                    case .failure(let error):
+                        self.state.value = .error(error)
+                    }
                 }
             }
         }
