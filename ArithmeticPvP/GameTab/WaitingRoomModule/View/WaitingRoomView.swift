@@ -159,7 +159,7 @@ class ClockView: UIView {
 class WaitingRoomView: UIView {
     
     // MARK: - Class Properties
-    var presentingVC: WaitingRoomViewController!
+    var presentingVC: WaitingRoomViewController
     
     var player1View: PlayerView!
     var player2View: PlayerView!
@@ -174,15 +174,15 @@ class WaitingRoomView: UIView {
     
     // MARK: - Inits
     init(frame: CGRect, presentingVC: WaitingRoomViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
         
         backgroundColor = .white
         initViews()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Func for updating UI with specific data

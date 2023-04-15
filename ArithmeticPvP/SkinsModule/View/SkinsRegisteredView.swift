@@ -10,9 +10,9 @@ import UIKit
 class SkinsRegisteredView: UIView {
     
     // MARK: - Class Properties
-    var skinsTableView: UITableView!
-    var presentingVC: SkinsViewController!
+    var presentingVC: SkinsViewController
     
+    var skinsTableView: UITableView!
     var balanceLabel: UILabel!
     
     var isShowOwnedSkins: Bool!
@@ -21,8 +21,8 @@ class SkinsRegisteredView: UIView {
     
     // MARK: - Inits
     init(frame: CGRect, presentingVC: SkinsViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
         
         isShowOwnedSkins = false
         ownedSkinsButton = UIBarButtonItem(image: UIImage(systemName: "checkmark.circle"), style: .plain, target: presentingVC, action: #selector(presentingVC.showSpecificSkinsButtonTapped(_:)))
@@ -35,7 +35,7 @@ class SkinsRegisteredView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Func for updating UI with specific data

@@ -10,7 +10,7 @@ import UIKit
 class SkinAlertView: UIView {
     
     // MARK: - Class Properties
-    var presentingVC: SkinsViewController!
+    var presentingVC: SkinsViewController
     
     var skinImageView: UIImageView!
     var nameLabel: UILabel!
@@ -20,14 +20,14 @@ class SkinAlertView: UIView {
     
     // MARK: - Inits
     init(frame: CGRect, presentingVC: SkinsViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
         
         initViews()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Func for updating UI with specific data

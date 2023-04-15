@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsViewController: UIViewController {
     
-    // MARK: - SettingsViewController properties
+    // MARK: - Class properties
     var viewModel: SettingsViewModelProtocol
+    
+    var initialView: InitialView!
     var settingsView: SettingsView!
     var activityIndicator: UIActivityIndicatorView!
-    var initialView: InitialView!
     
+    // MARK: - Inits
     init(viewModel: SettingsViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -27,16 +30,14 @@ class SettingsViewController: UIViewController {
     // MARK: - View overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Settings"
         
         initView()
         bindViewModel()
-        updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.checkCookie()
+        viewModel.updateState()
     }
     
     // MARK: - ViewModel binding
@@ -58,45 +59,50 @@ class SettingsViewController: UIViewController {
         
         switch viewModel.state.value {
         case .initial:
-            print("initial")
+            NSLog("SettingsViewController initial")
             initialView.isHidden = false
         case .loading:
-            print("loading")
-            // initialView.isHidden = false
+            NSLog("SettingsViewController loading")
             settingsView.isHidden = false
             activityIndicator.startAnimating()
-        case .error(let error):
-            print("error")
-            settingsView.isHidden = false
-            displayError(error, title: "Failed to Log Out")
         case .registered:
-            print("registered")
+            NSLog("SettingsViewController registered")
             settingsView.isHidden = false
             settingsView.logOutButton.isHidden = false
         case .notRegistered:
-            print("not registered")
+            NSLog("SettingsViewController not registered")
             settingsView.isHidden = false
             settingsView.logOutButton.isHidden = true
+        case .error(let error):
+            NSLog("SettingsViewController error")
+            settingsView.isHidden = false
+            displayError(error, title: "Failed to Log Out")
         }
     }
     
+    // MARK: - Error Alert
     private func displayError(_ error: Error, title: String) {
         guard let _ = viewIfLoaded?.window else { return }
         
-        let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: "\(error)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.checkCookie()
+            self.viewModel.updateState()
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
 }
 
-extension SettingsViewController {
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
     
     // MARK: - Initializing views
     private func initView() {
+        
+        navigationItem.title = "SETTINGS"
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped(_:)))
+        
         createInitialView()
         createSettingsView()
         createActivityIndicator()
@@ -108,8 +114,7 @@ extension SettingsViewController {
     }
     
     private func createSettingsView() {
-        settingsView = SettingsView(frame: view.bounds)
-        settingsView.logOutButton.addTarget(self, action: #selector(logOutButtonTapped(_:)), for: .touchUpInside)
+        settingsView = SettingsView(frame: view.bounds, presenetingVC: self)
         view.addSubview(settingsView)
     }
     
@@ -122,8 +127,30 @@ extension SettingsViewController {
         activityIndicator.isHidden = true
     }
     
-    // MARK: - Selector objc functions
+    // MARK: - Objc function for button actions
+    @objc func backButtonTapped(_ sender: UIBarButtonItem) {
+        viewModel.router.popToRoot()
+    }
+    
+    @objc func reportBugButtonTapped(_ sender: UIButton) {
+        
+        guard MFMailComposeViewController.canSendMail() else { return }
+        
+        let mailComposer = MFMailComposeViewController()
+        mailComposer.mailComposeDelegate = self
+        
+        mailComposer.setToRecipients(["d.shabal1n12@gmail.com"])
+        mailComposer.setSubject("ArithmeticPvP Bug Report.")
+        
+        present(mailComposer, animated: true, completion: nil)
+        
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func logOutButtonTapped(_ sender: UIButton) {
-        viewModel.logOutButtonTapped()
+        viewModel.logOut()
     }
 }

@@ -345,9 +345,7 @@
 				B64A238629CC3BF500232C56 /* Models */,
 				B6F6CF4129C223C7001C8B68 /* GameTab */,
 				B6F6CF4229C223D9001C8B68 /* SkinsModule */,
-				B6108DC929C095460050DD78 /* ProfileModule */,
-				B6F6CF3529C10B97001C8B68 /* SettingsModule */,
-				B6F6CF3D29C22331001C8B68 /* SignInWithGoogleModule */,
+				B6AF4A6729EB387000DC7B95 /* ProfileTab */,
 				B6108DC229BFB7D80050DD78 /* Utils */,
 				B6749D1329BE0E4300BBD296 /* ServiceLayer */,
 				B6749D1429BE0EEC00BBD296 /* Delegates */,
@@ -402,6 +400,16 @@
 				B6749D1729BE4DD800BBD296 /* CurrentSkin.swift */,
 				B6749D1929BE4DE800BBD296 /* Statistics.swift */,
 				B64A238D29CDDFEE00232C56 /* Achievement.swift */,
+			);
+			path = ProfileTab;
+			sourceTree = "<group>";
+		};
+		B6AF4A6729EB387000DC7B95 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				B6108DC929C095460050DD78 /* ProfileModule */,
+				B6F6CF3529C10B97001C8B68 /* SettingsModule */,
+				B6F6CF3D29C22331001C8B68 /* SignInWithGoogleModule */,
 			);
 			path = ProfileTab;
 			sourceTree = "<group>";

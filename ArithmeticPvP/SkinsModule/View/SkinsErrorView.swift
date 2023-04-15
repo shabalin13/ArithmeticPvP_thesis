@@ -14,12 +14,12 @@ class SkinsErrorView: UIView {
     var errorDescription: UILabel!
     var reloadButton: UIButton!
     
-    var presentingVC: SkinsViewController!
+    var presentingVC: SkinsViewController
     
     //MARK: - Inits
     init(frame: CGRect, presentingVC: SkinsViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
         
         self.backgroundColor = .white
         
@@ -27,7 +27,7 @@ class SkinsErrorView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Func for updating UI with specific error data

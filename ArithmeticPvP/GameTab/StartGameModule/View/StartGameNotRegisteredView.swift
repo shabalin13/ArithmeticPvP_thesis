@@ -13,12 +13,12 @@ class StartGameNotRegisteredView: UIView {
     var errorImageView: UIImageView!
     var errorDescription: UILabel!
     
-    var presentingVC: StartGameViewController!
+    var presentingVC: StartGameViewController
     
     //MARK: - Inits
     init(frame: CGRect, presentingVC: StartGameViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
         
         self.backgroundColor = .white
         
@@ -26,7 +26,7 @@ class StartGameNotRegisteredView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Initializing views

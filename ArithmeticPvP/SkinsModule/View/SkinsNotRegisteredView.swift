@@ -13,12 +13,12 @@ class SkinsNotRegisteredView: UIView {
     var errorImageView: UIImageView!
     var errorDescription: UILabel!
     
-    var presentingVC: SkinsViewController!
+    var presentingVC: SkinsViewController
     
     //MARK: - Inits
     init(frame: CGRect, presentingVC: SkinsViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
         
         self.backgroundColor = .white
         
@@ -26,7 +26,7 @@ class SkinsNotRegisteredView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Initializing views
@@ -53,8 +53,8 @@ class SkinsNotRegisteredView: UIView {
         NSLayoutConstraint.activate([
             errorImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             errorImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50),
-            errorImageView.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 60),
-            errorImageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -60),
+            errorImageView.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            errorImageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80),
             errorImageView.heightAnchor.constraint(equalTo: errorImageView.widthAnchor, multiplier: 1)
         ])
     }

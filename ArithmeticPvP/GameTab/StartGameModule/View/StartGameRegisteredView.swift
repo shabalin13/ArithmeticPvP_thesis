@@ -9,12 +9,12 @@ import UIKit
 
 class StartGameRegisteredView: UIView {
     
-    var presentingVC: StartGameViewController!
+    var presentingVC: StartGameViewController
     var startButton: UIButton!
     
     init(frame: CGRect, presentingVC: StartGameViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
         
         self.backgroundColor = .white
         
@@ -22,7 +22,7 @@ class StartGameRegisteredView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     func initViews() {

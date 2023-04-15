@@ -8,16 +8,19 @@
 import Foundation
 
 protocol SettingsViewModelProtocol {
+    
     var state: Observable<SettingsState> { get set }
     var router: ProfileRouterProtocol { get set }
-    func logOutButtonTapped()
-    func checkCookie()
+    
+    func updateState()
+    
+    func logOut()
 }
 
 
 class SettingsViewModel: SettingsViewModelProtocol {
     
-    // MARK: - SettingsViewModel properties
+    // MARK: - Class Properties
     var state: Observable<SettingsState> = Observable(.initial)
     var router: ProfileRouterProtocol
     
@@ -26,8 +29,8 @@ class SettingsViewModel: SettingsViewModelProtocol {
         self.router = router
     }
     
-    // MARK: - Checking Cookie function
-    func checkCookie() {
+    // MARK: - Updating state
+    func updateState() {
         if let _ = UserDefaultsHelper.shared.getCookie() {
             self.state.value = .registered
         } else {
@@ -35,8 +38,8 @@ class SettingsViewModel: SettingsViewModelProtocol {
         }
     }
     
-    // MARK: - Log Out
-    func logOutButtonTapped() {
+    // MARK: - Func for Log Out
+    func logOut() {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             self.state.value = .loading
