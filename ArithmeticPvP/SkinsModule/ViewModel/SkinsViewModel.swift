@@ -66,6 +66,7 @@ class SkinsViewModel: SkinsViewModelProtocol {
                 switch result {
                 case .success(let skins):
                     self.skins = skins
+                    NSLog("User skins: \(skins)")
                     self.state.value = .registered
                 case .failure(let error):
                     self.state.value = .error(error)
@@ -83,6 +84,7 @@ class SkinsViewModel: SkinsViewModelProtocol {
                 switch result {
                 case .success(let balance):
                     self.balance = balance
+                    NSLog("User Balance: \(balance)")
                     self.state.value = .registered
                 case .failure(let error):
                     self.state.value = .error(error)
@@ -116,6 +118,7 @@ class SkinsViewModel: SkinsViewModelProtocol {
                     guard let self = self else { return }
                     switch result {
                     case .success(let isTrue):
+                        NSLog("Successful skin selection")
                         completion(isTrue)
                     case .failure(let error):
                         self.state.value = .error(error)
@@ -134,6 +137,7 @@ class SkinsViewModel: SkinsViewModelProtocol {
                     guard let self = self else { return }
                     switch result {
                     case .success(let isTrue):
+                        NSLog("Successful skin buy")
                         completion(isTrue)
                     case .failure(let error):
                         self.state.value = .error(error)

@@ -87,6 +87,7 @@ class SkinsViewController: UIViewController {
             skinsNotRegisteredView.isHidden = false
         case .error(let error):
             NSLog("SkinsViewController error")
+            NSLog("\(error)")
             skinsErrorView.updateView(with: error)
             skinsErrorView.isHidden = false
         }
@@ -169,6 +170,8 @@ extension SkinsViewController {
     
     // MARK: - Func for creating and displaying Skin Alert
     func showSkinAlert(for skin: Skin, in cell: SkinCell?) {
+        
+        NSLog("Skin Alert: \(skin)")
         
         disableUserInteraction()
         
