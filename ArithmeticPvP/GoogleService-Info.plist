@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>260293390580-okhjh7utujsk2h26li9ioi0sp8rklovn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.260293390580-okhjh7utujsk2h26li9ioi0sp8rklovn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAQb4kO2O-MpJnQfHjtPqzOyM22Y9AHe5Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>260293390580</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.shabalin13.ArithmeticPvP</string>
+	<key>PROJECT_ID</key>
+	<string>arithmetic-pvp-c3923</string>
+	<key>STORAGE_BUCKET</key>
+	<string>arithmetic-pvp-c3923.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:260293390580:ios:676991828662f6c8c6eea1</string>
+</dict>
+</plist>

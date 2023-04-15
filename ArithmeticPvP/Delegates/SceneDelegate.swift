@@ -16,7 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        
+        let tabBarController = TabBarController()
+        
+        window.rootViewController = tabBarController
+        
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -39,6 +47,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        if let expiryDate = UserDefaultsHelper.shared.getExpiryDate() {
+            
+            if expiryDate < Date() {
+                NSLog("expiryDate expired")
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                
+            } else if expiryDate.timeIntervalSince(Date()) < 60 * 60 * 24 {
+                NSLog("expiryDate will expiren soon (less than 1 day)")
+                UserDefaultsHelper.shared.removeCookie()
+                UserDefaultsHelper.shared.removeExpiryDate()
+                
+                DispatchQueue.global().async {
+                    NetworkService.shared.refreshToken { _ in }
+                }
+            }
+            
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -49,4 +75,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-

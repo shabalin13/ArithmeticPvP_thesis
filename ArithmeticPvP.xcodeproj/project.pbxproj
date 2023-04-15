@@ -7,23 +7,145 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60A5EC929DEAAD6005A8270 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60A5EC829DEAAD6005A8270 /* GameView.swift */; };
+		B60A5ECB29E07C08005A8270 /* PostGameStatisticsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60A5ECA29E07C08005A8270 /* PostGameStatisticsData.swift */; };
+		B60A5ED029E17FD5005A8270 /* PostGameStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60A5ECF29E17FD5005A8270 /* PostGameStatisticsView.swift */; };
+		B6108DC429BFB7E40050DD78 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6108DC329BFB7E40050DD78 /* States.swift */; };
+		B6108DC629C08F790050DD78 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6108DC529C08F790050DD78 /* Observer.swift */; };
+		B6108DCE29C095A90050DD78 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6108DCD29C095A90050DD78 /* ProfileViewModel.swift */; };
+		B63A760C29E81033008FAA77 /* ArithemticPvP_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = B63A760B29E81033008FAA77 /* ArithemticPvP_logo.svg */; };
+		B63A760E29E81038008FAA77 /* notRegisteredImage.svg in Resources */ = {isa = PBXBuildFile; fileRef = B63A760D29E81038008FAA77 /* notRegisteredImage.svg */; };
+		B63E8F5029BE5A7F00043EC5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */; };
+		B63E8F5229BE5BD800043EC5 /* ProfileNotRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */; };
+		B63E8F5629BE621500043EC5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5529BE621500043EC5 /* SettingsViewController.swift */; };
+		B63E8F5D29BE704100043EC5 /* SkinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5C29BE704100043EC5 /* SkinsViewController.swift */; };
+		B63E8F6029BF0C7600043EC5 /* StartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5F29BF0C7600043EC5 /* StartGameViewController.swift */; };
+		B63E8F6329BF1E2000043EC5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6229BF1E2000043EC5 /* SignInViewController.swift */; };
+		B63E8F6529BF1E3B00043EC5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6429BF1E3B00043EC5 /* SignInView.swift */; };
+		B63E8F6929BF4DE100043EC5 /* ProfileRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6829BF4DE100043EC5 /* ProfileRegisteredView.swift */; };
+		B64A238829CC3E3200232C56 /* SkinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238729CC3E3200232C56 /* SkinsViewModel.swift */; };
+		B64A238A29CC511600232C56 /* SkinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238929CC511600232C56 /* SkinsView.swift */; };
+		B64A238C29CC658500232C56 /* SkinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238B29CC658500232C56 /* SkinCell.swift */; };
+		B64A238E29CDDFEE00232C56 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238D29CDDFEE00232C56 /* Achievement.swift */; };
+		B64A239029D425CE00232C56 /* SkinAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238F29D425CE00232C56 /* SkinAlertView.swift */; };
+		B64A239229D4B0B400232C56 /* SkinsErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A239129D4B0B400232C56 /* SkinsErrorView.swift */; };
+		B64A239429D4C16F00232C56 /* SkinsNotRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A239329D4C16F00232C56 /* SkinsNotRegisteredView.swift */; };
+		B64A239629D4C65600232C56 /* StartGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A239529D4C65600232C56 /* StartGameViewModel.swift */; };
+		B64A239E29D4CD0E00232C56 /* WaitingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A239D29D4CD0E00232C56 /* WaitingRoomViewController.swift */; };
+		B64A23A029D4CD6B00232C56 /* WaitingRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A239F29D4CD6B00232C56 /* WaitingRoomViewModel.swift */; };
+		B64A23A429D56CCF00232C56 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23A329D56CCF00232C56 /* GameViewModel.swift */; };
+		B64A23A629D56CDB00232C56 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23A529D56CDB00232C56 /* GameViewController.swift */; };
+		B64A23AA29D56FBD00232C56 /* PostGameStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23A929D56FBD00232C56 /* PostGameStatisticsViewModel.swift */; };
+		B64A23AC29D56FCF00232C56 /* PostGameStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23AB29D56FCF00232C56 /* PostGameStatisticsViewController.swift */; };
+		B64A23AE29D575EC00232C56 /* StartGameRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23AD29D575EC00232C56 /* StartGameRegisteredView.swift */; };
+		B64A23B029D575FE00232C56 /* StartGameNotRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23AF29D575FE00232C56 /* StartGameNotRegisteredView.swift */; };
+		B64A23B229D5C49400232C56 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23B129D5C49400232C56 /* WebSocketService.swift */; };
+		B64A23B429D5D35700232C56 /* WaitingRoomStartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23B329D5D35700232C56 /* WaitingRoomStartInfo.swift */; };
+		B64A23B629D5D6B300232C56 /* WaitingRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23B529D5D6B300232C56 /* WaitingRoomInfo.swift */; };
+		B64A23B829D5D6ED00232C56 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23B729D5D6ED00232C56 /* Player.swift */; };
+		B64A23BA29D8C12000232C56 /* InsufficientPlayersAmountError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23B929D8C12000232C56 /* InsufficientPlayersAmountError.swift */; };
+		B64A23BC29D8C63900232C56 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23BB29D8C63900232C56 /* Question.swift */; };
+		B64A23BE29D8C6E400232C56 /* NextQuestionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23BD29D8C6E400232C56 /* NextQuestionEvent.swift */; };
+		B64A23C229DA13EB00232C56 /* PlayersProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23C129DA13EB00232C56 /* PlayersProgress.swift */; };
+		B64A23C629DA16A900232C56 /* PostGameStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23C529DA16A900232C56 /* PostGameStatistics.swift */; };
+		B64A23C829DAAC1400232C56 /* WaitingRoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23C729DAAC1400232C56 /* WaitingRoomData.swift */; };
+		B64A23CA29DAE8AD00232C56 /* WaitingRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23C929DAE8AD00232C56 /* WaitingRoomView.swift */; };
+		B64A23CC29DC1DF900232C56 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A23CB29DC1DF900232C56 /* GameData.swift */; };
+		B64A23CF29DCB64400232C56 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = B64A23CE29DCB64400232C56 /* Starscream */; };
 		B6749CFC29BE0B1200BBD296 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749CFB29BE0B1200BBD296 /* AppDelegate.swift */; };
 		B6749CFE29BE0B1200BBD296 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749CFD29BE0B1200BBD296 /* SceneDelegate.swift */; };
-		B6749D0029BE0B1200BBD296 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749CFF29BE0B1200BBD296 /* ViewController.swift */; };
-		B6749D0329BE0B1200BBD296 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6749D0129BE0B1200BBD296 /* Main.storyboard */; };
+		B6749D0029BE0B1200BBD296 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749CFF29BE0B1200BBD296 /* ProfileViewController.swift */; };
 		B6749D0529BE0B1400BBD296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6749D0429BE0B1400BBD296 /* Assets.xcassets */; };
 		B6749D0829BE0B1400BBD296 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6749D0629BE0B1400BBD296 /* LaunchScreen.storyboard */; };
+		B6749D1629BE4DB800BBD296 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749D1529BE4DB800BBD296 /* User.swift */; };
+		B6749D1829BE4DD800BBD296 /* CurrentSkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749D1729BE4DD800BBD296 /* CurrentSkin.swift */; };
+		B6749D1A29BE4DE800BBD296 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749D1929BE4DE800BBD296 /* Statistics.swift */; };
+		B6749D1D29BE4E0000BBD296 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749D1C29BE4E0000BBD296 /* Skin.swift */; };
+		B6749D1F29BE4E3200BBD296 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749D1E29BE4E3200BBD296 /* NetworkService.swift */; };
+		B6749D2129BE4E4800BBD296 /* GoogleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749D2029BE4E4800BBD296 /* GoogleService.swift */; };
+		B6749D2629BE564100BBD296 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2529BE564100BBD296 /* FirebaseAuth */; };
+		B6749D2929BE56F600BBD296 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2829BE56F600BBD296 /* GoogleSignIn */; };
+		B6749D2B29BE56F600BBD296 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2A29BE56F600BBD296 /* GoogleSignInSwift */; };
+		B68878BA29E9A7090007A547 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B68878B929E9A7090007A547 /* GoogleService-Info.plist */; };
+		B6BFB87229E73F480080BCA8 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6BFB87129E73F480080BCA8 /* SVGKit */; };
+		B6BFB87429E73F480080BCA8 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6BFB87329E73F480080BCA8 /* SVGKitSwift */; };
+		B6CBBD6F29C490D100BF7A4B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD6E29C490D100BF7A4B /* SettingsView.swift */; };
+		B6CBBD7129C4A47400BF7A4B /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD7029C4A47400BF7A4B /* InitialView.swift */; };
+		B6CBBD7329C5BE1C00BF7A4B /* ProfileErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */; };
+		B6F6CF3229C0FAC1001C8B68 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF3129C0FAC1001C8B68 /* Routers.swift */; };
+		B6F6CF3429C0FACD001C8B68 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF3329C0FACD001C8B68 /* Assembly.swift */; };
+		B6F6CF3A29C10BF2001C8B68 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF3929C10BF2001C8B68 /* SettingsViewModel.swift */; };
+		B6F6CF3C29C21E91001C8B68 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF3B29C21E91001C8B68 /* UserDefaultsHelper.swift */; };
+		B6F6CF4B29C224B7001C8B68 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF4A29C224B7001C8B68 /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B60A5EC829DEAAD6005A8270 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		B60A5ECA29E07C08005A8270 /* PostGameStatisticsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStatisticsData.swift; sourceTree = "<group>"; };
+		B60A5ECF29E17FD5005A8270 /* PostGameStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStatisticsView.swift; sourceTree = "<group>"; };
+		B6108DC329BFB7E40050DD78 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		B6108DC529C08F790050DD78 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		B6108DCD29C095A90050DD78 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		B63A760B29E81033008FAA77 /* ArithemticPvP_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArithemticPvP_logo.svg; sourceTree = "<group>"; };
+		B63A760D29E81038008FAA77 /* notRegisteredImage.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notRegisteredImage.svg; sourceTree = "<group>"; };
+		B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotRegisteredView.swift; sourceTree = "<group>"; };
+		B63E8F5529BE621500043EC5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B63E8F5C29BE704100043EC5 /* SkinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsViewController.swift; sourceTree = "<group>"; };
+		B63E8F5F29BF0C7600043EC5 /* StartGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameViewController.swift; sourceTree = "<group>"; };
+		B63E8F6229BF1E2000043EC5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		B63E8F6429BF1E3B00043EC5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		B63E8F6829BF4DE100043EC5 /* ProfileRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRegisteredView.swift; sourceTree = "<group>"; };
+		B64A238729CC3E3200232C56 /* SkinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsViewModel.swift; sourceTree = "<group>"; };
+		B64A238929CC511600232C56 /* SkinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsView.swift; sourceTree = "<group>"; };
+		B64A238B29CC658500232C56 /* SkinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCell.swift; sourceTree = "<group>"; };
+		B64A238D29CDDFEE00232C56 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		B64A238F29D425CE00232C56 /* SkinAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinAlertView.swift; sourceTree = "<group>"; };
+		B64A239129D4B0B400232C56 /* SkinsErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsErrorView.swift; sourceTree = "<group>"; };
+		B64A239329D4C16F00232C56 /* SkinsNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsNotRegisteredView.swift; sourceTree = "<group>"; };
+		B64A239529D4C65600232C56 /* StartGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameViewModel.swift; sourceTree = "<group>"; };
+		B64A239D29D4CD0E00232C56 /* WaitingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomViewController.swift; sourceTree = "<group>"; };
+		B64A239F29D4CD6B00232C56 /* WaitingRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomViewModel.swift; sourceTree = "<group>"; };
+		B64A23A329D56CCF00232C56 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		B64A23A529D56CDB00232C56 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B64A23A929D56FBD00232C56 /* PostGameStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStatisticsViewModel.swift; sourceTree = "<group>"; };
+		B64A23AB29D56FCF00232C56 /* PostGameStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStatisticsViewController.swift; sourceTree = "<group>"; };
+		B64A23AD29D575EC00232C56 /* StartGameRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameRegisteredView.swift; sourceTree = "<group>"; };
+		B64A23AF29D575FE00232C56 /* StartGameNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameNotRegisteredView.swift; sourceTree = "<group>"; };
+		B64A23B129D5C49400232C56 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
+		B64A23B329D5D35700232C56 /* WaitingRoomStartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomStartInfo.swift; sourceTree = "<group>"; };
+		B64A23B529D5D6B300232C56 /* WaitingRoomInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomInfo.swift; sourceTree = "<group>"; };
+		B64A23B729D5D6ED00232C56 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		B64A23B929D8C12000232C56 /* InsufficientPlayersAmountError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsufficientPlayersAmountError.swift; sourceTree = "<group>"; };
+		B64A23BB29D8C63900232C56 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		B64A23BD29D8C6E400232C56 /* NextQuestionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextQuestionEvent.swift; sourceTree = "<group>"; };
+		B64A23C129DA13EB00232C56 /* PlayersProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersProgress.swift; sourceTree = "<group>"; };
+		B64A23C529DA16A900232C56 /* PostGameStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStatistics.swift; sourceTree = "<group>"; };
+		B64A23C729DAAC1400232C56 /* WaitingRoomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomData.swift; sourceTree = "<group>"; };
+		B64A23C929DAE8AD00232C56 /* WaitingRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomView.swift; sourceTree = "<group>"; };
+		B64A23CB29DC1DF900232C56 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		B6749CF829BE0B1200BBD296 /* ArithmeticPvP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArithmeticPvP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6749CFB29BE0B1200BBD296 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6749CFD29BE0B1200BBD296 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B6749CFF29BE0B1200BBD296 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B6749D0229BE0B1200BBD296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B6749CFF29BE0B1200BBD296 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B6749D0429BE0B1400BBD296 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6749D0729BE0B1400BBD296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6749D0929BE0B1400BBD296 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6749D1529BE4DB800BBD296 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B6749D1729BE4DD800BBD296 /* CurrentSkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSkin.swift; sourceTree = "<group>"; };
+		B6749D1929BE4DE800BBD296 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		B6749D1C29BE4E0000BBD296 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		B6749D1E29BE4E3200BBD296 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		B6749D2029BE4E4800BBD296 /* GoogleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleService.swift; sourceTree = "<group>"; };
+		B68878B929E9A7090007A547 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6CBBD6E29C490D100BF7A4B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B6CBBD7029C4A47400BF7A4B /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileErrorView.swift; sourceTree = "<group>"; };
+		B6F6CF3129C0FAC1001C8B68 /* Routers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
+		B6F6CF3329C0FACD001C8B68 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		B6F6CF3929C10BF2001C8B68 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		B6F6CF3B29C21E91001C8B68 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		B6F6CF4A29C224B7001C8B68 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +153,178 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6BFB87429E73F480080BCA8 /* SVGKitSwift in Frameworks */,
+				B6BFB87229E73F480080BCA8 /* SVGKit in Frameworks */,
+				B6749D2B29BE56F600BBD296 /* GoogleSignInSwift in Frameworks */,
+				B6749D2629BE564100BBD296 /* FirebaseAuth in Frameworks */,
+				B6749D2929BE56F600BBD296 /* GoogleSignIn in Frameworks */,
+				B64A23CF29DCB64400232C56 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B60A5ECE29E13F49005A8270 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B64A23B729D5D6ED00232C56 /* Player.swift */,
+				B64A23BB29D8C63900232C56 /* Question.swift */,
+				B64A23B329D5D35700232C56 /* WaitingRoomStartInfo.swift */,
+				B64A23B529D5D6B300232C56 /* WaitingRoomInfo.swift */,
+				B64A23B929D8C12000232C56 /* InsufficientPlayersAmountError.swift */,
+				B64A23BD29D8C6E400232C56 /* NextQuestionEvent.swift */,
+				B64A23C129DA13EB00232C56 /* PlayersProgress.swift */,
+				B64A23C529DA16A900232C56 /* PostGameStatistics.swift */,
+				B64A23C729DAAC1400232C56 /* WaitingRoomData.swift */,
+				B64A23CB29DC1DF900232C56 /* GameData.swift */,
+				B60A5ECA29E07C08005A8270 /* PostGameStatisticsData.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		B6108DC229BFB7D80050DD78 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */,
+				B6108DC329BFB7E40050DD78 /* States.swift */,
+				B6108DC529C08F790050DD78 /* Observer.swift */,
+				B6F6CF3129C0FAC1001C8B68 /* Routers.swift */,
+				B6F6CF3329C0FACD001C8B68 /* Assembly.swift */,
+				B6F6CF3B29C21E91001C8B68 /* UserDefaultsHelper.swift */,
+				B6CBBD7029C4A47400BF7A4B /* InitialView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B6108DC929C095460050DD78 /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				B6108DCB29C095670050DD78 /* View */,
+				B6108DCC29C0956A0050DD78 /* ViewModel */,
+			);
+			path = ProfileModule;
+			sourceTree = "<group>";
+		};
+		B6108DCB29C095670050DD78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6749CFF29BE0B1200BBD296 /* ProfileViewController.swift */,
+				B63E8F6829BF4DE100043EC5 /* ProfileRegisteredView.swift */,
+				B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */,
+				B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6108DCC29C0956A0050DD78 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B6108DCD29C095A90050DD78 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B64A238629CC3BF500232C56 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B6749D1C29BE4E0000BBD296 /* Skin.swift */,
+				B6749D1529BE4DB800BBD296 /* User.swift */,
+				B6749D1729BE4DD800BBD296 /* CurrentSkin.swift */,
+				B6749D1929BE4DE800BBD296 /* Statistics.swift */,
+				B64A238D29CDDFEE00232C56 /* Achievement.swift */,
+				B60A5ECE29E13F49005A8270 /* Game */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B64A239729D4C6F000232C56 /* StartGameModule */ = {
+			isa = PBXGroup;
+			children = (
+				B6F6CF4429C223F3001C8B68 /* View */,
+				B6F6CF4329C223EE001C8B68 /* ViewModel */,
+			);
+			path = StartGameModule;
+			sourceTree = "<group>";
+		};
+		B64A239829D4C6FA00232C56 /* WaitingRoomModule */ = {
+			isa = PBXGroup;
+			children = (
+				B64A239B29D4CCE900232C56 /* View */,
+				B64A239C29D4CCEE00232C56 /* ViewModel */,
+			);
+			path = WaitingRoomModule;
+			sourceTree = "<group>";
+		};
+		B64A239929D4C71400232C56 /* GameModule */ = {
+			isa = PBXGroup;
+			children = (
+				B64A23A229D56CB800232C56 /* View */,
+				B64A23A129D56CAD00232C56 /* ViewModel */,
+			);
+			path = GameModule;
+			sourceTree = "<group>";
+		};
+		B64A239A29D4C72000232C56 /* PostGameStatisticsModule */ = {
+			isa = PBXGroup;
+			children = (
+				B64A23A829D56FAA00232C56 /* View */,
+				B64A23A729D56FA500232C56 /* ViewModel */,
+			);
+			path = PostGameStatisticsModule;
+			sourceTree = "<group>";
+		};
+		B64A239B29D4CCE900232C56 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B64A239D29D4CD0E00232C56 /* WaitingRoomViewController.swift */,
+				B64A23C929DAE8AD00232C56 /* WaitingRoomView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B64A239C29D4CCEE00232C56 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B64A239F29D4CD6B00232C56 /* WaitingRoomViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B64A23A129D56CAD00232C56 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B64A23A329D56CCF00232C56 /* GameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B64A23A229D56CB800232C56 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B64A23A529D56CDB00232C56 /* GameViewController.swift */,
+				B60A5EC829DEAAD6005A8270 /* GameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B64A23A729D56FA500232C56 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B64A23A929D56FBD00232C56 /* PostGameStatisticsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B64A23A829D56FAA00232C56 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B64A23AB29D56FCF00232C56 /* PostGameStatisticsViewController.swift */,
+				B60A5ECF29E17FD5005A8270 /* PostGameStatisticsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B6749CEF29BE0B1200BBD296 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +344,161 @@
 		B6749CFA29BE0B1200BBD296 /* ArithmeticPvP */ = {
 			isa = PBXGroup;
 			children = (
-				B6749CFB29BE0B1200BBD296 /* AppDelegate.swift */,
-				B6749CFD29BE0B1200BBD296 /* SceneDelegate.swift */,
-				B6749CFF29BE0B1200BBD296 /* ViewController.swift */,
-				B6749D0129BE0B1200BBD296 /* Main.storyboard */,
+				B6DE37B529E75A7300FA5ED9 /* SVGimages */,
+				B64A238629CC3BF500232C56 /* Models */,
+				B6F6CF4129C223C7001C8B68 /* GameTab */,
+				B6F6CF4229C223D9001C8B68 /* SkinsModule */,
+				B6108DC929C095460050DD78 /* ProfileModule */,
+				B6F6CF3529C10B97001C8B68 /* SettingsModule */,
+				B6F6CF3D29C22331001C8B68 /* SignInWithGoogleModule */,
+				B6108DC229BFB7D80050DD78 /* Utils */,
+				B6749D1329BE0E4300BBD296 /* ServiceLayer */,
+				B6749D1429BE0EEC00BBD296 /* Delegates */,
 				B6749D0429BE0B1400BBD296 /* Assets.xcassets */,
 				B6749D0629BE0B1400BBD296 /* LaunchScreen.storyboard */,
 				B6749D0929BE0B1400BBD296 /* Info.plist */,
+				B68878B929E9A7090007A547 /* GoogleService-Info.plist */,
 			);
 			path = ArithmeticPvP;
+			sourceTree = "<group>";
+		};
+		B6749D1329BE0E4300BBD296 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B6749D1E29BE4E3200BBD296 /* NetworkService.swift */,
+				B6749D2029BE4E4800BBD296 /* GoogleService.swift */,
+				B64A23B129D5C49400232C56 /* WebSocketService.swift */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		B6749D1429BE0EEC00BBD296 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B6749CFB29BE0B1200BBD296 /* AppDelegate.swift */,
+				B6749CFD29BE0B1200BBD296 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		B6DE37B529E75A7300FA5ED9 /* SVGimages */ = {
+			isa = PBXGroup;
+			children = (
+				B63A760D29E81038008FAA77 /* notRegisteredImage.svg */,
+				B63A760B29E81033008FAA77 /* ArithemticPvP_logo.svg */,
+			);
+			path = SVGimages;
+			sourceTree = "<group>";
+		};
+		B6F6CF3529C10B97001C8B68 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				B6F6CF3629C10BA7001C8B68 /* View */,
+				B6F6CF3729C10BAC001C8B68 /* ViewModel */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		B6F6CF3629C10BA7001C8B68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B63E8F5529BE621500043EC5 /* SettingsViewController.swift */,
+				B6CBBD6E29C490D100BF7A4B /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6F6CF3729C10BAC001C8B68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B6F6CF3929C10BF2001C8B68 /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B6F6CF3D29C22331001C8B68 /* SignInWithGoogleModule */ = {
+			isa = PBXGroup;
+			children = (
+				B6F6CF3F29C2234D001C8B68 /* View */,
+				B6F6CF3E29C22341001C8B68 /* ViewModel */,
+			);
+			path = SignInWithGoogleModule;
+			sourceTree = "<group>";
+		};
+		B6F6CF3E29C22341001C8B68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B6F6CF4A29C224B7001C8B68 /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B6F6CF3F29C2234D001C8B68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B63E8F6429BF1E3B00043EC5 /* SignInView.swift */,
+				B63E8F6229BF1E2000043EC5 /* SignInViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6F6CF4129C223C7001C8B68 /* GameTab */ = {
+			isa = PBXGroup;
+			children = (
+				B64A239A29D4C72000232C56 /* PostGameStatisticsModule */,
+				B64A239929D4C71400232C56 /* GameModule */,
+				B64A239829D4C6FA00232C56 /* WaitingRoomModule */,
+				B64A239729D4C6F000232C56 /* StartGameModule */,
+			);
+			path = GameTab;
+			sourceTree = "<group>";
+		};
+		B6F6CF4229C223D9001C8B68 /* SkinsModule */ = {
+			isa = PBXGroup;
+			children = (
+				B6F6CF4729C22426001C8B68 /* View */,
+				B6F6CF4629C22420001C8B68 /* ViewModel */,
+			);
+			path = SkinsModule;
+			sourceTree = "<group>";
+		};
+		B6F6CF4329C223EE001C8B68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B64A239529D4C65600232C56 /* StartGameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B6F6CF4429C223F3001C8B68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B63E8F5F29BF0C7600043EC5 /* StartGameViewController.swift */,
+				B64A23AD29D575EC00232C56 /* StartGameRegisteredView.swift */,
+				B64A23AF29D575FE00232C56 /* StartGameNotRegisteredView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6F6CF4629C22420001C8B68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B64A238729CC3E3200232C56 /* SkinsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B6F6CF4729C22426001C8B68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B63E8F5C29BE704100043EC5 /* SkinsViewController.swift */,
+				B64A238929CC511600232C56 /* SkinsView.swift */,
+				B64A238B29CC658500232C56 /* SkinCell.swift */,
+				B64A238F29D425CE00232C56 /* SkinAlertView.swift */,
+				B64A239129D4B0B400232C56 /* SkinsErrorView.swift */,
+				B64A239329D4C16F00232C56 /* SkinsNotRegisteredView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +517,14 @@
 			dependencies = (
 			);
 			name = ArithmeticPvP;
+			packageProductDependencies = (
+				B6749D2529BE564100BBD296 /* FirebaseAuth */,
+				B6749D2829BE56F600BBD296 /* GoogleSignIn */,
+				B6749D2A29BE56F600BBD296 /* GoogleSignInSwift */,
+				B64A23CE29DCB64400232C56 /* Starscream */,
+				B6BFB87129E73F480080BCA8 /* SVGKit */,
+				B6BFB87329E73F480080BCA8 /* SVGKitSwift */,
+			);
 			productName = ArithmeticPvP;
 			productReference = B6749CF829BE0B1200BBD296 /* ArithmeticPvP.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +553,12 @@
 				Base,
 			);
 			mainGroup = B6749CEF29BE0B1200BBD296;
+			packageReferences = (
+				B6749D2429BE564100BBD296 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B6749D2729BE56F600BBD296 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				B64A23CD29DCB64400232C56 /* XCRemoteSwiftPackageReference "Starscream" */,
+				B6BFB87029E73F480080BCA8 /* XCRemoteSwiftPackageReference "SVGKit" */,
+			);
 			productRefGroup = B6749CF929BE0B1200BBD296 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +573,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B63A760C29E81033008FAA77 /* ArithemticPvP_logo.svg in Resources */,
+				B68878BA29E9A7090007A547 /* GoogleService-Info.plist in Resources */,
 				B6749D0829BE0B1400BBD296 /* LaunchScreen.storyboard in Resources */,
 				B6749D0529BE0B1400BBD296 /* Assets.xcassets in Resources */,
-				B6749D0329BE0B1200BBD296 /* Main.storyboard in Resources */,
+				B63A760E29E81038008FAA77 /* notRegisteredImage.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +588,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6749D0029BE0B1200BBD296 /* ViewController.swift in Sources */,
+				B64A239629D4C65600232C56 /* StartGameViewModel.swift in Sources */,
+				B64A23A029D4CD6B00232C56 /* WaitingRoomViewModel.swift in Sources */,
+				B60A5ECB29E07C08005A8270 /* PostGameStatisticsData.swift in Sources */,
+				B64A23B629D5D6B300232C56 /* WaitingRoomInfo.swift in Sources */,
+				B64A23B029D575FE00232C56 /* StartGameNotRegisteredView.swift in Sources */,
+				B64A23B829D5D6ED00232C56 /* Player.swift in Sources */,
+				B64A238C29CC658500232C56 /* SkinCell.swift in Sources */,
+				B64A23AC29D56FCF00232C56 /* PostGameStatisticsViewController.swift in Sources */,
+				B63E8F6029BF0C7600043EC5 /* StartGameViewController.swift in Sources */,
+				B6F6CF3A29C10BF2001C8B68 /* SettingsViewModel.swift in Sources */,
+				B6F6CF3429C0FACD001C8B68 /* Assembly.swift in Sources */,
+				B64A23A429D56CCF00232C56 /* GameViewModel.swift in Sources */,
+				B64A239229D4B0B400232C56 /* SkinsErrorView.swift in Sources */,
+				B64A23BA29D8C12000232C56 /* InsufficientPlayersAmountError.swift in Sources */,
+				B60A5EC929DEAAD6005A8270 /* GameView.swift in Sources */,
+				B63E8F6529BF1E3B00043EC5 /* SignInView.swift in Sources */,
+				B63E8F5D29BE704100043EC5 /* SkinsViewController.swift in Sources */,
+				B64A238A29CC511600232C56 /* SkinsView.swift in Sources */,
+				B6749D1F29BE4E3200BBD296 /* NetworkService.swift in Sources */,
+				B64A23C229DA13EB00232C56 /* PlayersProgress.swift in Sources */,
+				B6CBBD7129C4A47400BF7A4B /* InitialView.swift in Sources */,
+				B64A23BE29D8C6E400232C56 /* NextQuestionEvent.swift in Sources */,
+				B60A5ED029E17FD5005A8270 /* PostGameStatisticsView.swift in Sources */,
+				B6CBBD7329C5BE1C00BF7A4B /* ProfileErrorView.swift in Sources */,
+				B63E8F6929BF4DE100043EC5 /* ProfileRegisteredView.swift in Sources */,
+				B64A23C829DAAC1400232C56 /* WaitingRoomData.swift in Sources */,
+				B6749D0029BE0B1200BBD296 /* ProfileViewController.swift in Sources */,
+				B6749D1D29BE4E0000BBD296 /* Skin.swift in Sources */,
+				B6108DC429BFB7E40050DD78 /* States.swift in Sources */,
+				B6749D2129BE4E4800BBD296 /* GoogleService.swift in Sources */,
+				B64A23AA29D56FBD00232C56 /* PostGameStatisticsViewModel.swift in Sources */,
+				B64A23BC29D8C63900232C56 /* Question.swift in Sources */,
+				B64A238829CC3E3200232C56 /* SkinsViewModel.swift in Sources */,
+				B64A23A629D56CDB00232C56 /* GameViewController.swift in Sources */,
+				B6108DC629C08F790050DD78 /* Observer.swift in Sources */,
+				B64A23B229D5C49400232C56 /* WebSocketService.swift in Sources */,
+				B64A23B429D5D35700232C56 /* WaitingRoomStartInfo.swift in Sources */,
+				B6F6CF3229C0FAC1001C8B68 /* Routers.swift in Sources */,
+				B6749D1629BE4DB800BBD296 /* User.swift in Sources */,
 				B6749CFC29BE0B1200BBD296 /* AppDelegate.swift in Sources */,
+				B6749D1829BE4DD800BBD296 /* CurrentSkin.swift in Sources */,
+				B64A238E29CDDFEE00232C56 /* Achievement.swift in Sources */,
+				B6749D1A29BE4DE800BBD296 /* Statistics.swift in Sources */,
+				B6108DCE29C095A90050DD78 /* ProfileViewModel.swift in Sources */,
+				B6F6CF3C29C21E91001C8B68 /* UserDefaultsHelper.swift in Sources */,
+				B64A23AE29D575EC00232C56 /* StartGameRegisteredView.swift in Sources */,
+				B63E8F5029BE5A7F00043EC5 /* TabBarController.swift in Sources */,
+				B64A239429D4C16F00232C56 /* SkinsNotRegisteredView.swift in Sources */,
+				B63E8F5629BE621500043EC5 /* SettingsViewController.swift in Sources */,
+				B63E8F6329BF1E2000043EC5 /* SignInViewController.swift in Sources */,
+				B63E8F5229BE5BD800043EC5 /* ProfileNotRegisteredView.swift in Sources */,
+				B64A23C629DA16A900232C56 /* PostGameStatistics.swift in Sources */,
 				B6749CFE29BE0B1200BBD296 /* SceneDelegate.swift in Sources */,
+				B64A23CA29DAE8AD00232C56 /* WaitingRoomView.swift in Sources */,
+				B64A239E29D4CD0E00232C56 /* WaitingRoomViewController.swift in Sources */,
+				B6F6CF4B29C224B7001C8B68 /* SignInViewModel.swift in Sources */,
+				B64A23CC29DC1DF900232C56 /* GameData.swift in Sources */,
+				B64A239029D425CE00232C56 /* SkinAlertView.swift in Sources */,
+				B6CBBD6F29C490D100BF7A4B /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B6749D0129BE0B1200BBD296 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6749D0229BE0B1200BBD296 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B6749D0629BE0B1400BBD296 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,10 +789,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArithmeticPvP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +799,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shabalin13.ArithmeticPvP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,10 +819,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArithmeticPvP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +829,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shabalin13.ArithmeticPvP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -358,6 +860,74 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B64A23CD29DCB64400232C56 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		B6749D2429BE564100BBD296 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		B6749D2729BE56F600BBD296 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		B6BFB87029E73F480080BCA8 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B64A23CE29DCB64400232C56 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B64A23CD29DCB64400232C56 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+		B6749D2529BE564100BBD296 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6749D2429BE564100BBD296 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B6749D2829BE56F600BBD296 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6749D2729BE56F600BBD296 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		B6749D2A29BE56F600BBD296 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6749D2729BE56F600BBD296 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		B6BFB87129E73F480080BCA8 /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6BFB87029E73F480080BCA8 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
+		};
+		B6BFB87329E73F480080BCA8 /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6BFB87029E73F480080BCA8 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B6749CF029BE0B1200BBD296 /* Project object */;
 }
