@@ -13,8 +13,6 @@
 		B6108DC429BFB7E40050DD78 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6108DC329BFB7E40050DD78 /* States.swift */; };
 		B6108DC629C08F790050DD78 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6108DC529C08F790050DD78 /* Observer.swift */; };
 		B6108DCE29C095A90050DD78 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6108DCD29C095A90050DD78 /* ProfileViewModel.swift */; };
-		B63A760C29E81033008FAA77 /* ArithemticPvP_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = B63A760B29E81033008FAA77 /* ArithemticPvP_logo.svg */; };
-		B63A760E29E81038008FAA77 /* notRegisteredImage.svg in Resources */ = {isa = PBXBuildFile; fileRef = B63A760D29E81038008FAA77 /* notRegisteredImage.svg */; };
 		B63E8F5029BE5A7F00043EC5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */; };
 		B63E8F5229BE5BD800043EC5 /* ProfileNotRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */; };
 		B63E8F5629BE621500043EC5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5529BE621500043EC5 /* SettingsViewController.swift */; };
@@ -67,6 +65,8 @@
 		B6749D2929BE56F600BBD296 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2829BE56F600BBD296 /* GoogleSignIn */; };
 		B6749D2B29BE56F600BBD296 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2A29BE56F600BBD296 /* GoogleSignInSwift */; };
 		B68878BA29E9A7090007A547 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B68878B929E9A7090007A547 /* GoogleService-Info.plist */; };
+		B6AF4A6029EAA80500DC7B95 /* ArithemticPvP_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = B6AF4A5F29EAA80500DC7B95 /* ArithemticPvP_logo.svg */; };
+		B6AF4A6229EAA80B00DC7B95 /* notRegisteredImage.svg in Resources */ = {isa = PBXBuildFile; fileRef = B6AF4A6129EAA80B00DC7B95 /* notRegisteredImage.svg */; };
 		B6BFB87229E73F480080BCA8 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6BFB87129E73F480080BCA8 /* SVGKit */; };
 		B6BFB87429E73F480080BCA8 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6BFB87329E73F480080BCA8 /* SVGKitSwift */; };
 		B6CBBD6F29C490D100BF7A4B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD6E29C490D100BF7A4B /* SettingsView.swift */; };
@@ -86,8 +86,6 @@
 		B6108DC329BFB7E40050DD78 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		B6108DC529C08F790050DD78 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		B6108DCD29C095A90050DD78 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		B63A760B29E81033008FAA77 /* ArithemticPvP_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArithemticPvP_logo.svg; sourceTree = "<group>"; };
-		B63A760D29E81038008FAA77 /* notRegisteredImage.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notRegisteredImage.svg; sourceTree = "<group>"; };
 		B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotRegisteredView.swift; sourceTree = "<group>"; };
 		B63E8F5529BE621500043EC5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +136,8 @@
 		B6749D1E29BE4E3200BBD296 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B6749D2029BE4E4800BBD296 /* GoogleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleService.swift; sourceTree = "<group>"; };
 		B68878B929E9A7090007A547 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6AF4A5F29EAA80500DC7B95 /* ArithemticPvP_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArithemticPvP_logo.svg; sourceTree = "<group>"; };
+		B6AF4A6129EAA80B00DC7B95 /* notRegisteredImage.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notRegisteredImage.svg; sourceTree = "<group>"; };
 		B6CBBD6E29C490D100BF7A4B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B6CBBD7029C4A47400BF7A4B /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileErrorView.swift; sourceTree = "<group>"; };
@@ -344,7 +344,7 @@
 		B6749CFA29BE0B1200BBD296 /* ArithmeticPvP */ = {
 			isa = PBXGroup;
 			children = (
-				B6DE37B529E75A7300FA5ED9 /* SVGimages */,
+				B6AF4A5E29EAA7EF00DC7B95 /* SVGImages */,
 				B64A238629CC3BF500232C56 /* Models */,
 				B6F6CF4129C223C7001C8B68 /* GameTab */,
 				B6F6CF4229C223D9001C8B68 /* SkinsModule */,
@@ -381,13 +381,13 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		B6DE37B529E75A7300FA5ED9 /* SVGimages */ = {
+		B6AF4A5E29EAA7EF00DC7B95 /* SVGImages */ = {
 			isa = PBXGroup;
 			children = (
-				B63A760D29E81038008FAA77 /* notRegisteredImage.svg */,
-				B63A760B29E81033008FAA77 /* ArithemticPvP_logo.svg */,
+				B6AF4A6129EAA80B00DC7B95 /* notRegisteredImage.svg */,
+				B6AF4A5F29EAA80500DC7B95 /* ArithemticPvP_logo.svg */,
 			);
-			path = SVGimages;
+			path = SVGImages;
 			sourceTree = "<group>";
 		};
 		B6F6CF3529C10B97001C8B68 /* SettingsModule */ = {
@@ -573,11 +573,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B63A760C29E81033008FAA77 /* ArithemticPvP_logo.svg in Resources */,
+				B6AF4A6029EAA80500DC7B95 /* ArithemticPvP_logo.svg in Resources */,
 				B68878BA29E9A7090007A547 /* GoogleService-Info.plist in Resources */,
 				B6749D0829BE0B1400BBD296 /* LaunchScreen.storyboard in Resources */,
 				B6749D0529BE0B1400BBD296 /* Assets.xcassets in Resources */,
-				B63A760E29E81038008FAA77 /* notRegisteredImage.svg in Resources */,
+				B6AF4A6229EAA80B00DC7B95 /* notRegisteredImage.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
