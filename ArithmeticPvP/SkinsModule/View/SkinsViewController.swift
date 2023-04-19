@@ -76,7 +76,8 @@ class SkinsViewController: UIViewController {
             initialView.isHidden = false
         case .loading:
             NSLog("SkinsViewController initial")
-            initialView.isHidden = false
+//            initialView.isHidden = false
+            skinsRegisteredView.isHidden = false
             activityIndicator.startAnimating()
         case .registered:
             NSLog("SkinsViewController registered")

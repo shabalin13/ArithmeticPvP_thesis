@@ -10,11 +10,11 @@ import UIKit
 class SkinsErrorView: UIView {
 
     //MARK: - Class Properties
+    var presentingVC: SkinsViewController
+    
     var errorImageView: UIImageView!
     var errorDescription: UILabel!
     var reloadButton: UIButton!
-    
-    var presentingVC: SkinsViewController
     
     //MARK: - Inits
     init(frame: CGRect, presentingVC: SkinsViewController) {
@@ -60,8 +60,8 @@ class SkinsErrorView: UIView {
         NSLayoutConstraint.activate([
             errorImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             errorImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50),
-            errorImageView.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 60),
-            errorImageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -60),
+            errorImageView.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            errorImageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80),
             errorImageView.heightAnchor.constraint(equalTo: errorImageView.widthAnchor, multiplier: 1)
         ])
     }
@@ -74,11 +74,11 @@ class SkinsErrorView: UIView {
         
         updateErrorDescriptionConstraints()
         
-        errorDescription.text = "Something went wrong!\nPlease, try to update this page!"
+        errorDescription.text = "Something went wrong!\nPlease, try to reload this page!"
         errorDescription.numberOfLines = 0
         errorDescription.lineBreakMode = .byWordWrapping
         errorDescription.textAlignment = .center
-        errorDescription.font = UIFont.systemFont(ofSize: 24)
+        errorDescription.font = UIFont.systemFont(ofSize: 32)
     }
     
     private func updateErrorDescriptionConstraints() {

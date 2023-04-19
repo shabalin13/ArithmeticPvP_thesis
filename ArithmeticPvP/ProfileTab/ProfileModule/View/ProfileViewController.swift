@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
-    // MARK: - ProfileViewController properties
+    // MARK: - Class Properties
     var viewModel: ProfileViewModelProtocol
     
     var initialView: InitialView!
@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     var errorView: ProfileErrorView!
     var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: - Inits
     init(viewModel: ProfileViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -33,14 +34,17 @@ class ProfileViewController: UIViewController {
         
         initView()
         bindViewModel()
-        updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Profile viewWillAppear")
-        viewModel.checkState()
+        viewModel.updateState()
     }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        viewModel.profileData = ProfileData()
+//    }
     
     // MARK: - ViewModel binding
     func bindViewModel() {
@@ -63,23 +67,24 @@ class ProfileViewController: UIViewController {
         
         switch viewModel.state.value {
         case .initial:
-            print("ProfileViewController initial")
+            NSLog("ProfileViewController initial")
             initialView.isHidden = false
         case .loading:
-            print("ProfileViewController loading")
-            initialView.isHidden = false
-            activityIndicator.startAnimating()
+            NSLog("ProfileViewController loading")
+//            initialView.isHidden = false
+            registeredView.isHidden = false
+//            activityIndicator.startAnimating()
         case .error(let error):
-            print("ProfileViewController error")
-            errorView.configureView(for: error)
-            print(error)
+            NSLog("ProfileViewController error")
+            NSLog("\(error)")
+            errorView.updateView(for: error)
             errorView.isHidden = false
         case .notRegistered:
-            print("ProfileViewController not registered")
+            NSLog("ProfileViewController not registered")
             notRegisteredView.isHidden = false
-        case .registered(let user):
-            print("ProfileViewController registered")
-            registeredView.configureView(for: user)
+        case .registered(let profileData):
+            NSLog("ProfileViewController registered")
+            registeredView.updateView(for: profileData)
             registeredView.isHidden = false
         }
     }
@@ -94,8 +99,6 @@ extension ProfileViewController {
         
         navigationItem.title = "PROFILE"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(pushToSettings(_:)))
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "123.rectangle.fill"), style: .plain, target: self, action: #selector(pushToStatistics(_:)))
         
         createInitialView()
         createRegisteredView()
@@ -133,12 +136,16 @@ extension ProfileViewController {
         activityIndicator.isHidden = true
     }
     
-    // MARK: - Selector objc functions
+    // MARK: - Objc function for button actions
     @objc func pushToSettings(_ sender: UIBarButtonItem) {
-        viewModel.settingButtonTapped()
+        viewModel.goToSettings()
     }
     
-    @objc func pushToStatistics(_ sender: UIBarButtonItem) {
-        viewModel.statisticsButtonTapped()
+    @objc func signInButtonTapped(_ sender: UIButton) {
+        viewModel.goToSignIn()
+    }
+    
+    @objc func reloadButtonTapped(_ sender: UIButton) {
+        viewModel.updateState()
     }
 }

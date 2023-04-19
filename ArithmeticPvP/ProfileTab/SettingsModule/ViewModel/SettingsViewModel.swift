@@ -14,6 +14,8 @@ protocol SettingsViewModelProtocol {
     
     func updateState()
     
+    func getUserInfo(cookie: String)
+    func changeUsername(with username: String?)
     func logOut()
 }
 
@@ -31,14 +33,52 @@ class SettingsViewModel: SettingsViewModelProtocol {
     
     // MARK: - Updating state
     func updateState() {
-        if let _ = UserDefaultsHelper.shared.getCookie() {
-            self.state.value = .registered
+        if let cookie = UserDefaultsHelper.shared.getCookie() {
+            self.getUserInfo(cookie: cookie)
         } else {
             self.state.value = .notRegistered
         }
     }
     
-    // MARK: - Func for Log Out
+    // MARK: - Func for getting information about the user
+    func getUserInfo(cookie: String) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            self.state.value = .loading
+            NetworkService.shared.getUserInfo(cookie: cookie) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let user):
+                    let settingsData = SettingsData(username: user.username, email: user.email)
+                    self.state.value = .registered(settingsData)
+                case .failure(let error):
+                    self.state.value = .error(error)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Func for changing username
+    func changeUsername(with username: String?) {
+        guard let newUsername = username, let cookie = UserDefaultsHelper.shared.getCookie() else {
+            return
+        }
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            self.state.value = .loading
+            NetworkService.shared.changeUsername(cookie: cookie, newUsername: newUsername) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    self.getUserInfo(cookie: cookie)
+                case .failure(let error):
+                    self.state.value = .error(error)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Func for Logging Out
     func logOut() {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }

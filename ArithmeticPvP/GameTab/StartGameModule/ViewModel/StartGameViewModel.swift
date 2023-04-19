@@ -13,7 +13,7 @@ protocol StartGameViewModelProtocol {
     var router: GameRouterProtocol { get set }
     
     func updateState()
-    func goToWaitingRoomButtonTapped()
+    func goToWaitingRoom()
 }
 
 class StartGameViewModel: StartGameViewModelProtocol {
@@ -37,7 +37,7 @@ class StartGameViewModel: StartGameViewModelProtocol {
     }
     
     // MARK: - Func for going to Waiting Room
-    func goToWaitingRoomButtonTapped() {
+    func goToWaitingRoom() {
         router.goToWaitingRoom()
     }
 }

@@ -13,7 +13,7 @@ struct CurrentSkin: Codable {
     var imageURL: URL
     var id: Int
     
-    init(name: String, imageURL: URL = URL(string: "www.apple.com")!, id: Int) {
+    init(name: String, imageURL: URL, id: Int) {
         self.name = name
         self.imageURL = imageURL
         self.id = id

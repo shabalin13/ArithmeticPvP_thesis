@@ -7,11 +7,13 @@
 
 import UIKit
 
+// MARK: - RouterProtocol
 protocol RouterProtocol {
     var navigationController: UINavigationController? { get set }
     var assemblyBuilder: AssemblyBuilderProtocol? { get set }
 }
 
+// MARK: - ProfileRouterProtocol
 protocol ProfileRouterProtocol: RouterProtocol {
     func initialViewController()
     func showSettings()
@@ -19,10 +21,12 @@ protocol ProfileRouterProtocol: RouterProtocol {
     func popToRoot()
 }
 
+// MARK: - SkinsRouterProtocol
 protocol SkinsRouterProtocol: RouterProtocol {
     func initialViewController()
 }
 
+// MARK: - GameRouterProtocol
 protocol GameRouterProtocol: RouterProtocol {
     func initialViewController()
     func goToWaitingRoom()
@@ -34,6 +38,7 @@ protocol GameRouterProtocol: RouterProtocol {
 }
 
 
+// MARK: - ProfileRouter
 class ProfileRouter: ProfileRouterProtocol {
     
     var navigationController: UINavigationController?
@@ -74,6 +79,7 @@ class ProfileRouter: ProfileRouterProtocol {
 }
 
 
+// MARK: - SkinsRouter
 class SkinsRouter: SkinsRouterProtocol {
     
     var navigationController: UINavigationController?
@@ -94,6 +100,7 @@ class SkinsRouter: SkinsRouterProtocol {
 }
 
 
+// MARK: - GameRouter
 class GameRouter: GameRouterProtocol {
     
     var navigationController: UINavigationController?

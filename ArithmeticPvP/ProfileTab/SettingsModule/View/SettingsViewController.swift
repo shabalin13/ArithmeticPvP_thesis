@@ -14,7 +14,8 @@ class SettingsViewController: UIViewController {
     var viewModel: SettingsViewModelProtocol
     
     var initialView: InitialView!
-    var settingsView: SettingsView!
+    var settingsRegisteredView: SettingsRegisteredView!
+    var settingsNotRegisteredView: SettingsNotRegisteredView!
     var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Inits
@@ -55,7 +56,8 @@ class SettingsViewController: UIViewController {
         
         activityIndicator.stopAnimating()
         initialView.isHidden = true
-        settingsView.isHidden = true
+        settingsRegisteredView.isHidden = true
+        settingsNotRegisteredView.isHidden = true
         
         switch viewModel.state.value {
         case .initial:
@@ -63,20 +65,19 @@ class SettingsViewController: UIViewController {
             initialView.isHidden = false
         case .loading:
             NSLog("SettingsViewController loading")
-            settingsView.isHidden = false
+            initialView.isHidden = false
             activityIndicator.startAnimating()
-        case .registered:
+        case .registered(let settingsData):
             NSLog("SettingsViewController registered")
-            settingsView.isHidden = false
-            settingsView.logOutButton.isHidden = false
+            settingsRegisteredView.updateView(with: settingsData)
+            settingsRegisteredView.isHidden = false
         case .notRegistered:
             NSLog("SettingsViewController not registered")
-            settingsView.isHidden = false
-            settingsView.logOutButton.isHidden = true
+            settingsNotRegisteredView.isHidden = false
         case .error(let error):
             NSLog("SettingsViewController error")
-            settingsView.isHidden = false
-            displayError(error, title: "Failed to Log Out")
+            initialView.isHidden = false
+            displayError(error, title: "Error!")
         }
     }
     
@@ -104,7 +105,8 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped(_:)))
         
         createInitialView()
-        createSettingsView()
+        createSettingsRegisteredView()
+        createSettingsNotRegisteredView()
         createActivityIndicator()
     }
     
@@ -113,9 +115,14 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         view.addSubview(initialView)
     }
     
-    private func createSettingsView() {
-        settingsView = SettingsView(frame: view.bounds, presenetingVC: self)
-        view.addSubview(settingsView)
+    private func createSettingsRegisteredView() {
+        settingsRegisteredView = SettingsRegisteredView(frame: view.bounds, presenetingVC: self)
+        view.addSubview(settingsRegisteredView)
+    }
+    
+    private func createSettingsNotRegisteredView() {
+        settingsNotRegisteredView = SettingsNotRegisteredView(frame: view.bounds, presenetingVC: self)
+        view.addSubview(settingsNotRegisteredView)
     }
     
     private func createActivityIndicator() {
@@ -152,5 +159,15 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
     
     @objc func logOutButtonTapped(_ sender: UIButton) {
         viewModel.logOut()
+    }
+    
+    @objc func usernameEditingChanged(_ sender: UITextField) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(changeUsernameButtonTapped(_:)))
+    }
+    
+    @objc func changeUsernameButtonTapped(_ sender: UIBarButtonItem) {
+        let newUsername = settingsRegisteredView.userInfoSettingsView.usernameTextField.text
+        settingsRegisteredView.userInfoSettingsView.usernameTextField.resignFirstResponder()
+        viewModel.changeUsername(with: newUsername)
     }
 }

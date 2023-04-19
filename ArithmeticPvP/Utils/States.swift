@@ -12,9 +12,9 @@ import UIKit
 enum ProfileState {
     case initial
     case loading
-    case registered(User)
+    case registered(ProfileData)
     case notRegistered
-    case error(Error)
+    case error(NetworkService.NetworkServiceError)
 }
 
 enum SignInState {
@@ -27,7 +27,7 @@ enum SignInState {
 enum SettingsState {
     case initial
     case loading
-    case registered
+    case registered(SettingsData)
     case notRegistered
     case error(Error)
 }

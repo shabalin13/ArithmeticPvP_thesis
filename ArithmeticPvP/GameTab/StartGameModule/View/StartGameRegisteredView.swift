@@ -62,6 +62,6 @@ class StartGameRegisteredView: UIView {
 extension StartGameViewController {
     
     @objc func goToWaitingRoomButtonTapped(_ sender: UIButton) {
-        viewModel.goToWaitingRoomButtonTapped()
+        viewModel.goToWaitingRoom()
     }
 }

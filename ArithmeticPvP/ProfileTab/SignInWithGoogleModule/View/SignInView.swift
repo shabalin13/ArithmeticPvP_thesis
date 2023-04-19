@@ -9,25 +9,31 @@ import UIKit
 
 class SignInView: UIView {
     
-    // MARK: - SignInView properties
+    // MARK: - Class Properties
+    var presentingVC: SignInViewController
+    
     var signInWithGoogleButton: UIButton!
     
     // MARK: - Inits
-    override init(frame: CGRect) {
+    init(frame: CGRect, presentingVC: SignInViewController) {
+        self.presentingVC = presentingVC
         super.init(frame: frame)
+        
         self.backgroundColor = .white
         
         createSignInWithGoogleButton()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Sign In With Google
     private func createSignInWithGoogleButton() {
         signInWithGoogleButton = UIButton()
         self.addSubview(signInWithGoogleButton)
+        
+        signInWithGoogleButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithGoogleButtonTapped(_:)), for: .touchUpInside)
         
         updateSignInWithGoogleButtonConstraints()
         

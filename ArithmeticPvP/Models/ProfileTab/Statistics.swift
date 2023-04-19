@@ -10,11 +10,11 @@ import Foundation
 struct Statistics: Codable, CustomStringConvertible {
     
     var username: String
-    var ratingPlace: Int?
+    var ratingPlace: Int
     var isPro: Bool
     var currentSkin: CurrentSkin
     var gamesPlayed: Int
-    var timePlayed: Double
+    var timePlayed: Int
     var tasksSolved: Int
     var bestGameTime: Int?
     

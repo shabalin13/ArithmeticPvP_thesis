@@ -9,12 +9,14 @@ import UIKit
 
 final class SignInViewController: UIViewController {
     
-    // MARK: - SignInViewController properties
+    // MARK: - Class Properties
     var viewModel: SignInViewModelProtocol
+    
     var activityIndicator: UIActivityIndicatorView!
     var initialView: InitialView!
     var signInView: SignInView!
     
+    // MARK: - Inits
     init(viewModel: SignInViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -27,11 +29,14 @@ final class SignInViewController: UIViewController {
     // MARK: - View overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Registration"
         
-        initView()
+        initViews()
         bindViewModel()
-        updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.updateState()
     }
     
     // MARK: - ViewModel binding
@@ -51,30 +56,30 @@ final class SignInViewController: UIViewController {
         initialView.isHidden = true
         signInView.isHidden = true
         
-        print("SignInViewController.updateUI - \(Thread.current)")
-        
         switch viewModel.state.value {
         case .initial:
-            print("initial")
+            NSLog("SignInViewController initial")
             initialView.isHidden = false
         case .loading:
-            print("loading")
+            NSLog("SignInViewController loading")
             initialView.isHidden = false
             activityIndicator.startAnimating()
         case .error(let error):
-            print("error")
+            NSLog("SignInViewController error")
+            NSLog("\(error)")
             signInView.isHidden = false
             displayError(error, title: "Failed to Sign In")
         case .notRegistered:
-            print("registered")
+            NSLog("SignInViewController not registered")
             signInView.isHidden = false
         }
     }
     
+    // MARK: - Func for displaying error using alert
     private func displayError(_ error: Error, title: String) {
         guard let _ = viewIfLoaded?.window else { return }
         
-        let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: "\(error)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] _ in
             guard let self = self else { return }
             self.viewModel.state.value = .notRegistered
@@ -88,7 +93,12 @@ final class SignInViewController: UIViewController {
 extension SignInViewController {
     
     // MARK: - Initializing views
-    private func initView() {
+    private func initViews() {
+        
+        navigationItem.title = "REGISTRATION"
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped(_:)))
+        
         createInitialView()
         createSignInView()
         createActivityIndicator()
@@ -100,8 +110,7 @@ extension SignInViewController {
     }
     
     private func createSignInView() {
-        signInView = SignInView(frame: view.bounds)
-        signInView.signInWithGoogleButton.addTarget(self, action: #selector(signInWithGoogleButtonTapped(_:)), for: .touchUpInside)
+        signInView = SignInView(frame: view.bounds, presentingVC: self)
         view.addSubview(signInView)
     }
     
@@ -114,9 +123,12 @@ extension SignInViewController {
         activityIndicator.isHidden = true
     }
     
-    // MARK: - Selector objc functions
+    // MARK: - Objc function for button actions
+    @objc func backButtonTapped(_ sender: UIBarButtonItem) {
+        viewModel.router.popToRoot()
+    }
+    
     @objc func signInWithGoogleButtonTapped(_ sender: UIButton) {
-        print("SignInViewController.signInWithGoogleButtonTapped - \(Thread.current)")
         viewModel.signInWithGoogleButtonTapped(presentingVC: self)
     }
 }

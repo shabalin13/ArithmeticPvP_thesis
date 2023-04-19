@@ -16,7 +16,6 @@ struct User: Codable, CustomStringConvertible {
     var isPro: Bool
     var currentSkin: CurrentSkin
     var ratingPlace: Int
-    var currentSkinData: Data?
     
     var description: String {
         return "User(username: \(username), email: \(email), rating: \(rating), balance: \(balance), isPro: \(isPro), currentSkin: \(currentSkin), ratingPlace: \(ratingPlace)"

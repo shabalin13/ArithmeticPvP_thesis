@@ -10,25 +10,30 @@ import UIKit
 class ProfileNotRegisteredView: UIView {
     
     //MARK: - Class Properties
+    var presentingVC: ProfileViewController
+    
     var errorImageView: UIImageView!
     var errorDescription: UILabel!
     var signInButton: UIButton!
     
-    var presentingVC: ProfileViewController!
-    
     //MARK: - Inits
     init(frame: CGRect, presentingVC: ProfileViewController) {
-        super.init(frame: frame)
         self.presentingVC = presentingVC
+        super.init(frame: frame)
+        
         self.backgroundColor = .white
         
-        createErrorImageView()
-        createErrorDescription()
-        createSignInButton()
+        initViews()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func initViews() {
+        createErrorImageView()
+        createErrorDescription()
+        createSignInButton()
     }
     
     //MARK: - Error Image View
@@ -49,8 +54,8 @@ class ProfileNotRegisteredView: UIView {
         NSLayoutConstraint.activate([
             errorImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             errorImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50),
-            errorImageView.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 60),
-            errorImageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -60),
+            errorImageView.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            errorImageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80),
             errorImageView.heightAnchor.constraint(equalTo: errorImageView.widthAnchor, multiplier: 1)
         ])
     }
@@ -67,7 +72,7 @@ class ProfileNotRegisteredView: UIView {
         errorDescription.numberOfLines = 0
         errorDescription.lineBreakMode = .byWordWrapping
         errorDescription.textAlignment = .center
-        errorDescription.font = UIFont.systemFont(ofSize: 24)
+        errorDescription.font = UIFont.systemFont(ofSize: 32)
     }
     
     private func updateErrorDescriptionConstraints() {
@@ -76,7 +81,7 @@ class ProfileNotRegisteredView: UIView {
         
         NSLayoutConstraint.activate([
             errorDescription.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            errorDescription.topAnchor.constraint(equalTo: errorImageView.bottomAnchor, constant: 30),
+            errorDescription.topAnchor.constraint(equalTo: errorImageView.bottomAnchor, constant: 15),
             errorDescription.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             errorDescription.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
         ])
@@ -92,6 +97,7 @@ class ProfileNotRegisteredView: UIView {
         signInButton.backgroundColor = .systemBlue
         signInButton.layer.cornerRadius = 10
         signInButton.setTitle("Sign In", for: .normal)
+        signInButton.setTitleColor(.systemGray, for: .highlighted)
         
         signInButton.addTarget(presentingVC, action: #selector(presentingVC.signInButtonTapped(_:)), for: .touchUpInside)
     }
@@ -111,20 +117,3 @@ class ProfileNotRegisteredView: UIView {
     }
     
 }
-
-extension ProfileViewController {
-    
-    @objc func signInButtonTapped(_ sender: UIButton) {
-        viewModel.signInButtonTapped()
-    }
-    
-}
-
-
-
-
-
-
-
-
-

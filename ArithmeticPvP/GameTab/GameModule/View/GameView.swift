@@ -96,7 +96,6 @@ class QuestionView: UIView {
     // MARK: - Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         initView()
     }
     
@@ -119,18 +118,21 @@ class QuestionView: UIView {
             for number in currentAnswer {
                 if number == "-" {
                     let imageAttachment = NSTextAttachment()
-                    imageAttachment.image = UIImage(systemName: "minus.square")
+                    let config = UIImage.SymbolConfiguration(font: questionLabel.font)
+                    imageAttachment.image = UIImage(systemName: "minus.square", withConfiguration: config)
                     currentText.append(NSAttributedString(attachment: imageAttachment))
                 } else {
                     let imageAttachment = NSTextAttachment()
-                    imageAttachment.image = UIImage(systemName: "\(number).square")
+                    let config = UIImage.SymbolConfiguration(font: questionLabel.font)
+                    imageAttachment.image = UIImage(systemName: "\(number).square", withConfiguration: config)
                     currentText.append(NSAttributedString(attachment: imageAttachment))
                 }
             }
             
             for _ in 0..<(gameData.currentQuestion.answer.count - currentAnswer.count) {
                 let imageAttachment = NSTextAttachment()
-                imageAttachment.image = UIImage(systemName: "square")
+                let config = UIImage.SymbolConfiguration(font: questionLabel.font)
+                imageAttachment.image = UIImage(systemName: "square", withConfiguration: config)
                 currentText.append(NSAttributedString(attachment: imageAttachment))
             }
             
@@ -144,7 +146,8 @@ class QuestionView: UIView {
             
             for _ in 0..<gameData.currentQuestion.answer.count {
                 let imageAttachment = NSTextAttachment()
-                imageAttachment.image = UIImage(systemName: "square")
+                let config = UIImage.SymbolConfiguration(font: questionLabel.font)
+                imageAttachment.image =  UIImage(systemName: "square", withConfiguration: config)
                 currentText.append(NSAttributedString(attachment: imageAttachment))
             }
             
@@ -172,7 +175,7 @@ class QuestionView: UIView {
         self.addSubview(questionLabel)
         
         questionLabel.textAlignment = .center
-        questionLabel.font = UIFont.systemFont(ofSize: 20)
+        questionLabel.font = UIFont.systemFont(ofSize: 28)
         
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         
