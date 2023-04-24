@@ -90,6 +90,7 @@
 		B62CB50B29EDD5BE0014F52A /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		B62CB50D29F020310014F52A /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		B62CB50F29F0455B0014F52A /* SettingsNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotRegisteredView.swift; sourceTree = "<group>"; };
+		B62CB51129F082B20014F52A /* ArithmeticPvPRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArithmeticPvPRelease.entitlements; sourceTree = "<group>"; };
 		B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotRegisteredView.swift; sourceTree = "<group>"; };
 		B63E8F5529BE621500043EC5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +344,7 @@
 		B6749CFA29BE0B1200BBD296 /* ArithmeticPvP */ = {
 			isa = PBXGroup;
 			children = (
+				B62CB51129F082B20014F52A /* ArithmeticPvPRelease.entitlements */,
 				B64A238629CC3BF500232C56 /* Models */,
 				B6F6CF4129C223C7001C8B68 /* GameTab */,
 				B6F6CF4229C223D9001C8B68 /* SkinsModule */,
@@ -808,6 +810,8 @@
 				DEVELOPMENT_TEAM = P433G7GD7J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArithmeticPvP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArithmeticPvP;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -833,11 +837,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ArithmeticPvP/ArithmeticPvPRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P433G7GD7J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArithmeticPvP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArithmeticPvP;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
