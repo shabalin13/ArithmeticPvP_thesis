@@ -98,6 +98,7 @@ extension PostGameStatisticsViewController {
         postGameStatisticsView.isHidden = true
     }
     
+    // MARK: - Objc function for Exit button action
     @objc func exitButtonTapped(_ sender: UIBarButtonItem) {
         viewModel.exit(with: nil)
     }

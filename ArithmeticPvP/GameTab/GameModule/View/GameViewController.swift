@@ -108,7 +108,8 @@ extension GameViewController {
         guard let _ = viewIfLoaded?.window else { return }
         
         let alert = UIAlertController(title: "Exit the Game", message: "Do you really want to leave the game?\nYou will be penalized!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
             self.viewModel.exitGame(with: nil)
         }))
         alert.addAction(UIAlertAction(title: "NO", style: .cancel))

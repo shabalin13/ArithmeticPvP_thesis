@@ -48,7 +48,7 @@ class PlayerProgressView: UIView {
         playerProgressView.isHidden = false
     }
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         createPlayerProgressView()
         createPlayerUsernameLabel()
@@ -64,7 +64,6 @@ class PlayerProgressView: UIView {
         playerProgressView.layer.sublayers?[1].cornerRadius = 10
         playerProgressView.subviews[1].clipsToBounds = true
         
-//        playerProgressView.backgroundColor = .none
         playerProgressView.trackTintColor = .none
         playerProgressView.progressTintColor = Design.shared.gameProgressTintColor
         playerProgressView.layer.borderWidth = 1
@@ -178,7 +177,7 @@ class QuestionView: UIView {
         }
     }
     
-    // MARK: - Initilizing view
+    // MARK: - Initializing view
     private func initView() {
         createQuestionLabel()
     }
@@ -238,7 +237,7 @@ class KeyboardView: UIView {
         }
     }
     
-    // MARK: - Initilizing view
+    // MARK: - Initializing view
     private func initView() {
         createKeybordButtons()
         createKeyboardStackView()
@@ -354,7 +353,7 @@ class GameView: UIView {
 
 extension GameView {
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews(players: [Player]) {
         createKeyboardView()
         createQuestionView()

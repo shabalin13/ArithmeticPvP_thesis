@@ -45,7 +45,7 @@ class PlayerPlaceView: UIView {
         playerPlaceImageView.isHidden = false
     }
     
-    // MARK: - Initilizing view
+    // MARK: - Initializing view
     private func createPlayerPlaceImageView() {
         playerPlaceImageView = UIImageView()
         self.addSubview(playerPlaceImageView)
@@ -160,7 +160,7 @@ class PlayerBottomView: UIView {
         self.layer.borderWidth = 2
     }
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         
         createPlayerBottomStackView()
@@ -335,7 +335,7 @@ class PlayerUpperView: UIView {
         self.layer.borderWidth = 2
     }
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         createPlayerSkinView()
         createPlayerUsernameLabel()
@@ -425,7 +425,7 @@ class PlayerStatisticsView: UIView {
         playerBottomView.showView()
     }
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         createPlayerUpperView()
         createPlayerBottomView()

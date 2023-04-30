@@ -52,7 +52,7 @@ class PlayerView: UIView {
     }
     
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         createPlayerSkinView()
         createPlayerUsernameLabel()
@@ -114,11 +114,12 @@ class ClockView: UIView {
         super.init(coder: coder)
     }
     
+    // MARK: - Func for updating time label
     func updateTimeLabel(with timeString: String) {
         timeLabel.text = timeString
     }
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         createClockImageView()
         createTimeLabel()
@@ -217,6 +218,7 @@ class WaitingRoomView: UIView {
         }
     }
     
+    // MARK: - Func for updating Clock time
     @objc func updateClock() {
         let timeRemaining = Int(round(self.clockView.startGameTime.timeIntervalSinceNow))
         if timeRemaining > 0 {

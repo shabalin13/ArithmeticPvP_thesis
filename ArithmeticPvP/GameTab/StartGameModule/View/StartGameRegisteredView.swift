@@ -74,7 +74,7 @@ class StartGameRegisteredView: UIView {
 
 extension StartGameViewController {
     
-    // MARK: - Objc function for Start Button actions
+    // MARK: - Objc functions for Start button actions
     @objc func startButtonTouchDown(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3) {
             sender.backgroundColor = Design.shared.startButtonBorderTappedColor
