@@ -113,6 +113,8 @@ extension SkinCell {
         nameLabel.textAlignment = .left
         nameLabel.font = Design.shared.chillax(style: .regular, size: 20)
         nameLabel.textColor = Design.shared.skinsUsernameColor
+        nameLabel.minimumScaleFactor = 0.7
+        nameLabel.adjustsFontSizeToFitWidth = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
