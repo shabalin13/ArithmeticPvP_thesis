@@ -9,29 +9,22 @@ import Foundation
 
 struct CurrentSkin: Codable {
     
+    var id: Int
     var name: String
     var imageURL: URL
-    var id: Int
-    
-    init(name: String, imageURL: URL, id: Int) {
-        self.name = name
-        self.imageURL = imageURL
-        self.id = id
-    }
     
     enum CodingKeys: String, CodingKey {
+        case id
         case name
         case imageURL = "image_url"
-        case id
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         
         let stringImageURL = try container.decode(String.self, forKey: .imageURL)
         self.imageURL = URL(string: stringImageURL)!
-        
-        self.id = try container.decode(Int.self, forKey: .id)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable, CustomStringConvertible {
+struct User: Codable {
     
     var username: String
     var email: String
@@ -16,10 +16,6 @@ struct User: Codable, CustomStringConvertible {
     var isPro: Bool
     var currentSkin: CurrentSkin
     var ratingPlace: Int
-    
-    var description: String {
-        return "User(username: \(username), email: \(email), rating: \(rating), balance: \(balance), isPro: \(isPro), currentSkin: \(currentSkin), ratingPlace: \(ratingPlace)"
-    }
     
     enum CodingKeys: String, CodingKey {
         case username

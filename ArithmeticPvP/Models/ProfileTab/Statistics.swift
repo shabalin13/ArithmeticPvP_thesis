@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Statistics: Codable, CustomStringConvertible {
+struct Statistics: Codable {
     
     var username: String
     var ratingPlace: Int
@@ -17,10 +17,6 @@ struct Statistics: Codable, CustomStringConvertible {
     var timePlayed: Int
     var tasksSolved: Int
     var bestGameTime: Int?
-    
-    var description: String {
-        return "Statistics(username: \(username), ratingPlace: \(ratingPlace), isPro: \(isPro), currentSkin: \(currentSkin), gamesPlayed: \(gamesPlayed), timePlayed: \(timePlayed), tasksSolved: \(tasksSolved), bestGameTime: \(bestGameTime)"
-    }
     
     enum CodingKeys: String, CodingKey {
         case username

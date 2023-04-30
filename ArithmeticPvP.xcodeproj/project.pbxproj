@@ -225,12 +225,12 @@
 		B60A5ECE29E13F49005A8270 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				B64A23B729D5D6ED00232C56 /* Player.swift */,
-				B64A23BB29D8C63900232C56 /* Question.swift */,
 				B64A23B329D5D35700232C56 /* WaitingRoomStartInfo.swift */,
 				B64A23B529D5D6B300232C56 /* WaitingRoomInfo.swift */,
+				B64A23B729D5D6ED00232C56 /* Player.swift */,
 				B64A23B929D8C12000232C56 /* InsufficientPlayersAmountError.swift */,
 				B64A23BD29D8C6E400232C56 /* NextQuestionEvent.swift */,
+				B64A23BB29D8C63900232C56 /* Question.swift */,
 				B64A23C129DA13EB00232C56 /* PlayersProgress.swift */,
 				B64A23C529DA16A900232C56 /* PostGameStatistics.swift */,
 				B64A23C729DAAC1400232C56 /* WaitingRoomData.swift */,
