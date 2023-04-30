@@ -215,11 +215,15 @@ extension SkinsRegisteredView: UITableViewDataSource, UITableViewDelegate {
         cell.image = nil
         
         presentingVC.viewModel.getSkinImage(from: skin.imageURL) { [weak self] imageData in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                guard let self = self else { return }
                 if let currentIndexPath = self.skinsTableView.indexPath(for: cell),
                    currentIndexPath == indexPath {
-                    cell.image = ImageHelper.shared.getImage(data: imageData)
+                    ImageHelper.shared.getImageForSkinCell(data: imageData) { image in
+                        DispatchQueue.main.async {
+                            cell.image = image
+                        }
+                    }
                 }
             }
         }

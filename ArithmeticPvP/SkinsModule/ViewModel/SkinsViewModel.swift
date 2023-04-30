@@ -19,9 +19,7 @@ protocol SkinsViewModelProtocol {
     
     func updateState()
     func getSkinsData(cookie: String)
-//    func getSkinsList(cookie: String)
     func getSkinImage(from url: URL, completion: @escaping (Data) -> Void)
-//    func getUserBalance(cookie: String)
     
     func selectSkin(with id: Int, completion: @escaping (Bool) -> Void)
     func buySkin(with id: Int, completion: @escaping (Bool) -> Void)
@@ -51,8 +49,6 @@ class SkinsViewModel: SkinsViewModelProtocol {
     func updateState() {
         if let cookie = UserDefaultsHelper.shared.getCookie() {
             getSkinsData(cookie: cookie)
-//            getSkinsList(cookie: cookie)
-//            getUserBalance(cookie: cookie)
         } else {
             self.state.value = .notRegistered
         }
@@ -70,7 +66,6 @@ class SkinsViewModel: SkinsViewModelProtocol {
                 case .success(let balance):
                     self.balance = balance
                     NSLog("User Balance: \(balance)")
-                    self.state.value = .registered
                     
                     NetworkService.shared.getSkinsList(cookie: cookie) { [weak self] result in
                         guard let self = self else { return }
@@ -91,43 +86,6 @@ class SkinsViewModel: SkinsViewModelProtocol {
             
         }
     }
-    
-    // MARK: - Func for getting list of skins
-//    func getSkinsList(cookie: String) {
-//        DispatchQueue.global().async { [weak self] in
-//            guard let self = self else { return }
-//            self.state.value = .loading
-//            NetworkService.shared.getSkinsList(cookie: cookie) { [weak self] result in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let skins):
-//                    self.skins = skins
-//                    NSLog("User skins: \(skins)")
-//                    self.state.value = .registered
-//                case .failure(let error):
-//                    self.state.value = .error(error)
-//                }
-//            }
-//        }
-//    }
-    
-    // MARK: - Func for getting user balance
-//    func getUserBalance(cookie: String) {
-//        DispatchQueue.global().async { [weak self] in
-//            guard let self = self else { return }
-//            NetworkService.shared.getUserBalance(cookie: cookie) { [weak self] result in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let balance):
-//                    self.balance = balance
-//                    NSLog("User Balance: \(balance)")
-//                    self.state.value = .registered
-//                case .failure(let error):
-//                    self.state.value = .error(error)
-//                }
-//            }
-//        }
-//    }
     
     // MARK: - Func for getting skin image for the user
     func getSkinImage(from url: URL, completion: @escaping (Data) -> Void) {

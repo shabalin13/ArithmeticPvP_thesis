@@ -65,7 +65,6 @@ class SkinsErrorView: UIView {
         ])
     }
     
-    
     //MARK: - Error Description
     private func createErrorDescription() {
         errorDescription = UILabel()

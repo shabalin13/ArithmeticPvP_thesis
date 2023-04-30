@@ -587,34 +587,45 @@ class NetworkService {
     // MARK: - Skin Image
     func getSkinImage(from url: URL, completion: @escaping (Result<Data, NetworkServiceError>) -> Void) {
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            if let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 401 {
-                completion(.failure(.authError))
-                UserDefaultsHelper.shared.removeCookie()
-                UserDefaultsHelper.shared.removeExpiryDate()
-                return
+        let request = URLRequest(url: url)
+
+        if let cachedImageResponse = URLCache.shared.cachedResponse(for: request) {
+            completion(.success(cachedImageResponse.data))
+        } else {
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                if let httpResponse = response as? HTTPURLResponse,
+                    httpResponse.statusCode == 401 {
+                    completion(.failure(.authError))
+                    UserDefaultsHelper.shared.removeCookie()
+                    UserDefaultsHelper.shared.removeExpiryDate()
+                    return
+                }
+                
+                if let _ = error {
+                    completion(.failure(.imageDataMissing))
+                    return
+                }
+                
+                guard let response = response,
+                        let httpResponse = response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    completion(.failure(.imageDataMissing))
+                    return
+                }
+                
+                guard let imageData = data else {
+                    completion(.failure(.imageDataMissing))
+                    return
+                }
+                
+                let cachedImageResponse = CachedURLResponse(response: response, data: imageData)
+                URLCache.shared.storeCachedResponse(cachedImageResponse, for: request)
+                
+                completion(.success(imageData))
             }
-            
-            if let _ = error {
-                completion(.failure(.imageDataMissing))
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                  httpResponse.statusCode == 200 else {
-                completion(.failure(.imageDataMissing))
-                return
-            }
-            
-            guard let imageData = data else {
-                completion(.failure(.imageDataMissing))
-                return
-            }
-            completion(.success(imageData))
+            task.resume()
         }
-        task.resume()
     }
     
 }

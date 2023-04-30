@@ -14,7 +14,7 @@ class ImageHelper {
     static var shared = ImageHelper()
     
     func getImage(data: Data) -> UIImage? {
-        
+
         if let image = UIImage(data: data) {
             return image
         } else if let svgkImage = SVGKImage(data: data) {
@@ -25,6 +25,22 @@ class ImageHelper {
             }
         } else {
             return nil
+        }
+    }
+    
+    func getImageForSkinCell(data: Data, completion: @escaping (UIImage?) -> Void) {
+        DispatchQueue.global().async {
+            if let svgkImage = SVGKImage(data: data) {
+                if let image = svgkImage.uiImage {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            } else if let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(nil)
+            }
         }
     }
     
