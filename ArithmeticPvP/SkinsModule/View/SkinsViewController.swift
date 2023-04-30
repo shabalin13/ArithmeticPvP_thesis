@@ -76,7 +76,6 @@ class SkinsViewController: UIViewController {
             initialView.isHidden = false
         case .loading:
             NSLog("SkinsViewController initial")
-//            initialView.isHidden = false
             skinsRegisteredView.isHidden = false
             activityIndicator.startAnimating()
         case .registered:
@@ -135,6 +134,7 @@ extension SkinsViewController {
     private func createSkinsRegisteredView() {
         skinsRegisteredView = SkinsRegisteredView(frame: view.bounds, presentingVC: self)
         view.addSubview(skinsRegisteredView)
+        skinsRegisteredView.isHidden = true
     }
     
     private func createSkinAlertView() {
@@ -144,11 +144,13 @@ extension SkinsViewController {
     private func createSkinsErrorView() {
         skinsErrorView = SkinsErrorView(frame: view.bounds, presentingVC: self)
         view.addSubview(skinsErrorView)
+        skinsErrorView.isHidden = true
     }
     
     func createSkinsNotRegisteredView() {
         skinsNotRegisteredView = SkinsNotRegisteredView(frame: view.bounds, presentingVC: self)
         view.addSubview(skinsNotRegisteredView)
+        skinsNotRegisteredView.isHidden = true
     }
     
     private func createActivityIndicator() {
@@ -194,9 +196,7 @@ extension SkinsViewController {
         ])
     }
     
-    // MARK: - Func dismissing Skin Alert from view
-    @objc func dismissSkinAlert() {
-        
+    func dismissSkinAlert() {
         allowUserInteraction()
         
         DispatchQueue.main.async {
@@ -207,14 +207,37 @@ extension SkinsViewController {
         }
     }
     
+    // MARK: - Func dismissing Skin Alert from view
+    @objc func dismissSkinAlertButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.skinsCancelButtonBackgroundColor
+        }
+        dismissSkinAlert()
+    }
+    
+    @objc func dismissSkinAlertTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            sender.backgroundColor = Design.shared.skinsCancelButtonTappedBackgroundColor
+        }
+    }
+    
+    @objc func dismissSkinAlertTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.skinsCancelButtonBackgroundColor
+        }
+    }
+    
     // MARK: - Objc functions for buttons' actions
-    @objc func showSpecificSkinsButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func showSpecificSkinsButtonTapped(_ sender: UIButton) {
         skinsRegisteredView.isShowOwnedSkins.toggle()
         updateLeftBarButtonItem()
         skinsRegisteredView.updateView()
     }
     
     @objc func buyButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.skinsBuyButtonBackgroundColor
+        }
         if let title = sender.titleLabel?.text, let skin = viewModel.currentSkin {
             if title == "Select" {
                 viewModel.selectSkin(with: skin.id) { [weak self] isSuccess in
@@ -223,15 +246,17 @@ extension SkinsViewController {
                         self.viewModel.updateState()
                     } else {
                         NSLog("Cannot select skin for some reason")
+                        self.viewModel.updateState()
                     }
                 }
-            } else if title.starts(with: "Buy") {
+            } else {
                 viewModel.buySkin(with: skin.id) { [weak self] isSuccess in
                     guard let self = self else { return }
                     if isSuccess {
                         self.viewModel.updateState()
                     } else {
                         NSLog("Cannot buy skin for some reason")
+                        self.viewModel.updateState()
                     }
                 }
             }
@@ -239,7 +264,16 @@ extension SkinsViewController {
         allowUserInteraction()
     }
     
-    @objc func reloadButtonTapped(_ sender: UIButton) {
-        viewModel.updateState()
+    @objc func buyButtonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            sender.backgroundColor = Design.shared.skinsBuyButtonTappedBackgroundColor
+        }
     }
+    
+    @objc func buyButtonTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.skinsBuyButtonBackgroundColor
+        }
+    }
+    
 }

@@ -81,6 +81,7 @@ extension PostGameStatisticsViewController {
         navigationItem.title = "POST-GAME STATISTICS"
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(exitButtonTapped(_:)))
+        navigationItem.rightBarButtonItem?.tintColor = Design.shared.navigationTitleColor
         
         createInitialView()
         createPostGameStatisticsView()
@@ -94,6 +95,7 @@ extension PostGameStatisticsViewController {
     private func createPostGameStatisticsView() {
         postGameStatisticsView = PostGameStatisticsView(frame: view.bounds, presentingVC: self)
         view.addSubview(postGameStatisticsView)
+        postGameStatisticsView.isHidden = true
     }
     
     @objc func exitButtonTapped(_ sender: UIBarButtonItem) {

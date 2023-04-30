@@ -116,7 +116,11 @@ class WaitingRoomViewModel: WaitingRoomViewModelProtocol {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             self.state.value = .loading
-            NetworkService.shared.getWaitingRoomInfo(cookie: UserDefaultsHelper.shared.getCookie()!) { [weak self] result in
+            guard let cookie = UserDefaultsHelper.shared.getCookie() else {
+                self.state.value = .error(WebSocketService.WebSocketServiceError.waitingRoomInfoFetchError)
+                return
+            }
+            NetworkService.shared.getWaitingRoomInfo(cookie: cookie) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let waitingRoomStartInfo):

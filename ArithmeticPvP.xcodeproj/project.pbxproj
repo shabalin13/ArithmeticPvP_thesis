@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B605CCC629FBE7C00052A695 /* AppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B605CCC529FBE7C00052A695 /* AppleService.swift */; };
+		B605CCCA29FC27F30052A695 /* appleLogo.svg in Resources */ = {isa = PBXBuildFile; fileRef = B605CCC929FC27F30052A695 /* appleLogo.svg */; };
+		B605CCCC29FD55560052A695 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B605CCCB29FD55560052A695 /* ImageHelper.swift */; };
 		B60A5EC929DEAAD6005A8270 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60A5EC829DEAAD6005A8270 /* GameView.swift */; };
 		B60A5ECB29E07C08005A8270 /* PostGameStatisticsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60A5ECA29E07C08005A8270 /* PostGameStatisticsData.swift */; };
 		B60A5ED029E17FD5005A8270 /* PostGameStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60A5ECF29E17FD5005A8270 /* PostGameStatisticsView.swift */; };
@@ -16,6 +19,8 @@
 		B62CB50C29EDD5BE0014F52A /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CB50B29EDD5BE0014F52A /* ProfileData.swift */; };
 		B62CB50E29F020310014F52A /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CB50D29F020310014F52A /* SettingsData.swift */; };
 		B62CB51029F0455B0014F52A /* SettingsNotRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CB50F29F0455B0014F52A /* SettingsNotRegisteredView.swift */; };
+		B638891929F841CB00CAAAC5 /* allSkins.svg in Resources */ = {isa = PBXBuildFile; fileRef = B638891729F841CB00CAAAC5 /* allSkins.svg */; };
+		B638891A29F841CB00CAAAC5 /* ownSkins.svg in Resources */ = {isa = PBXBuildFile; fileRef = B638891829F841CB00CAAAC5 /* ownSkins.svg */; };
 		B63E8F5029BE5A7F00043EC5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */; };
 		B63E8F5229BE5BD800043EC5 /* ProfileNotRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */; };
 		B63E8F5629BE621500043EC5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F5529BE621500043EC5 /* SettingsViewController.swift */; };
@@ -24,6 +29,19 @@
 		B63E8F6329BF1E2000043EC5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6229BF1E2000043EC5 /* SignInViewController.swift */; };
 		B63E8F6529BF1E3B00043EC5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6429BF1E3B00043EC5 /* SignInView.swift */; };
 		B63E8F6929BF4DE100043EC5 /* ProfileRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E8F6829BF4DE100043EC5 /* ProfileRegisteredView.swift */; };
+		B649F04629F704E60028092C /* notRegisteredImage.svg in Resources */ = {isa = PBXBuildFile; fileRef = B649F04529F704E60028092C /* notRegisteredImage.svg */; };
+		B649F04829F704EC0028092C /* ArithemticPvP_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = B649F04729F704EC0028092C /* ArithemticPvP_logo.svg */; };
+		B649F05429F705040028092C /* FFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B649F04B29F705040028092C /* FFL.txt */; };
+		B649F05529F705040028092C /* Chillax-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B649F04E29F705040028092C /* Chillax-Regular.otf */; };
+		B649F05629F705040028092C /* Chillax-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B649F04F29F705040028092C /* Chillax-Light.otf */; };
+		B649F05729F705040028092C /* Chillax-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B649F05029F705040028092C /* Chillax-Semibold.otf */; };
+		B649F05829F705040028092C /* Chillax-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B649F05129F705040028092C /* Chillax-Medium.otf */; };
+		B649F05929F705040028092C /* Chillax-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B649F05229F705040028092C /* Chillax-Bold.otf */; };
+		B649F05A29F705040028092C /* Chillax-Extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = B649F05329F705040028092C /* Chillax-Extralight.otf */; };
+		B649F05C29F706C80028092C /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = B649F05B29F706C80028092C /* Design.swift */; };
+		B649F05E29F706F30028092C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B649F05D29F706F30028092C /* UIViewExtension.swift */; };
+		B649F06229F715750028092C /* clock.svg in Resources */ = {isa = PBXBuildFile; fileRef = B649F06129F715750028092C /* clock.svg */; };
+		B649F06429F7D4770028092C /* internetError.svg in Resources */ = {isa = PBXBuildFile; fileRef = B649F06329F7D4770028092C /* internetError.svg */; };
 		B64A238829CC3E3200232C56 /* SkinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238729CC3E3200232C56 /* SkinsViewModel.swift */; };
 		B64A238A29CC511600232C56 /* SkinsRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238929CC511600232C56 /* SkinsRegisteredView.swift */; };
 		B64A238C29CC658500232C56 /* SkinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A238B29CC658500232C56 /* SkinCell.swift */; };
@@ -67,9 +85,18 @@
 		B6749D2629BE564100BBD296 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2529BE564100BBD296 /* FirebaseAuth */; };
 		B6749D2929BE56F600BBD296 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2829BE56F600BBD296 /* GoogleSignIn */; };
 		B6749D2B29BE56F600BBD296 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6749D2A29BE56F600BBD296 /* GoogleSignInSwift */; };
+		B680CF5F29F977BD0072E7D9 /* rating.svg in Resources */ = {isa = PBXBuildFile; fileRef = B680CF5E29F977BC0072E7D9 /* rating.svg */; };
+		B680CF6229F985A20072E7D9 /* coin.svg in Resources */ = {isa = PBXBuildFile; fileRef = B680CF6029F985A20072E7D9 /* coin.svg */; };
+		B680CF6329F985A20072E7D9 /* coins.svg in Resources */ = {isa = PBXBuildFile; fileRef = B680CF6129F985A20072E7D9 /* coins.svg */; };
+		B680CF7129F9D2B90072E7D9 /* goldMedal.svg in Resources */ = {isa = PBXBuildFile; fileRef = B680CF7029F9D2B90072E7D9 /* goldMedal.svg */; };
+		B680CF7329F9D2BF0072E7D9 /* silverMedal.svg in Resources */ = {isa = PBXBuildFile; fileRef = B680CF7229F9D2BF0072E7D9 /* silverMedal.svg */; };
+		B680CF7529F9D2C30072E7D9 /* bronzeMedal.svg in Resources */ = {isa = PBXBuildFile; fileRef = B680CF7429F9D2C30072E7D9 /* bronzeMedal.svg */; };
 		B68878BA29E9A7090007A547 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B68878B929E9A7090007A547 /* GoogleService-Info.plist */; };
 		B6BFB87229E73F480080BCA8 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6BFB87129E73F480080BCA8 /* SVGKit */; };
 		B6BFB87429E73F480080BCA8 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6BFB87329E73F480080BCA8 /* SVGKitSwift */; };
+		B6CA1BF029F9374100DF180C /* googleLogo.svg in Resources */ = {isa = PBXBuildFile; fileRef = B6CA1BEF29F9374100DF180C /* googleLogo.svg */; };
+		B6CA1BF629F9633B00DF180C /* cup.svg in Resources */ = {isa = PBXBuildFile; fileRef = B6CA1BF529F9633B00DF180C /* cup.svg */; };
+		B6CA1BFA29F9642A00DF180C /* skins.svg in Resources */ = {isa = PBXBuildFile; fileRef = B6CA1BF929F9642A00DF180C /* skins.svg */; };
 		B6CBBD6F29C490D100BF7A4B /* SettingsRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD6E29C490D100BF7A4B /* SettingsRegisteredView.swift */; };
 		B6CBBD7129C4A47400BF7A4B /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD7029C4A47400BF7A4B /* InitialView.swift */; };
 		B6CBBD7329C5BE1C00BF7A4B /* ProfileErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */; };
@@ -81,6 +108,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B605CCC529FBE7C00052A695 /* AppleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleService.swift; sourceTree = "<group>"; };
+		B605CCC929FC27F30052A695 /* appleLogo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = appleLogo.svg; sourceTree = "<group>"; };
+		B605CCCB29FD55560052A695 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		B60A5EC829DEAAD6005A8270 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		B60A5ECA29E07C08005A8270 /* PostGameStatisticsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStatisticsData.swift; sourceTree = "<group>"; };
 		B60A5ECF29E17FD5005A8270 /* PostGameStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStatisticsView.swift; sourceTree = "<group>"; };
@@ -91,6 +121,8 @@
 		B62CB50D29F020310014F52A /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		B62CB50F29F0455B0014F52A /* SettingsNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotRegisteredView.swift; sourceTree = "<group>"; };
 		B62CB51129F082B20014F52A /* ArithmeticPvPRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArithmeticPvPRelease.entitlements; sourceTree = "<group>"; };
+		B638891729F841CB00CAAAC5 /* allSkins.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = allSkins.svg; sourceTree = "<group>"; };
+		B638891829F841CB00CAAAC5 /* ownSkins.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ownSkins.svg; sourceTree = "<group>"; };
 		B63E8F4F29BE5A7F00043EC5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B63E8F5129BE5BD800043EC5 /* ProfileNotRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotRegisteredView.swift; sourceTree = "<group>"; };
 		B63E8F5529BE621500043EC5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +131,19 @@
 		B63E8F6229BF1E2000043EC5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B63E8F6429BF1E3B00043EC5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B63E8F6829BF4DE100043EC5 /* ProfileRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRegisteredView.swift; sourceTree = "<group>"; };
+		B649F04529F704E60028092C /* notRegisteredImage.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notRegisteredImage.svg; sourceTree = "<group>"; };
+		B649F04729F704EC0028092C /* ArithemticPvP_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArithemticPvP_logo.svg; sourceTree = "<group>"; };
+		B649F04B29F705040028092C /* FFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FFL.txt; sourceTree = "<group>"; };
+		B649F04E29F705040028092C /* Chillax-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chillax-Regular.otf"; sourceTree = "<group>"; };
+		B649F04F29F705040028092C /* Chillax-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chillax-Light.otf"; sourceTree = "<group>"; };
+		B649F05029F705040028092C /* Chillax-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chillax-Semibold.otf"; sourceTree = "<group>"; };
+		B649F05129F705040028092C /* Chillax-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chillax-Medium.otf"; sourceTree = "<group>"; };
+		B649F05229F705040028092C /* Chillax-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chillax-Bold.otf"; sourceTree = "<group>"; };
+		B649F05329F705040028092C /* Chillax-Extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chillax-Extralight.otf"; sourceTree = "<group>"; };
+		B649F05B29F706C80028092C /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		B649F05D29F706F30028092C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		B649F06129F715750028092C /* clock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clock.svg; sourceTree = "<group>"; };
+		B649F06329F7D4770028092C /* internetError.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = internetError.svg; sourceTree = "<group>"; };
 		B64A238729CC3E3200232C56 /* SkinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsViewModel.swift; sourceTree = "<group>"; };
 		B64A238929CC511600232C56 /* SkinsRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsRegisteredView.swift; sourceTree = "<group>"; };
 		B64A238B29CC658500232C56 /* SkinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCell.swift; sourceTree = "<group>"; };
@@ -140,7 +185,16 @@
 		B6749D1C29BE4E0000BBD296 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		B6749D1E29BE4E3200BBD296 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B6749D2029BE4E4800BBD296 /* GoogleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleService.swift; sourceTree = "<group>"; };
+		B680CF5E29F977BC0072E7D9 /* rating.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rating.svg; sourceTree = "<group>"; };
+		B680CF6029F985A20072E7D9 /* coin.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = coin.svg; sourceTree = "<group>"; };
+		B680CF6129F985A20072E7D9 /* coins.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coins.svg; sourceTree = "<group>"; };
+		B680CF7029F9D2B90072E7D9 /* goldMedal.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldMedal.svg; sourceTree = "<group>"; };
+		B680CF7229F9D2BF0072E7D9 /* silverMedal.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = silverMedal.svg; sourceTree = "<group>"; };
+		B680CF7429F9D2C30072E7D9 /* bronzeMedal.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bronzeMedal.svg; sourceTree = "<group>"; };
 		B68878B929E9A7090007A547 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6CA1BEF29F9374100DF180C /* googleLogo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = googleLogo.svg; sourceTree = "<group>"; };
+		B6CA1BF529F9633B00DF180C /* cup.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cup.svg; sourceTree = "<group>"; };
+		B6CA1BF929F9642A00DF180C /* skins.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = skins.svg; sourceTree = "<group>"; };
 		B6CBBD6E29C490D100BF7A4B /* SettingsRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRegisteredView.swift; sourceTree = "<group>"; };
 		B6CBBD7029C4A47400BF7A4B /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileErrorView.swift; sourceTree = "<group>"; };
@@ -196,6 +250,9 @@
 				B6F6CF3329C0FACD001C8B68 /* Assembly.swift */,
 				B6F6CF3B29C21E91001C8B68 /* UserDefaultsHelper.swift */,
 				B6CBBD7029C4A47400BF7A4B /* InitialView.swift */,
+				B649F05B29F706C80028092C /* Design.swift */,
+				B649F05D29F706F30028092C /* UIViewExtension.swift */,
+				B605CCCB29FD55560052A695 /* ImageHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -226,6 +283,67 @@
 				B6108DCD29C095A90050DD78 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B649F04429F704D90028092C /* SVGimages */ = {
+			isa = PBXGroup;
+			children = (
+				B605CCC929FC27F30052A695 /* appleLogo.svg */,
+				B680CF7429F9D2C30072E7D9 /* bronzeMedal.svg */,
+				B680CF7229F9D2BF0072E7D9 /* silverMedal.svg */,
+				B680CF7029F9D2B90072E7D9 /* goldMedal.svg */,
+				B680CF6029F985A20072E7D9 /* coin.svg */,
+				B680CF6129F985A20072E7D9 /* coins.svg */,
+				B680CF5E29F977BC0072E7D9 /* rating.svg */,
+				B6CA1BF929F9642A00DF180C /* skins.svg */,
+				B6CA1BF529F9633B00DF180C /* cup.svg */,
+				B6CA1BEF29F9374100DF180C /* googleLogo.svg */,
+				B638891729F841CB00CAAAC5 /* allSkins.svg */,
+				B638891829F841CB00CAAAC5 /* ownSkins.svg */,
+				B649F06329F7D4770028092C /* internetError.svg */,
+				B649F06129F715750028092C /* clock.svg */,
+				B649F04529F704E60028092C /* notRegisteredImage.svg */,
+				B649F04729F704EC0028092C /* ArithemticPvP_logo.svg */,
+			);
+			path = SVGimages;
+			sourceTree = "<group>";
+		};
+		B649F04929F705040028092C /* Chillax_Complete */ = {
+			isa = PBXGroup;
+			children = (
+				B649F04A29F705040028092C /* License */,
+				B649F04C29F705040028092C /* Fonts */,
+			);
+			path = Chillax_Complete;
+			sourceTree = "<group>";
+		};
+		B649F04A29F705040028092C /* License */ = {
+			isa = PBXGroup;
+			children = (
+				B649F04B29F705040028092C /* FFL.txt */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		B649F04C29F705040028092C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B649F04D29F705040028092C /* OTF */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B649F04D29F705040028092C /* OTF */ = {
+			isa = PBXGroup;
+			children = (
+				B649F04E29F705040028092C /* Chillax-Regular.otf */,
+				B649F04F29F705040028092C /* Chillax-Light.otf */,
+				B649F05029F705040028092C /* Chillax-Semibold.otf */,
+				B649F05129F705040028092C /* Chillax-Medium.otf */,
+				B649F05229F705040028092C /* Chillax-Bold.otf */,
+				B649F05329F705040028092C /* Chillax-Extralight.otf */,
+			);
+			path = OTF;
 			sourceTree = "<group>";
 		};
 		B64A238629CC3BF500232C56 /* Models */ = {
@@ -345,6 +463,8 @@
 			isa = PBXGroup;
 			children = (
 				B62CB51129F082B20014F52A /* ArithmeticPvPRelease.entitlements */,
+				B649F04929F705040028092C /* Chillax_Complete */,
+				B649F04429F704D90028092C /* SVGimages */,
 				B64A238629CC3BF500232C56 /* Models */,
 				B6F6CF4129C223C7001C8B68 /* GameTab */,
 				B6F6CF4229C223D9001C8B68 /* SkinsModule */,
@@ -366,6 +486,7 @@
 				B6749D1E29BE4E3200BBD296 /* NetworkService.swift */,
 				B6749D2029BE4E4800BBD296 /* GoogleService.swift */,
 				B64A23B129D5C49400232C56 /* WebSocketService.swift */,
+				B605CCC529FBE7C00052A695 /* AppleService.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -405,7 +526,7 @@
 			children = (
 				B6108DC929C095460050DD78 /* ProfileModule */,
 				B6F6CF3529C10B97001C8B68 /* SettingsModule */,
-				B6F6CF3D29C22331001C8B68 /* SignInWithGoogleModule */,
+				B6F6CF3D29C22331001C8B68 /* SignInModule */,
 			);
 			path = ProfileTab;
 			sourceTree = "<group>";
@@ -437,13 +558,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		B6F6CF3D29C22331001C8B68 /* SignInWithGoogleModule */ = {
+		B6F6CF3D29C22331001C8B68 /* SignInModule */ = {
 			isa = PBXGroup;
 			children = (
 				B6F6CF3F29C2234D001C8B68 /* View */,
 				B6F6CF3E29C22341001C8B68 /* ViewModel */,
 			);
-			path = SignInWithGoogleModule;
+			path = SignInModule;
 			sourceTree = "<group>";
 		};
 		B6F6CF3E29C22341001C8B68 /* ViewModel */ = {
@@ -596,7 +717,30 @@
 			files = (
 				B68878BA29E9A7090007A547 /* GoogleService-Info.plist in Resources */,
 				B6749D0829BE0B1400BBD296 /* LaunchScreen.storyboard in Resources */,
+				B649F05829F705040028092C /* Chillax-Medium.otf in Resources */,
+				B649F05929F705040028092C /* Chillax-Bold.otf in Resources */,
+				B649F06229F715750028092C /* clock.svg in Resources */,
+				B649F05629F705040028092C /* Chillax-Light.otf in Resources */,
+				B6CA1BF029F9374100DF180C /* googleLogo.svg in Resources */,
+				B680CF6229F985A20072E7D9 /* coin.svg in Resources */,
+				B680CF7329F9D2BF0072E7D9 /* silverMedal.svg in Resources */,
+				B649F06429F7D4770028092C /* internetError.svg in Resources */,
+				B6CA1BF629F9633B00DF180C /* cup.svg in Resources */,
+				B649F04629F704E60028092C /* notRegisteredImage.svg in Resources */,
+				B680CF7129F9D2B90072E7D9 /* goldMedal.svg in Resources */,
+				B649F05429F705040028092C /* FFL.txt in Resources */,
+				B638891A29F841CB00CAAAC5 /* ownSkins.svg in Resources */,
+				B649F05A29F705040028092C /* Chillax-Extralight.otf in Resources */,
+				B638891929F841CB00CAAAC5 /* allSkins.svg in Resources */,
+				B649F05529F705040028092C /* Chillax-Regular.otf in Resources */,
+				B605CCCA29FC27F30052A695 /* appleLogo.svg in Resources */,
+				B6CA1BFA29F9642A00DF180C /* skins.svg in Resources */,
+				B680CF5F29F977BD0072E7D9 /* rating.svg in Resources */,
+				B649F04829F704EC0028092C /* ArithemticPvP_logo.svg in Resources */,
+				B680CF6329F985A20072E7D9 /* coins.svg in Resources */,
 				B6749D0529BE0B1400BBD296 /* Assets.xcassets in Resources */,
+				B649F05729F705040028092C /* Chillax-Semibold.otf in Resources */,
+				B680CF7529F9D2C30072E7D9 /* bronzeMedal.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,12 +787,15 @@
 				B64A23AA29D56FBD00232C56 /* PostGameStatisticsViewModel.swift in Sources */,
 				B64A23BC29D8C63900232C56 /* Question.swift in Sources */,
 				B64A238829CC3E3200232C56 /* SkinsViewModel.swift in Sources */,
+				B649F05C29F706C80028092C /* Design.swift in Sources */,
 				B64A23A629D56CDB00232C56 /* GameViewController.swift in Sources */,
+				B649F05E29F706F30028092C /* UIViewExtension.swift in Sources */,
 				B6108DC629C08F790050DD78 /* Observer.swift in Sources */,
 				B64A23B229D5C49400232C56 /* WebSocketService.swift in Sources */,
 				B64A23B429D5D35700232C56 /* WaitingRoomStartInfo.swift in Sources */,
 				B6F6CF3229C0FAC1001C8B68 /* Routers.swift in Sources */,
 				B6749D1629BE4DB800BBD296 /* User.swift in Sources */,
+				B605CCC629FBE7C00052A695 /* AppleService.swift in Sources */,
 				B6749CFC29BE0B1200BBD296 /* AppDelegate.swift in Sources */,
 				B6749D1829BE4DD800BBD296 /* CurrentSkin.swift in Sources */,
 				B64A238E29CDDFEE00232C56 /* Achievement.swift in Sources */,
@@ -669,6 +816,7 @@
 				B64A23CC29DC1DF900232C56 /* GameData.swift in Sources */,
 				B64A239029D425CE00232C56 /* SkinAlertView.swift in Sources */,
 				B6CBBD6F29C490D100BF7A4B /* SettingsRegisteredView.swift in Sources */,
+				B605CCCC29FD55560052A695 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

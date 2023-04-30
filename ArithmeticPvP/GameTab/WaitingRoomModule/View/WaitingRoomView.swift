@@ -18,8 +18,9 @@ class PlayerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .systemGray3
+        self.backgroundColor = Design.shared.waitingRoomPlayerViewColor
         self.layer.cornerRadius = 12
+        
         initViews()
     }
     
@@ -47,7 +48,7 @@ class PlayerView: UIView {
     func showView() {
         playerSkinView.isHidden = false
         playerUsernameLabel.isHidden = false
-        backgroundColor = .systemGray3
+        backgroundColor = Design.shared.waitingRoomPlayerViewColor
     }
     
     
@@ -64,9 +65,9 @@ class PlayerView: UIView {
         playerSkinView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            playerSkinView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
-            playerSkinView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            playerSkinView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            playerSkinView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            playerSkinView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            playerSkinView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
             playerSkinView.widthAnchor.constraint(equalTo: playerSkinView.heightAnchor, multiplier: 1)
         ])
     }
@@ -76,14 +77,17 @@ class PlayerView: UIView {
         self.addSubview(playerUsernameLabel)
         
         playerUsernameLabel.textAlignment = .left
-        playerUsernameLabel.font = UIFont.systemFont(ofSize: 20)
+        playerUsernameLabel.numberOfLines = 2
+        playerUsernameLabel.lineBreakMode = .byCharWrapping
+        playerUsernameLabel.font = Design.shared.chillax(style: .medium, size: 22)
+        playerUsernameLabel.textColor = Design.shared.waitingRoomUsernameColor
         
         playerUsernameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            playerUsernameLabel.leadingAnchor.constraint(equalTo: playerSkinView.trailingAnchor, constant: 30),
+            playerUsernameLabel.leadingAnchor.constraint(equalTo: playerSkinView.trailingAnchor, constant: 20),
             playerUsernameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            playerUsernameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30)
+            playerUsernameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
     }
     
@@ -103,7 +107,6 @@ class ClockView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .red
         initViews()
     }
 
@@ -112,7 +115,6 @@ class ClockView: UIView {
     }
     
     func updateTimeLabel(with timeString: String) {
-//        print(timeString)
         timeLabel.text = timeString
     }
     
@@ -124,8 +126,9 @@ class ClockView: UIView {
     
     private func createClockImageView() {
         clockImageView = UIImageView()
-        clockImageView.image = UIImage(systemName: "clock")
         self.addSubview(clockImageView)
+        
+        clockImageView.image = Design.shared.clockImage.withTintColor(Design.shared.waitingRoomClockImageTintColor)
         
         clockImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -142,7 +145,7 @@ class ClockView: UIView {
         self.addSubview(timeLabel)
         
         timeLabel.textAlignment = .center
-        timeLabel.font = UIFont.systemFont(ofSize: 30)
+        timeLabel.font = Design.shared.chillax(style: .medium, size: 30)
         
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -177,7 +180,8 @@ class WaitingRoomView: UIView {
         self.presentingVC = presentingVC
         super.init(frame: frame)
         
-        backgroundColor = .white
+        self.setBackgroundImage()
+        
         initViews()
     }
     
@@ -202,7 +206,8 @@ class WaitingRoomView: UIView {
             presentingVC.viewModel.getSkinImage(from: waitingRoomData.players[playerID].skin) { [weak self] imageData in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                    self.playersArray[playerID].updateView(for: waitingRoomData.players[playerID], withSkin: UIImage(data: imageData))
+                    self.playersArray[playerID].updateView(for: waitingRoomData.players[playerID],
+                                                           withSkin: ImageHelper.shared.getImage(data: imageData))
                 }
             }
         }

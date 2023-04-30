@@ -100,13 +100,14 @@ extension GameViewController {
     private func createGameView() {
         gameView = GameView(frame: view.bounds, players: self.viewModel.players, presentingVC: self)
         view.addSubview(gameView)
+        gameView.isHidden = true
     }
     
     private func displayAlert() {
         
         guard let _ = viewIfLoaded?.window else { return }
         
-        let alert = UIAlertController(title: "Exit the Game?", message: "Do you really want to leave the game?\nYou will be penalized!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Exit the Game", message: "Do you really want to leave the game?\nYou will be penalized!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
             self.viewModel.exitGame(with: nil)
         }))
@@ -120,8 +121,26 @@ extension GameViewController {
     }
     
     @objc func keyboardButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            sender.setTitleColor(Design.shared.keyboardButtonTextColor, for: .normal)
+        }
         if let buttonTitle = sender.titleLabel?.text {
             viewModel.keyboardButtonTapped(buttonTitle: buttonTitle)
+        }
+    }
+    
+    @objc func keyboardButtonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            sender.backgroundColor = Design.shared.keyboardButtonTappedColor
+            sender.setTitleColor(Design.shared.keyboardButtonTappedTextColor, for: .normal)
+        }
+    }
+    
+    @objc func keyboardButtonTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            sender.setTitleColor(Design.shared.keyboardButtonTextColor, for: .normal)
         }
     }
 }

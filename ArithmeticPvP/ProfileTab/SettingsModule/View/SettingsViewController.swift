@@ -54,6 +54,7 @@ class SettingsViewController: UIViewController {
     // MARK: - UI functions
     private func updateUI() {
         
+        navigationItem.rightBarButtonItem = nil
         activityIndicator.stopAnimating()
         initialView.isHidden = true
         settingsRegisteredView.isHidden = true
@@ -88,21 +89,21 @@ class SettingsViewController: UIViewController {
         let alert = UIAlertController(title: title, message: "\(error)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.updateState()
+            self.viewModel.router.popToRoot()
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
 }
 
-extension SettingsViewController: MFMailComposeViewControllerDelegate {
+extension SettingsViewController {
     
     // MARK: - Initializing views
     private func initView() {
         
         navigationItem.title = "SETTINGS"
         navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward")?.withTintColor(Design.shared.navigationTitleColor, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(backButtonTapped(_:)))
         
         createInitialView()
         createSettingsRegisteredView()
@@ -118,11 +119,13 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
     private func createSettingsRegisteredView() {
         settingsRegisteredView = SettingsRegisteredView(frame: view.bounds, presenetingVC: self)
         view.addSubview(settingsRegisteredView)
+        settingsRegisteredView.isHidden = true
     }
     
     private func createSettingsNotRegisteredView() {
         settingsNotRegisteredView = SettingsNotRegisteredView(frame: view.bounds, presenetingVC: self)
         view.addSubview(settingsNotRegisteredView)
+        settingsNotRegisteredView.isHidden = true
     }
     
     private func createActivityIndicator() {
@@ -139,7 +142,27 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         viewModel.router.popToRoot()
     }
     
+    @objc func usernameEditingChanged(_ sender: UITextField) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(changeUsernameButtonTapped(_:)))
+        navigationItem.rightBarButtonItem?.tintColor = Design.shared.settingsSaveTextColor
+    }
+    
+    @objc func changeUsernameButtonTapped(_ sender: UIBarButtonItem) {
+        let newUsername = settingsRegisteredView.userInfoSettingsView.usernameTextField.text
+        settingsRegisteredView.userInfoSettingsView.usernameTextField.resignFirstResponder()
+        viewModel.changeUsername(with: newUsername)
+    }
+}
+
+
+// MARK: - Objc function for Report Bug Button actions
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    
     @objc func reportBugButtonTapped(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.settingsReportBugButtonColor
+        }
         
         guard MFMailComposeViewController.canSendMail() else { return }
         
@@ -157,17 +180,42 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func reportBugButtonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            sender.backgroundColor = Design.shared.settingsReportBugButtonTappedColor
+        }
+    }
+    
+    @objc func reportBugButtonTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.settingsReportBugButtonColor
+        }
+    }
+}
+
+
+// MARK: - Objc function for Log Out Button actions
+extension SettingsViewController {
+    
+    @objc func logOutButtonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            sender.backgroundColor = Design.shared.settingsLogOutButtonTappedColor
+            sender.setTitleColor(Design.shared.settingsLogOutButtonTappedTextColor, for: .normal)
+        }
+    }
+    
+    @objc func logOutButtonTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            sender.setTitleColor(Design.shared.settingsLogOutButtonTextColor, for: .normal)
+        }
+    }
+    
     @objc func logOutButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            sender.setTitleColor(Design.shared.settingsLogOutButtonTextColor, for: .normal)
+        }
         viewModel.logOut()
-    }
-    
-    @objc func usernameEditingChanged(_ sender: UITextField) {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(changeUsernameButtonTapped(_:)))
-    }
-    
-    @objc func changeUsernameButtonTapped(_ sender: UIBarButtonItem) {
-        let newUsername = settingsRegisteredView.userInfoSettingsView.usernameTextField.text
-        settingsRegisteredView.userInfoSettingsView.usernameTextField.resignFirstResponder()
-        viewModel.changeUsername(with: newUsername)
     }
 }

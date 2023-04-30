@@ -12,7 +12,7 @@ struct Skin: Codable {
     var id: Int
     var name: String
     var description: String
-    var price: Double
+    var price: Int
     var imageURL: URL
     var isOwner: Bool
     var isSelected: Bool
@@ -32,7 +32,7 @@ struct Skin: Codable {
         self.id = try container.decode(Int.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.description = try container.decode(String.self, forKey: .description)
-        self.price = try container.decode(Double.self, forKey: .price)
+        self.price = try container.decode(Int.self, forKey: .price)
         
         let stringImageURL = try container.decode(String.self, forKey: .imageURL)
         self.imageURL = URL(string: stringImageURL)!

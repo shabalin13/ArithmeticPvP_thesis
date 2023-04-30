@@ -22,7 +22,7 @@ class SkinCell: UITableViewCell {
         }
     }
     
-    var price: Double? = nil {
+    var price: Int? = nil {
         didSet {
             if oldValue != price {
                 updateConfiguration()
@@ -41,7 +41,14 @@ class SkinCell: UITableViewCell {
     // MARK: - Inits
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.accessoryType = .disclosureIndicator
+        self.backgroundColor = UIColor.clear
+        
+        self.accessoryView =  UIImageView(image: UIImage(systemName: "chevron.right")?.withTintColor(Design.shared.skinsCellTintColor, renderingMode: .alwaysOriginal))
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = Design.shared.skinsSelectedCellColor
+        self.selectedBackgroundView = backgroundView
+        
         initView()
     }
     
@@ -54,7 +61,14 @@ class SkinCell: UITableViewCell {
         nameLabel.text = name
         
         if let price = price {
-            priceLabel.text = "$\(price)"
+            let currentText = NSMutableAttributedString(string: "\(price) ")
+            let imageAttachment = NSTextAttachment()
+            let size = ("\(price) " as NSString).boundingRect(with: priceLabel.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .regular, size: 14)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (priceLabel.font.capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            imageAttachment.image = Design.shared.coinImage
+            currentText.append(NSAttributedString(attachment: imageAttachment))
+            
+            priceLabel.attributedText = currentText
         } else {
             priceLabel.text = nil
         }
@@ -63,7 +77,6 @@ class SkinCell: UITableViewCell {
             skinImageView.image = image
         } else {
             skinImageView.image = nil
-//            skinImageView.image = UIImage(systemName: "photo.on.rectangle")
         }
     }
 
@@ -85,7 +98,7 @@ extension SkinCell {
         skinImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            skinImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            skinImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             skinImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             skinImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             skinImageView.widthAnchor.constraint(equalTo: skinImageView.heightAnchor, multiplier: 1)
@@ -98,12 +111,13 @@ extension SkinCell {
         contentView.addSubview(nameLabel)
         
         nameLabel.textAlignment = .left
-        nameLabel.font = UIFont.systemFont(ofSize: 20)
+        nameLabel.font = Design.shared.chillax(style: .regular, size: 20)
+        nameLabel.textColor = Design.shared.skinsUsernameColor
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: skinImageView.trailingAnchor, constant: 30),
+            nameLabel.leadingAnchor.constraint(equalTo: skinImageView.trailingAnchor, constant: 20),
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
@@ -113,7 +127,8 @@ extension SkinCell {
         contentView.addSubview(priceLabel)
         
         priceLabel.textAlignment = .right
-        priceLabel.font = UIFont.systemFont(ofSize: 16)
+        priceLabel.font = Design.shared.chillax(style: .regular, size: 14)
+        nameLabel.textColor = Design.shared.skinsUsernameColor
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -121,7 +136,7 @@ extension SkinCell {
             priceLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: contentView.safeAreaLayoutGuide.layoutFrame.width / 5),
             priceLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 20),
             priceLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -5)
         ])
     }
 }

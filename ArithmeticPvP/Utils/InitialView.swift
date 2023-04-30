@@ -11,7 +11,8 @@ class InitialView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+//        self.backgroundColor = .white
+        self.setBackgroundImage()
     }
     
     required init?(coder: NSCoder) {

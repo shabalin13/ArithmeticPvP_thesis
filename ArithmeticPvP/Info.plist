@@ -2,17 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Chillax-Regular.otf</string>
-		<string>Chillax-Light.otf</string>
-		<string>Chillax-Semibold.otf</string>
-		<string>Chillax-Medium.otf</string>
-		<string>Chillax-Bold.otf</string>
-		<string>Chillax-Extralight.otf</string>
-	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -23,6 +12,15 @@
 				<string>com.googleusercontent.apps.260293390580-okhjh7utujsk2h26li9ioi0sp8rklovn</string>
 			</array>
 		</dict>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Chillax-Regular.otf</string>
+		<string>Chillax-Light.otf</string>
+		<string>Chillax-Semibold.otf</string>
+		<string>Chillax-Medium.otf</string>
+		<string>Chillax-Bold.otf</string>
+		<string>Chillax-Extralight.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

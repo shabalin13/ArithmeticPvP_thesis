@@ -501,7 +501,7 @@ class NetworkService {
         task.resume()
     }
     
-    func getUserBalance(cookie: String, completion: @escaping (Result<Double, NetworkServiceError>) -> Void) {
+    func getUserBalance(cookie: String, completion: @escaping (Result<Int, NetworkServiceError>) -> Void) {
         
         let userBalanceURL = baseURL.appendingPathComponent("user/balance")
         
@@ -532,7 +532,7 @@ class NetworkService {
             
             let jsonDecoder = JSONDecoder()
             if let data = data,
-               let result = try? jsonDecoder.decode([String: Double].self, from: data),
+               let result = try? jsonDecoder.decode([String: Int].self, from: data),
                let balance = result["balance"] {
                 completion(.success(balance))
             } else {

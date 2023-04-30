@@ -21,7 +21,7 @@ class ProfileNotRegisteredView: UIView {
         self.presentingVC = presentingVC
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.setBackgroundImage()
         
         initViews()
     }
@@ -30,6 +30,13 @@ class ProfileNotRegisteredView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Trait Collection
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        signInButton.layer.borderColor = Design.shared.signInButtonBorderColor.cgColor
+    }
+    
+    // MARK: - Initializing views
     private func initViews() {
         createErrorImageView()
         createErrorDescription()
@@ -41,10 +48,9 @@ class ProfileNotRegisteredView: UIView {
         errorImageView = UIImageView()
         self.addSubview(errorImageView)
         
-        updateErrorImageViewConstraints()
+        errorImageView.image = Design.shared.notRegisteredImage
         
-        errorImageView.image = UIImage(systemName: "exclamationmark.square.fill")
-        errorImageView.tintColor = .systemGray
+        updateErrorImageViewConstraints()
     }
     
     private func updateErrorImageViewConstraints() {
@@ -68,11 +74,12 @@ class ProfileNotRegisteredView: UIView {
         
         updateErrorDescriptionConstraints()
         
-        errorDescription.text = "Please, Sign In to have opportunity to play Multiplayer Game"
+        errorDescription.text = "Sign In to dive into the Multiplayer Game"
         errorDescription.numberOfLines = 0
         errorDescription.lineBreakMode = .byWordWrapping
         errorDescription.textAlignment = .center
-        errorDescription.font = UIFont.systemFont(ofSize: 32)
+        errorDescription.textColor = Design.shared.textColor
+        errorDescription.font = Design.shared.chillax(style: .regular, size: 32)
     }
     
     private func updateErrorDescriptionConstraints() {
@@ -94,12 +101,18 @@ class ProfileNotRegisteredView: UIView {
         
         updateSignInButtonConstraints()
         
-        signInButton.backgroundColor = .systemBlue
+        signInButton.backgroundColor = .none
+        signInButton.layer.borderWidth = 2
+        signInButton.layer.borderColor = Design.shared.signInButtonBorderColor.resolvedColor(with: self.traitCollection).cgColor
         signInButton.layer.cornerRadius = 10
-        signInButton.setTitle("Sign In", for: .normal)
-        signInButton.setTitleColor(.systemGray, for: .highlighted)
+        signInButton.setTitle("SIGN IN", for: .normal)
+        signInButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 22)
+        signInButton.setTitleColor(Design.shared.signInButtonTextColor, for: .normal)
         
         signInButton.addTarget(presentingVC, action: #selector(presentingVC.signInButtonTapped(_:)), for: .touchUpInside)
+        signInButton.addTarget(presentingVC, action: #selector(presentingVC.signInButtonTouchDown(_:)), for: .touchDown)
+        signInButton.addTarget(presentingVC, action: #selector(presentingVC.signInButtonTouchUpOutside(_:)), for: .touchUpOutside)
+        
     }
     
     private func updateSignInButtonConstraints() {
@@ -112,8 +125,33 @@ class ProfileNotRegisteredView: UIView {
             signInButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             signInButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             signInButton.topAnchor.constraint(greaterThanOrEqualTo: errorDescription.bottomAnchor, constant: 40),
-            signInButton.heightAnchor.constraint(equalToConstant: 50)
+            signInButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
+}
+
+extension ProfileViewController {
+    
+    @objc func signInButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            sender.setTitleColor(Design.shared.signInButtonTextColor, for: .normal)
+        }
+        viewModel.goToSignIn()
+    }
+    
+    @objc func signInButtonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            sender.backgroundColor = Design.shared.signInButtonTappedColor
+            sender.setTitleColor(Design.shared.signInButtonTappedTextColor, for: .normal)
+        }
+    }
+    
+    @objc func signInButtonTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            sender.setTitleColor(Design.shared.signInButtonTextColor, for: .normal)
+        }
+    }
 }

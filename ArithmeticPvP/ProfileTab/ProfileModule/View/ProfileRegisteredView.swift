@@ -14,7 +14,6 @@ class UserInfoView: UIView {
     
     // MARK: - Class Properties
     var eloLabel: UILabel!
-    var eloNameLabel: UILabel!
     
     var usernameLabel: UILabel!
     
@@ -24,7 +23,7 @@ class UserInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor(red: 217.0/255.0, green: 217.0/255.0, blue: 217.0/255.0, alpha: 0.2)
+        self.backgroundColor = Design.shared.userInfoBackgroundColor
         
         initViews()
     }
@@ -36,13 +35,24 @@ class UserInfoView: UIView {
     // MARK: - Func for updating UI with specific data
     func updateView(for user: User?, with skinData: Data?) {
         if let user = user {
-            eloLabel.text = "\(user.rating)"
-            eloNameLabel.text = "elo"
+            
+            let currentText = NSMutableAttributedString(string: "\(user.rating)",
+                                                        attributes: [NSAttributedString.Key.font:
+                                                                        Design.shared.chillax(style: .semibold, size: 60),
+                                                                     NSAttributedString.Key.foregroundColor:
+                                                                        Design.shared.userInfoEloLabelTextColor])
+            currentText.append(NSAttributedString(string: "\nelo",
+                                                  attributes: [NSAttributedString.Key.font:
+                                                                Design.shared.chillax(style: .medium, size: 26),
+                                                               NSAttributedString.Key.foregroundColor:
+                                                                Design.shared.userInfoEloNameLabelTextColor]))
+            eloLabel.attributedText = currentText
+            
             usernameLabel.text = user.username
         }
         
         if let skinData = skinData {
-            userSkinImageView.image = UIImage(data: skinData)
+            userSkinImageView.image = ImageHelper.shared.getImage(data: skinData)
         }
     }
     
@@ -50,7 +60,6 @@ class UserInfoView: UIView {
     private func initViews() {
         createUserSkinImageView()
         createEloLabel()
-        createEloNameLabel()
         createUsernameLabel()
         
     }
@@ -75,29 +84,14 @@ class UserInfoView: UIView {
         self.addSubview(eloLabel)
         
         eloLabel.textAlignment = .center
-        eloLabel.font = UIFont.systemFont(ofSize: 50)
+        eloLabel.numberOfLines = 2
         
         eloLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            eloLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 75),
-            eloLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            eloLabel.trailingAnchor.constraint(equalTo: userSkinImageView.leadingAnchor, constant: -40)
-        ])
-    }
-    
-    private func createEloNameLabel() {
-        eloNameLabel = UILabel()
-        self.addSubview(eloNameLabel)
-        
-        eloNameLabel.textAlignment = .center
-        eloNameLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        
-        eloNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            eloNameLabel.topAnchor.constraint(equalTo: eloLabel.bottomAnchor, constant: 5),
-            eloNameLabel.centerXAnchor.constraint(equalTo: eloLabel.centerXAnchor)
+            eloLabel.topAnchor.constraint(lessThanOrEqualTo: self.topAnchor, constant: 75),
+            eloLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            eloLabel.trailingAnchor.constraint(equalTo: userSkinImageView.leadingAnchor, constant: -20)
         ])
     }
     
@@ -106,13 +100,16 @@ class UserInfoView: UIView {
         self.addSubview(usernameLabel)
         
         usernameLabel.textAlignment = .center
-        usernameLabel.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+        usernameLabel.numberOfLines = 0
+        usernameLabel.lineBreakMode = .byCharWrapping
+        usernameLabel.font = Design.shared.chillax(style: .regular, size: 26)
+        usernameLabel.textColor = Design.shared.userInfoUsernameLabelTextColor
         
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            usernameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -70),
-            usernameLabel.topAnchor.constraint(greaterThanOrEqualTo: eloNameLabel.bottomAnchor, constant: 40),
+            usernameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
+            usernameLabel.topAnchor.constraint(greaterThanOrEqualTo: eloLabel.bottomAnchor, constant: 40),
             usernameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             usernameLabel.trailingAnchor.constraint(equalTo: userSkinImageView.leadingAnchor, constant: -15)
         ])
@@ -140,9 +137,16 @@ class StatView: UIView {
     }
     
     // MARK: - Func for updating UI with specific data
-    func updateView(statName: String, stat: String) {
+    func updateView(statName: String, stat: String, withBorder: Bool) {
         statLabel.text = stat
         statNameLabel.text = statName
+        
+        if withBorder {
+            let border = CALayer()
+            border.backgroundColor = Design.shared.yellowColor.cgColor
+            border.frame = CGRect(x: self.frame.width - 1, y: self.frame.height / 6, width: 1, height: 2 * self.frame.height / 3)
+            self.layer.addSublayer(border)
+        }
     }
     
     private func initViews() {
@@ -156,16 +160,16 @@ class StatView: UIView {
         self.addSubview(statStackView)
         
         statStackView.axis = .vertical
-        statStackView.spacing = 10
-        statStackView.distribution = .fillProportionally
+        statStackView.spacing = 0
+        statStackView.distribution = .fillEqually
         statStackView.alignment = .leading
         
         statStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            statStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 25),
+            statStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
             statStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            statStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25),
+            statStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
             statStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
         ])
     }
@@ -175,7 +179,8 @@ class StatView: UIView {
         self.addSubview(statLabel)
         
         statLabel.textAlignment = .left
-        statLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        statLabel.font = Design.shared.chillax(style: .medium, size: 20)
+        statLabel.textColor = Design.shared.statLabelTextColor
         
         statStackView.addArrangedSubview(statLabel)
     }
@@ -185,7 +190,7 @@ class StatView: UIView {
         self.addSubview(statNameLabel)
         
         statNameLabel.textAlignment = .left
-        statNameLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        statNameLabel.font = Design.shared.chillax(style: .regular, size: 14)
         statNameLabel.textColor = .systemGray
         
         statStackView.addArrangedSubview(statNameLabel)
@@ -203,7 +208,7 @@ class StatisticsView: UIView, UIScrollViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .black.withAlphaComponent(0.2)
+        self.backgroundColor = Design.shared.statisticsBackgroundColor
         
         initViews()
     }
@@ -218,8 +223,8 @@ class StatisticsView: UIView, UIScrollViewDelegate {
             statisticsScrollView.subviews.forEach({ $0.removeFromSuperview() })
             statisticsScrollView.contentSize = CGSize(width: self.bounds.size.width * CGFloat(userStatistics.count) / 2.5, height: self.bounds.size.height)
             var userStatisticsFrame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.size.width / 2.5, height: self.bounds.size.height)
-            for (userStatName, userStat) in userStatistics {
-                createUserStatView(userStatName: userStatName, userStat: userStat, frame: userStatisticsFrame)
+            for (id, (userStatName, userStat)) in userStatistics.enumerated() {
+                createUserStatView(userStatName: userStatName, userStat: userStat, frame: userStatisticsFrame, withBorder: id == userStatistics.count - 1 ? false: true)
                 userStatisticsFrame.origin.x += self.bounds.size.width / 2.5
             }
         }
@@ -244,11 +249,10 @@ class StatisticsView: UIView, UIScrollViewDelegate {
         ])
     }
     
-    private func createUserStatView(userStatName: String, userStat: String, frame: CGRect) {
+    private func createUserStatView(userStatName: String, userStat: String, frame: CGRect, withBorder: Bool) {
         let userStatView = StatView(frame: frame)
         statisticsScrollView.addSubview(userStatView)
-        userStatView.updateView(statName: userStatName, stat: userStat)
-        
+        userStatView.updateView(statName: userStatName, stat: userStat, withBorder: withBorder)
     }
     
 }
@@ -267,7 +271,7 @@ class ProfileRegisteredView: UIView {
         self.presentingVC = presentingVC
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.setBackgroundImage()
         
         initViews()
     }

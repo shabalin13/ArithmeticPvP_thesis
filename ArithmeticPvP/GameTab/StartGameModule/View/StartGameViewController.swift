@@ -9,12 +9,14 @@ import UIKit
 
 class StartGameViewController: UIViewController {
     
+    // MARK: - Class Properties
     var viewModel: StartGameViewModelProtocol
     
     var initialView: InitialView!
     var registeredView: StartGameRegisteredView!
     var notRegisteredView: StartGameNotRegisteredView!
     
+    // MARK: - Inits
     init(viewModel: StartGameViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -24,6 +26,7 @@ class StartGameViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +74,7 @@ class StartGameViewController: UIViewController {
 
 extension StartGameViewController {
     
+    // MARK: - Initializing views
     private func initViews() {
         navigationItem.title = "RATING GAME"
         
@@ -87,11 +91,13 @@ extension StartGameViewController {
     private func createRegisteredView() {
         registeredView = StartGameRegisteredView(frame: view.bounds, presentingVC: self)
         view.addSubview(registeredView)
+        registeredView.isHidden = true
     }
     
     private func createNotRegisteredView() {
         notRegisteredView = StartGameNotRegisteredView(frame: view.bounds, presentingVC: self)
         view.addSubview(notRegisteredView)
+        notRegisteredView.isHidden = true
     }
     
 }

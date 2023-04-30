@@ -21,7 +21,7 @@ class ProfileErrorView: UIView {
         self.presentingVC = presentingVC
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.setBackgroundImage()
         
         initViews()
     }
@@ -32,7 +32,7 @@ class ProfileErrorView: UIView {
     
     // MARK: - Func for updating UI with specific error data
     func updateView(for error: NetworkService.NetworkServiceError) {
-        errorDescription.text = "ERROR!\n\(error)\nPlease, try to reload this page!"
+        errorDescription.text = "ERROR!\n\(error)"
     }
     
     // MARK: - Initializing views
@@ -47,10 +47,9 @@ class ProfileErrorView: UIView {
         errorImageView = UIImageView()
         self.addSubview(errorImageView)
         
-        updateErrorImageViewConstraints()
+        errorImageView.image = Design.shared.internetErrorImage
         
-        errorImageView.image = UIImage(systemName: "exclamationmark.square.fill")
-        errorImageView.tintColor = .systemGray
+        updateErrorImageViewConstraints()
     }
     
     private func updateErrorImageViewConstraints() {
@@ -74,11 +73,12 @@ class ProfileErrorView: UIView {
         
         updateErrorDescriptionConstraints()
         
-        errorDescription.text = "Something went wrong!\nPlease, try to reload this page!"
+        errorDescription.text = "Something went wrong!\nRELOAD this page!"
         errorDescription.numberOfLines = 0
         errorDescription.lineBreakMode = .byWordWrapping
         errorDescription.textAlignment = .center
-        errorDescription.font = UIFont.systemFont(ofSize: 32)
+        errorDescription.textColor = Design.shared.textColor
+        errorDescription.font = Design.shared.chillax(style: .regular, size: 32)
     }
     
     private func updateErrorDescriptionConstraints() {
@@ -100,12 +100,15 @@ class ProfileErrorView: UIView {
         
         updateReloadButtonConstraints()
         
-        reloadButton.backgroundColor = .systemBlue
+        reloadButton.backgroundColor = Design.shared.reloadButtonColor
         reloadButton.layer.cornerRadius = 10
         reloadButton.setTitle("RELOAD", for: .normal)
-        reloadButton.setTitleColor(.systemGray, for: .highlighted)
+        reloadButton.titleLabel?.font = Design.shared.chillax(style: .semibold, size: 26)
+        reloadButton.setTitleColor(Design.shared.reloadButtonTextColor, for: .normal)
         
         reloadButton.addTarget(presentingVC, action: #selector(presentingVC.reloadButtonTapped(_:)), for: .touchUpInside)
+        reloadButton.addTarget(presentingVC, action: #selector(presentingVC.reloadButtonTouchUpOutside(_:)), for: .touchUpOutside)
+        reloadButton.addTarget(presentingVC, action: #selector(presentingVC.reloadButtonTouchDown(_:)), for: .touchDown)
     }
     
     private func updateReloadButtonConstraints() {
@@ -118,7 +121,31 @@ class ProfileErrorView: UIView {
             reloadButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             reloadButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             reloadButton.topAnchor.constraint(greaterThanOrEqualTo: errorDescription.bottomAnchor, constant: 40),
-            reloadButton.heightAnchor.constraint(equalToConstant: 50)
+            reloadButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
+}
+
+extension ProfileViewController {
+    
+    // MARK: - Objc function for Reload Button actions
+    @objc func reloadButtonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            sender.backgroundColor = Design.shared.reloadButtonTappedColor
+        }
+    }
+    
+    @objc func reloadButtonTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.reloadButtonColor
+        }
+    }
+    
+    @objc func reloadButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = Design.shared.reloadButtonColor
+        }
+        viewModel.updateState()
+    }
+    
 }

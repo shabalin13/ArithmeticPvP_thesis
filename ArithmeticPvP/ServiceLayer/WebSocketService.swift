@@ -48,7 +48,7 @@ class WebSocketService: WebSocketDelegate {
     
     static let shared = WebSocketService()
     let baseURL = URL(string: "ws://188.225.75.244/game/ws/")!
-    private var webSocket: WebSocket!
+    private var webSocket: WebSocket?
     
     var receivedWaitingRoomData: Observable<ReceivedWaitingRoomData> = Observable(.initial)
     var receivedGameData: Observable<ReceivedGameData> = Observable(.initial)
@@ -60,15 +60,17 @@ class WebSocketService: WebSocketDelegate {
         let gameURL = baseURL.appendingPathComponent("\(gameID)")
         
         var request = URLRequest(url: gameURL)
-        request.setValue("set-session=\(UserDefaultsHelper.shared.getCookie()!)", forHTTPHeaderField: "cookie")
+        
+        guard let cookie = UserDefaultsHelper.shared.getCookie() else { return }
+        request.setValue("set-session=\(cookie)", forHTTPHeaderField: "cookie")
         
         webSocket = WebSocket(request: request)
-        webSocket.delegate = self
-        webSocket.connect()
+        webSocket?.delegate = self
+        webSocket?.connect()
     }
     
     func disconnectFromWebSocket() {
-        webSocket.disconnect(closeCode: CloseCode.normal.rawValue)
+        webSocket?.disconnect(closeCode: CloseCode.normal.rawValue)
     }
     
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
@@ -162,7 +164,7 @@ class WebSocketService: WebSocketDelegate {
     }
     
     func sendData(message: String) {
-        webSocket.write(string: message)
+        webSocket?.write(string: message)
         NSLog("Send data: \(message)")
     }
     

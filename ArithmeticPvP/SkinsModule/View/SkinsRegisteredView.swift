@@ -7,13 +7,102 @@
 
 import UIKit
 
+class BalanceView: UIView {
+    
+    var coinsImageView: UIImageView!
+    var balanceLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        initView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateView(balance: Int) {
+        balanceLabel.text = "\(balance)"
+    }
+    
+    private func initView() {
+        createCoinsImageView()
+        createBalanceLabel()
+    }
+    
+    private func createCoinsImageView() {
+        coinsImageView = UIImageView(image: Design.shared.coinsImage)
+        self.addSubview(coinsImageView)
+        
+        coinsImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            coinsImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            coinsImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            coinsImageView.widthAnchor.constraint(equalTo: coinsImageView.heightAnchor, multiplier: 1),
+            coinsImageView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+    
+    private func createBalanceLabel() {
+        balanceLabel = UILabel()
+        self.addSubview(balanceLabel)
+        
+        balanceLabel.textAlignment = .center
+        balanceLabel.font = Design.shared.chillax(style: .medium, size: 16)
+        
+        balanceLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            balanceLabel.leadingAnchor.constraint(equalTo: coinsImageView.trailingAnchor, constant: 7),
+            balanceLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            balanceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            balanceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+    }
+}
+
+class BarButtonItem: UIButton {
+    
+    var presentingVC: SkinsViewController!
+    
+    init(frame: CGRect, image: UIImage, presentingVC: SkinsViewController) {
+        self.presentingVC = presentingVC
+        super.init(frame: frame)
+        
+        createButton(image: image)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func createButton(image: UIImage) {
+        
+        self.setImage(image, for: .normal)
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1),
+            self.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        self.addTarget(presentingVC, action: #selector(presentingVC.showSpecificSkinsButtonTapped(_:)), for: .touchUpInside)
+    }
+}
+
 class SkinsRegisteredView: UIView {
     
     // MARK: - Class Properties
     var presentingVC: SkinsViewController
     
     var skinsTableView: UITableView!
-    var balanceLabel: UILabel!
+    var balanceView: BalanceView!
     
     var isShowOwnedSkins: Bool!
     var ownedSkinsButton: UIBarButtonItem!
@@ -24,13 +113,15 @@ class SkinsRegisteredView: UIView {
         self.presentingVC = presentingVC
         super.init(frame: frame)
         
+        self.setBackgroundImage()
+        
         isShowOwnedSkins = false
-        ownedSkinsButton = UIBarButtonItem(image: UIImage(systemName: "checkmark.circle"), style: .plain, target: presentingVC, action: #selector(presentingVC.showSpecificSkinsButtonTapped(_:)))
-        allSkinsButton = UIBarButtonItem(image: UIImage(systemName: "circle"), style: .plain, target: presentingVC, action: #selector(presentingVC.showSpecificSkinsButtonTapped(_:)))
         
-        backgroundColor = .white
+        ownedSkinsButton = UIBarButtonItem(customView: BarButtonItem(frame: .zero, image: Design.shared.ownSkinsImage.withTintColor(.black, renderingMode: .alwaysOriginal), presentingVC: presentingVC))
         
-        createBalanceLabel()
+        allSkinsButton = UIBarButtonItem(customView: BarButtonItem(frame: .zero, image: Design.shared.allSkinsImage.withTintColor(.black, renderingMode: .alwaysOriginal), presentingVC: presentingVC))
+        
+        createBalanceView()
         createTableView()
     }
     
@@ -41,24 +132,24 @@ class SkinsRegisteredView: UIView {
     // MARK: - Func for updating UI with specific data
     func updateView() {
         skinsTableView.reloadData()
+
+        balanceView.updateView(balance: presentingVC.viewModel.balance)
+        presentingVC.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: balanceView)
         
-        balanceLabel.text = "$\(presentingVC.viewModel.balance)"
-        presentingVC.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.balanceLabel)
         presentingVC.updateLeftBarButtonItem()
     }
     
     // MARK: - Initializing views
-    func createBalanceLabel() {
-        balanceLabel = UILabel()
-        
-        balanceLabel.textAlignment = .center
-        balanceLabel.font = UIFont.systemFont(ofSize: 16)
-        
+    func createBalanceView() {
+        balanceView = BalanceView()
     }
     
     func createTableView() {
         skinsTableView = UITableView()
         addSubview(skinsTableView)
+        
+        skinsTableView.separatorColor = Design.shared.skinsCellTintColor
+        skinsTableView.backgroundColor = .clear
         
         skinsTableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -128,7 +219,7 @@ extension SkinsRegisteredView: UITableViewDataSource, UITableViewDelegate {
                 guard let self = self else { return }
                 if let currentIndexPath = self.skinsTableView.indexPath(for: cell),
                    currentIndexPath == indexPath {
-                    cell.image = UIImage(data: imageData)
+                    cell.image = ImageHelper.shared.getImage(data: imageData)
                 }
             }
         }

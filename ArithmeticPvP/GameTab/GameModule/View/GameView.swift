@@ -25,6 +25,12 @@ class PlayerProgressView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Trait Collection
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        playerProgressView.layer.borderColor = Design.shared.gameProgressTintColor.cgColor
+    }
+    
     // MARK: - Func for updating UI with specific data
     func updateView(for playerProgress: PlayerProgress, tasksAmount: Int) {
         playerProgressView.setProgress((Float(playerProgress.progress) / Float(tasksAmount)), animated: true)
@@ -58,6 +64,12 @@ class PlayerProgressView: UIView {
         playerProgressView.layer.sublayers?[1].cornerRadius = 10
         playerProgressView.subviews[1].clipsToBounds = true
         
+//        playerProgressView.backgroundColor = .none
+        playerProgressView.trackTintColor = .none
+        playerProgressView.progressTintColor = Design.shared.gameProgressTintColor
+        playerProgressView.layer.borderWidth = 1
+        playerProgressView.layer.borderColor = Design.shared.gameProgressTintColor.resolvedColor(with: self.traitCollection).cgColor
+        
         
         playerProgressView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -74,12 +86,13 @@ class PlayerProgressView: UIView {
         self.addSubview(playerUsernameLabel)
         
         playerUsernameLabel.textAlignment = .left
-        playerUsernameLabel.font = UIFont.systemFont(ofSize: 20)
+        playerUsernameLabel.font = Design.shared.chillax(style: .regular, size: 20)
+        playerUsernameLabel.textColor = Design.shared.gameUsernameTextColor
         
         playerUsernameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            playerUsernameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            playerUsernameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             playerUsernameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             playerUsernameLabel.trailingAnchor.constraint(equalTo: playerProgressView.leadingAnchor, constant: -10),
         ])
@@ -119,12 +132,12 @@ class QuestionView: UIView {
                 if number == "-" {
                     let imageAttachment = NSTextAttachment()
                     let config = UIImage.SymbolConfiguration(font: questionLabel.font)
-                    imageAttachment.image = UIImage(systemName: "minus.square", withConfiguration: config)
+                    imageAttachment.image = UIImage(systemName: "minus.square", withConfiguration: config)?.withTintColor(Design.shared.gameQuestionTextColor, renderingMode: .alwaysOriginal)
                     currentText.append(NSAttributedString(attachment: imageAttachment))
                 } else {
                     let imageAttachment = NSTextAttachment()
                     let config = UIImage.SymbolConfiguration(font: questionLabel.font)
-                    imageAttachment.image = UIImage(systemName: "\(number).square", withConfiguration: config)
+                    imageAttachment.image = UIImage(systemName: "\(number).square", withConfiguration: config)?.withTintColor(Design.shared.gameQuestionTextColor, renderingMode: .alwaysOriginal)
                     currentText.append(NSAttributedString(attachment: imageAttachment))
                 }
             }
@@ -132,7 +145,7 @@ class QuestionView: UIView {
             for _ in 0..<(gameData.currentQuestion.answer.count - currentAnswer.count) {
                 let imageAttachment = NSTextAttachment()
                 let config = UIImage.SymbolConfiguration(font: questionLabel.font)
-                imageAttachment.image = UIImage(systemName: "square", withConfiguration: config)
+                imageAttachment.image = UIImage(systemName: "square", withConfiguration: config)?.withTintColor(Design.shared.gameQuestionTextColor, renderingMode: .alwaysOriginal)
                 currentText.append(NSAttributedString(attachment: imageAttachment))
             }
             
@@ -147,7 +160,7 @@ class QuestionView: UIView {
             for _ in 0..<gameData.currentQuestion.answer.count {
                 let imageAttachment = NSTextAttachment()
                 let config = UIImage.SymbolConfiguration(font: questionLabel.font)
-                imageAttachment.image =  UIImage(systemName: "square", withConfiguration: config)
+                imageAttachment.image =  UIImage(systemName: "square", withConfiguration: config)?.withTintColor(Design.shared.gameQuestionTextColor, renderingMode: .alwaysOriginal)
                 currentText.append(NSAttributedString(attachment: imageAttachment))
             }
             
@@ -175,7 +188,10 @@ class QuestionView: UIView {
         self.addSubview(questionLabel)
         
         questionLabel.textAlignment = .center
-        questionLabel.font = UIFont.systemFont(ofSize: 28)
+        questionLabel.font = Design.shared.chillax(style: .medium, size: 32)
+        questionLabel.textColor = Design.shared.gameQuestionTextColor
+        questionLabel.minimumScaleFactor = 0.7
+        questionLabel.adjustsFontSizeToFitWidth = true
         
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -212,6 +228,16 @@ class KeyboardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Trait Collection
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        for keyboardButtonsRow in keyboardButtons {
+            for keyboardButton in keyboardButtonsRow {
+                keyboardButton.layer.borderColor = Design.shared.keyboardButtonBorderColor.cgColor
+            }
+        }
+    }
+    
     // MARK: - Initilizing view
     private func initView() {
         createKeybordButtons()
@@ -225,12 +251,17 @@ class KeyboardView: UIView {
                 let button = UIButton()
                 self.addSubview(button)
                 
-                button.addTarget(presentingVC, action: #selector(presentingVC.keyboardButtonTapped(_:)), for: .touchUpInside)
-                
-                button.backgroundColor = .systemBlue
+                button.backgroundColor = .none
+                button.layer.borderWidth = 2
+                button.layer.borderColor = Design.shared.keyboardButtonBorderColor.resolvedColor(with: self.traitCollection).cgColor
                 button.layer.cornerRadius = 10
                 button.setTitle(keyboradTitle, for: .normal)
-                button.setTitleColor(.systemGray, for: .highlighted)
+                button.titleLabel?.font = Design.shared.chillax(style: .medium, size: 24)
+                button.setTitleColor(Design.shared.keyboardButtonTextColor, for: .normal)
+                
+                button.addTarget(presentingVC, action: #selector(presentingVC.keyboardButtonTapped(_:)), for: .touchUpInside)
+                button.addTarget(presentingVC, action: #selector(presentingVC.keyboardButtonTouchDown(_:)), for: .touchDown)
+                button.addTarget(presentingVC, action: #selector(presentingVC.keyboardButtonTouchUpOutside(_:)), for: .touchUpOutside)
                 
                 keyboradRow.append(button)
             }
@@ -243,25 +274,25 @@ class KeyboardView: UIView {
         self.addSubview(keyboardStackView)
         
         keyboardStackView.axis = .vertical
-        keyboardStackView.spacing = 5
+        keyboardStackView.spacing = 10
         keyboardStackView.distribution = .fillEqually
         keyboardStackView.alignment = .fill
         
-        for keyboradRowButtons in keyboardButtons {
+        for keyboardRowButtons in keyboardButtons {
             
-            let keyboradRowButtonsStackView = UIStackView()
-            self.addSubview(keyboradRowButtonsStackView)
+            let keyboardRowButtonsStackView = UIStackView()
+            self.addSubview(keyboardRowButtonsStackView)
             
-            keyboradRowButtonsStackView.axis = .horizontal
-            keyboradRowButtonsStackView.spacing = 5
-            keyboradRowButtonsStackView.distribution = .fillEqually
-            keyboradRowButtonsStackView.alignment = .fill
+            keyboardRowButtonsStackView.axis = .horizontal
+            keyboardRowButtonsStackView.spacing = 10
+            keyboardRowButtonsStackView.distribution = .fillEqually
+            keyboardRowButtonsStackView.alignment = .fill
             
-            for keyboradButton in keyboradRowButtons {
-                keyboradRowButtonsStackView.addArrangedSubview(keyboradButton)
+            for keyboradButton in keyboardRowButtons {
+                keyboardRowButtonsStackView.addArrangedSubview(keyboradButton)
             }
             
-            keyboardStackView.addArrangedSubview(keyboradRowButtonsStackView)
+            keyboardStackView.addArrangedSubview(keyboardRowButtonsStackView)
         }
         
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -292,7 +323,8 @@ class GameView: UIView {
     init(frame: CGRect, players: [Player], presentingVC: GameViewController) {
         self.presentingVC = presentingVC
         super.init(frame: frame)
-        backgroundColor = .white
+        
+        self.setBackgroundImage()
         
         initViews(players: players)
     }

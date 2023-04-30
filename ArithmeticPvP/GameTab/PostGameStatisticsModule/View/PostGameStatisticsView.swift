@@ -27,11 +27,11 @@ class PlayerPlaceView: UIView {
     // MARK: - Func for updating UI with specific data
     func updateView(for place: Int) {
         if place == 1 {
-            playerPlaceImageView.image = UIImage(named: "medal1")
+            playerPlaceImageView.image = Design.shared.goldMedalImage
         } else if place == 2 {
-            playerPlaceImageView.image = UIImage(named: "medal2")
+            playerPlaceImageView.image = Design.shared.silverMedalImage
         } else if place == 3 {
-            playerPlaceImageView.image = UIImage(named: "medal3")
+            playerPlaceImageView.image = Design.shared.bronzeMedalImage
         }
     }
     
@@ -82,15 +82,21 @@ class PlayerBottomView: UIView {
         super.init(frame: frame)
         
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.black.cgColor
         self.layer.cornerRadius = 10
-        backgroundColor = .white
+        self.layer.borderColor = Design.shared.playerViewBorderColor.resolvedColor(with: self.traitCollection).cgColor
+        self.backgroundColor = Design.shared.playerViewBackgroundColor
         
         initViews()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    // MARK: - Trait Collection
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.layer.borderColor = Design.shared.playerViewBorderColor.cgColor
     }
     
     // MARK: - Func for updating UI with specific data
@@ -150,7 +156,7 @@ class PlayerBottomView: UIView {
         playerRatingImageView.isHidden = false
         playerRatingLabel.isHidden = false
         
-        backgroundColor = .white
+        self.backgroundColor = Design.shared.playerViewBackgroundColor
         self.layer.borderWidth = 2
     }
     
@@ -204,7 +210,7 @@ class PlayerBottomView: UIView {
         playerBalanceImageView = UIImageView()
         self.addSubview(playerBalanceImageView)
         
-        playerBalanceImageView.image = UIImage(named: "coins")
+        playerBalanceImageView.image = Design.shared.coinsImage
         
         playerBalanceImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -221,7 +227,8 @@ class PlayerBottomView: UIView {
         self.addSubview(playerBalanceLabel)
         
         playerBalanceLabel.textAlignment = .left
-        playerBalanceLabel.font = UIFont.systemFont(ofSize: 20)
+        playerBalanceLabel.font = Design.shared.chillax(style: .medium, size: 20)
+        playerBalanceLabel.textColor = Design.shared.playerBalanceAndRatingTextColor
         
         playerBalanceStackView.addArrangedSubview(playerBalanceLabel)
     }
@@ -243,7 +250,7 @@ class PlayerBottomView: UIView {
         playerRatingImageView = UIImageView()
         self.addSubview(playerRatingImageView)
         
-        playerRatingImageView.image = UIImage(named: "rating")
+        playerRatingImageView.image = Design.shared.ratingImage
         
         playerRatingImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -260,7 +267,8 @@ class PlayerBottomView: UIView {
         self.addSubview(playerRatingLabel)
         
         playerRatingLabel.textAlignment = .left
-        playerRatingLabel.font = UIFont.systemFont(ofSize: 20)
+        playerRatingLabel.font = Design.shared.chillax(style: .medium, size: 20)
+        playerRatingLabel.textColor = Design.shared.playerBalanceAndRatingTextColor
         
         playerRatingStackView.addArrangedSubview(playerRatingLabel)
     }
@@ -280,11 +288,22 @@ class PlayerUpperView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.layer.borderWidth = 2
+        self.layer.cornerRadius = 10
+        self.layer.borderColor = Design.shared.playerViewBorderColor.resolvedColor(with: self.traitCollection).cgColor
+        self.backgroundColor = Design.shared.playerViewBackgroundColor
+        
         initViews()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    // MARK: - Trait Collection
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.layer.borderColor = Design.shared.playerViewBorderColor.cgColor
     }
     
     // MARK: - Func for updating UI with specific data
@@ -312,18 +331,12 @@ class PlayerUpperView: UIView {
         playerSkinView.isHidden = false
         playerUsernameLabel.isHidden = false
         playerPlaceView.showView()
-        self.backgroundColor = .white
+        self.backgroundColor = Design.shared.playerViewBackgroundColor
         self.layer.borderWidth = 2
     }
     
     // MARK: - Initilizing views
     private func initViews() {
-        
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.cornerRadius = 10
-        self.backgroundColor = .white
-        
         createPlayerSkinView()
         createPlayerUsernameLabel()
         createPlayerPlaceView()
@@ -348,7 +361,8 @@ class PlayerUpperView: UIView {
         self.addSubview(playerUsernameLabel)
         
         playerUsernameLabel.textAlignment = .left
-        playerUsernameLabel.font = UIFont.systemFont(ofSize: 20)
+        playerUsernameLabel.font = Design.shared.chillax(style: .regular, size: 22)
+        playerUsernameLabel.textColor = Design.shared.playerUsernameTextColor
         
         playerUsernameLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -467,7 +481,7 @@ class PostGameStatisticsView: UIView {
         self.presentingVC = presentingVC
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.setBackgroundImage()
         
         initViews()
     }
@@ -486,7 +500,8 @@ class PostGameStatisticsView: UIView {
             presentingVC.viewModel.getSkinImage(from: postGameStatisticsData.postGameStatistics.statistics[playerID].skin) { [weak self] imageData in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                    self.playersArray[playerID].updateView(for: postGameStatisticsData.postGameStatistics.statistics[playerID], withSkin: UIImage(data: imageData))
+                    self.playersArray[playerID].updateView(for: postGameStatisticsData.postGameStatistics.statistics[playerID],
+                                                           withSkin: ImageHelper.shared.getImage(data: imageData))
                 }
             }
         }

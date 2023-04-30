@@ -20,7 +20,7 @@ class SkinsNotRegisteredView: UIView {
         self.presentingVC = presentingVC
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.setBackgroundImage()
         
         initViews()
     }
@@ -42,8 +42,7 @@ class SkinsNotRegisteredView: UIView {
         
         updateErrorImageViewConstraints()
         
-        errorImageView.image = UIImage(systemName: "exclamationmark.square.fill")
-        errorImageView.tintColor = .systemGray
+        errorImageView.image = Design.shared.notRegisteredImage
     }
     
     private func updateErrorImageViewConstraints() {
@@ -71,7 +70,8 @@ class SkinsNotRegisteredView: UIView {
         errorDescription.numberOfLines = 0
         errorDescription.lineBreakMode = .byWordWrapping
         errorDescription.textAlignment = .center
-        errorDescription.font = UIFont.systemFont(ofSize: 32)
+        errorDescription.textColor = Design.shared.textColor
+        errorDescription.font = Design.shared.chillax(style: .regular, size: 32)
     }
     
     private func updateErrorDescriptionConstraints() {

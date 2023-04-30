@@ -17,16 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArithemticPvP_logo_light" translatesAutoresizingMaskIntoConstraints="NO" id="b6P-Gq-dax">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_image" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-6z-qhM">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArithmeticPvP_logo" translatesAutoresizingMaskIntoConstraints="NO" id="b6P-Gq-dax">
                                 <rect key="frame" x="121.66666666666669" y="339" width="150" height="174"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="9Y8-0l-jFJ"/>
+                                    <constraint firstAttribute="width" secondItem="b6P-Gq-dax" secondAttribute="height" multiplier="25:29" id="Ila-xJ-nQ7"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="b6P-Gq-dax" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Uck-jh-IKg"/>
-                            <constraint firstItem="b6P-Gq-dax" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="d5A-WB-Q3W"/>
+                            <constraint firstItem="TW1-6z-qhM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="CXr-vm-GKn"/>
+                            <constraint firstItem="b6P-Gq-dax" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="EuO-8M-5sr"/>
+                            <constraint firstAttribute="trailing" secondItem="TW1-6z-qhM" secondAttribute="trailing" id="OIh-9v-p8K"/>
+                            <constraint firstAttribute="bottom" secondItem="TW1-6z-qhM" secondAttribute="bottom" id="biD-qc-bgb"/>
+                            <constraint firstItem="b6P-Gq-dax" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ewB-uw-lhl"/>
+                            <constraint firstItem="TW1-6z-qhM" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="haf-rF-Vr5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,7 +46,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ArithemticPvP_logo_light" width="150" height="174"/>
+        <image name="ArithmeticPvP_logo" width="151" height="173"/>
+        <image name="background_image" width="390" height="844"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

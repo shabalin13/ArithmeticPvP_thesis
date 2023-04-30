@@ -67,7 +67,7 @@ class WaitingRoomViewController: UIViewController {
             activityIndicator.startAnimating()
         case .data(let waitingRoomData):
             NSLog("WaitingRoomViewController data")
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped(_:)))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward")?.withTintColor(Design.shared.navigationTitleColor, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(backButtonTapped(_:)))
             waitingRoomView.updateView(for: waitingRoomData)
             waitingRoomView.isHidden = false
             NSLog("\(waitingRoomData)")
@@ -102,6 +102,7 @@ extension WaitingRoomViewController {
     private func createWaitingRoomView() {
         waitingRoomView = WaitingRoomView(frame: view.bounds, presentingVC: self)
         view.addSubview(waitingRoomView)
+        waitingRoomView.isHidden = true
     }
     
     private func createActivityIndicator() {

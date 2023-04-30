@@ -98,7 +98,7 @@ extension ProfileViewController {
     private func initView() {
         
         navigationItem.title = "PROFILE"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(pushToSettings(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear")?.withTintColor(Design.shared.navigationTitleColor, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(pushToSettings(_:)))
         
         createInitialView()
         createRegisteredView()
@@ -115,16 +115,19 @@ extension ProfileViewController {
     private func createRegisteredView() {
         registeredView = ProfileRegisteredView(frame: view.bounds, presentingVC: self)
         view.addSubview(registeredView)
+        registeredView.isHidden = true
     }
     
     private func createNotRegisteredView() {
         notRegisteredView = ProfileNotRegisteredView(frame: view.bounds, presentingVC: self)
         view.addSubview(notRegisteredView)
+        notRegisteredView.isHidden = true
     }
     
     private func createErrorView() {
         errorView = ProfileErrorView(frame: view.bounds, presentingVC: self)
         view.addSubview(errorView)
+        errorView.isHidden = true
     }
     
     private func createActivityIndicator() {
@@ -140,12 +143,5 @@ extension ProfileViewController {
     @objc func pushToSettings(_ sender: UIBarButtonItem) {
         viewModel.goToSettings()
     }
-    
-    @objc func signInButtonTapped(_ sender: UIButton) {
-        viewModel.goToSignIn()
-    }
-    
-    @objc func reloadButtonTapped(_ sender: UIButton) {
-        viewModel.updateState()
-    }
+
 }

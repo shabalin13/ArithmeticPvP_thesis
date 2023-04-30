@@ -19,7 +19,7 @@ class SettingsNotRegisteredView: UIView {
         self.presentingVC = presenetingVC
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.setBackgroundImage()
         
         initViews()
     }
@@ -38,11 +38,15 @@ class SettingsNotRegisteredView: UIView {
         reportBugButton = UIButton()
         self.addSubview(reportBugButton)
         
-        reportBugButton.backgroundColor = .systemOrange
+        reportBugButton.backgroundColor = Design.shared.settingsReportBugButtonColor
         reportBugButton.layer.cornerRadius = 10
-        reportBugButton.setTitle("Report Bug", for: .normal)
+        reportBugButton.setTitle("REPORT BUG", for: .normal)
+        reportBugButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 22)
+        reportBugButton.setTitleColor(Design.shared.settingsReportBugButtonTextColor, for: .normal)
         
         reportBugButton.addTarget(presentingVC, action: #selector(presentingVC.reportBugButtonTapped(_:)), for: .touchUpInside)
+        reportBugButton.addTarget(presentingVC, action: #selector(presentingVC.reportBugButtonTouchDown(_:)), for: .touchDown)
+        reportBugButton.addTarget(presentingVC, action: #selector(presentingVC.reportBugButtonTouchUpOutside(_:)), for: .touchUpOutside)
         
         reportBugButton.translatesAutoresizingMaskIntoConstraints = false
         

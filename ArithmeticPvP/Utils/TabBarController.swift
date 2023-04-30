@@ -38,6 +38,14 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBar.backgroundColor = Design.shared.grayColor
+        tabBar.tintColor = Design.shared.yellowColor
+        tabBar.unselectedItemTintColor = Design.shared.tabBarUnselectedColor
+        
+        let appearance = UITabBarItem.appearance()
+        let attributes = [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 12)]
+        appearance.setTitleTextAttributes(attributes, for: .normal)
+        
         setupTabBar()
     }
     
@@ -48,18 +56,42 @@ final class TabBarController: UITabBarController {
             switch $0 {
             case .profile:
                 let navigationController = UINavigationController()
+                
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.configureWithTransparentBackground()
+                navBarAppearance.backgroundColor = Design.shared.grayColor
+                navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Design.shared.navigationTitleColor, NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)]
+                navigationController.navigationBar.standardAppearance = navBarAppearance
+                navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+                
                 let assemblyBuilder = AssemblyBuilder()
                 let router = ProfileRouter(navigationController: navigationController, assemblyBuilder: assemblyBuilder)
                 router.initialViewController()
                 return navigationController
             case .skins:
                 let navigationController = UINavigationController()
+                
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.configureWithTransparentBackground()
+                navBarAppearance.backgroundColor = Design.shared.grayColor
+                navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Design.shared.navigationTitleColor, NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)]
+                navigationController.navigationBar.standardAppearance = navBarAppearance
+                navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+                
                 let assemblyBuilder = AssemblyBuilder()
                 let router = SkinsRouter(navigationController: navigationController, assemblyBuilder: assemblyBuilder)
                 router.initialViewController()
                 return navigationController
             case .game:
                 let navigationController = UINavigationController()
+                
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.configureWithTransparentBackground()
+                navBarAppearance.backgroundColor = Design.shared.grayColor
+                navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Design.shared.navigationTitleColor, NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)]
+                navigationController.navigationBar.standardAppearance = navBarAppearance
+                navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+                
                 let assemblyBuilder = AssemblyBuilder()
                 let router = GameRouter(navigationController: navigationController, assemblyBuilder: assemblyBuilder)
                 router.initialViewController()
