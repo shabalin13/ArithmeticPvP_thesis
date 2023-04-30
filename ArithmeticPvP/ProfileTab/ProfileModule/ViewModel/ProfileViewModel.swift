@@ -22,7 +22,7 @@ protocol ProfileViewModelProtocol {
 
 class ProfileViewModel: ProfileViewModelProtocol {
     
-    // MARK: - ProfileViewModel properties
+    // MARK: - Class Properties
     var state: Observable<ProfileState> = Observable(.initial)
     var router: ProfileRouterProtocol
     
@@ -103,6 +103,7 @@ class ProfileViewModel: ProfileViewModelProtocol {
         }
     }
     
+    // MARK: - Helper Func for counting time
     private func helper(time: Int) -> (Int, Int, Int, Int) {
         let seconds = time / 1000
         let minutes = seconds / 60
@@ -116,10 +117,12 @@ class ProfileViewModel: ProfileViewModelProtocol {
         return (days, remainingHours, remainingMinutes, remainingSeconds)
     }
     
+    // MARK: - Func for going to Settings
     func goToSettings() {
         router.showSettings()
     }
     
+    // MARK: - Func for going to Sign In
     func goToSignIn() {
         router.showSignIn()
     }

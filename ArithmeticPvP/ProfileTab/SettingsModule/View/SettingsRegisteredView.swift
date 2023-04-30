@@ -11,7 +11,7 @@ import UIKit
 // MARK: UserInfoSettingsView Class
 class UserInfoSettingsView: UIView, UITextFieldDelegate {
     
-    // MARK: - SettingsView properties
+    // MARK: - Class Properties
     var usernameLabel: UILabel!
     var usernameTextField: UITextField!
     
@@ -35,17 +35,18 @@ class UserInfoSettingsView: UIView, UITextFieldDelegate {
         emailTextField.text = settingsData.email
     }
     
+    // MARK: - textFieldShouldReturn
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        usernameTextField.resignFirstResponder()
+        return true
+    }
+    
     // MARK: - Initializing views
     private func initViews() {
         createUsernameLabel()
         createUsernameTextField()
         createEmailLabel()
         createEmailTextField()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        usernameTextField.resignFirstResponder()
-        return true
     }
     
     private func createUsernameLabel() {
@@ -141,7 +142,7 @@ class UserInfoSettingsView: UIView, UITextFieldDelegate {
 // MARK: - SettingsRegisteredView Class
 class SettingsRegisteredView: UIView {
     
-    // MARK: - SettingsView properties
+    // MARK: - Class Properties
     var presentingVC: SettingsViewController
     
     var userInfoSettingsView: UserInfoSettingsView!

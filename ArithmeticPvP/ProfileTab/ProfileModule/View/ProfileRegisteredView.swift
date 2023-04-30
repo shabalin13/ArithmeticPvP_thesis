@@ -56,7 +56,7 @@ class UserInfoView: UIView {
         }
     }
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         createUserSkinImageView()
         createEloLabel()
@@ -149,6 +149,7 @@ class StatView: UIView {
         }
     }
     
+    // MARK: - Initializing views
     private func initViews() {
         createStatStackView()
         createStatLabel()
@@ -230,7 +231,7 @@ class StatisticsView: UIView, UIScrollViewDelegate {
         }
     }
     
-    // MARK: - Initilizing views
+    // MARK: - Initializing views
     private func initViews() {
         createStatisticsScrollView()
     }
@@ -267,6 +268,7 @@ class ProfileRegisteredView: UIView {
     var userInfoView: UserInfoView!
     var statisticsView: StatisticsView!
     
+    // MARK: - Inits
     init(frame: CGRect, presentingVC: ProfileViewController) {
         self.presentingVC = presentingVC
         super.init(frame: frame)
@@ -280,11 +282,13 @@ class ProfileRegisteredView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Func for updating UI with specific data
     func updateView(for profileData: ProfileData) {
         userInfoView.updateView(for: profileData.user, with: profileData.currentSkinData)
         statisticsView.updateView(for: profileData.userStatisticsArray)
     }
     
+    // MARK: - Initializing views
     private func initViews() {
         createUserInfoView()
         createStatisticsView()

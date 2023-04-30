@@ -137,7 +137,7 @@ extension SettingsViewController {
         activityIndicator.isHidden = true
     }
     
-    // MARK: - Objc function for button actions
+    // MARK: - Objc function for buttons actions
     @objc func backButtonTapped(_ sender: UIBarButtonItem) {
         viewModel.router.popToRoot()
     }

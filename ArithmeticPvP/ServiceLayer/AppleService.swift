@@ -7,7 +7,7 @@
 
 import Foundation
 import CryptoKit
-//import FirebaseCore
+import FirebaseCore
 import FirebaseAuth
 import AuthenticationServices
 

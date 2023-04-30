@@ -34,11 +34,11 @@ enum SettingsState {
 
 // MARK: - Skins
 enum SkinsState {
-    case initial // изначальный пустой белый вью
-    case loading // когда идет запрос в интернет,то показывается колесико загрузки
-    case registered // если запрос успешен, то передаются лист всех скинов и вью контроллер их показывает
-    case notRegistered // если нет куки, то экран, показывающий, что сначала нужно зарегистрироваться
-    case error(NetworkService.NetworkServiceError) // еррор на весь экран (оборвался интернет, или куки исчерпан)
+    case initial
+    case loading
+    case registered
+    case notRegistered
+    case error(NetworkService.NetworkServiceError)
 }
 
 // MARK: - Rating Game
@@ -57,7 +57,6 @@ enum WaitingRoomState {
 
 enum GameState {
     case initial
-//    case loading
     case incorrectData(GameData)
     case data(GameData)
     case error(WebSocketService.WebSocketServiceError)

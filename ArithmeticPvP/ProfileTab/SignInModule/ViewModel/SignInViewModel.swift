@@ -13,6 +13,7 @@ protocol SignInViewModelProtocol {
     var router: ProfileRouterProtocol { get set }
     
     func updateState()
+    
     func signInWithGoogleButtonTapped(presentingVC: SignInViewController)
     
     func signInWithApple(presentingVC: SignInViewController)
@@ -66,6 +67,7 @@ class SignInViewModel: SignInViewModelProtocol {
         }
     }
     
+    // MARK: - Sign In With Apple
     func signInWithApple(presentingVC: SignInViewController) {
         AppleService.shared.signInWithApple(presentingVC: presentingVC)
     }

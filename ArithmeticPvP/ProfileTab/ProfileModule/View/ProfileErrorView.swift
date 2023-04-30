@@ -128,7 +128,7 @@ class ProfileErrorView: UIView {
 
 extension ProfileViewController {
     
-    // MARK: - Objc function for Reload Button actions
+    // MARK: - Objc functions for Reload Button actions
     @objc func reloadButtonTouchDown(_ sender: UIButton) {
         UIView.animate(withDuration: 0.2) {
             sender.backgroundColor = Design.shared.reloadButtonTappedColor

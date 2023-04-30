@@ -133,6 +133,7 @@ class ProfileNotRegisteredView: UIView {
 
 extension ProfileViewController {
     
+    // MARK: - Obj funcs for Sign In button actions
     @objc func signInButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) {
             sender.backgroundColor = .none

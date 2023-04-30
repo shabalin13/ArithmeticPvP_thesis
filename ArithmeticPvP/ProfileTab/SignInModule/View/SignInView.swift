@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Reason View Class
 class ReasonView: UIView {
     
     // MARK: - Class Properties
@@ -25,12 +26,14 @@ class ReasonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Func for updating view with specified data
     func updateView(title: String, description: String, image: UIImage) {
         titleLabel.text = title
         descriptionLabel.text = description
         imageView.image = image
     }
     
+    // MARK: - Initializing views
     private func initView() {
         createImageView()
         createTitleLabel()
@@ -96,6 +99,8 @@ class ReasonView: UIView {
     }
 }
 
+
+// MARK: - Sign In View Class
 class SignInView: UIView {
     
     // MARK: - Class Properties
@@ -134,6 +139,7 @@ class SignInView: UIView {
         signInWithAppleButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.cgColor
     }
     
+    // MARK: - Initializing views
     private func initViews() {
         createSignInWithGoogleButton()
         createSignInWithAppleButton()
@@ -211,6 +217,7 @@ class SignInView: UIView {
         signInWithAppleButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithAppleButtonTouchUpOutside(_:)), for: .touchUpOutside)
     }
     
+    // MARK: - Main Label
     private func createMainLabel() {
         mainLabel = UILabel()
         self.addSubview(mainLabel)
@@ -236,6 +243,7 @@ class SignInView: UIView {
         mainLabel.attributedText = currentText
     }
     
+    // MARK: - Reasons Stack View
     private func createReasonsStackView() {
         reasonsStackView = UIStackView()
         self.addSubview(reasonsStackView)
@@ -266,6 +274,7 @@ class SignInView: UIView {
 
 extension SignInViewController {
     
+    // MARK: - Obj funcs for Google's button actions
     @objc func signInWithGoogleButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) {
             sender.backgroundColor = .none
@@ -315,7 +324,7 @@ extension SignInViewController {
         }
     }
     
-    
+    // MARK: - Obj funcs for Apple's button actions
     @objc func signInWithAppleButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) {
             sender.backgroundColor = .none

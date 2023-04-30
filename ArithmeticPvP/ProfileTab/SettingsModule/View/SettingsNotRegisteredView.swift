@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsNotRegisteredView: UIView {
     
-    // MARK: - SettingsView properties
+    // MARK: - Class Properties
     var presentingVC: SettingsViewController
     
     var reportBugButton: UIButton!
