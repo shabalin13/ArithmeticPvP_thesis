@@ -55,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 UserDefaultsHelper.shared.removeExpiryDate()
                 
             } else if expiryDate.timeIntervalSince(Date()) < 60 * 60 * 24 {
-                NSLog("expiryDate will expiren soon (less than 1 day)")
+                NSLog("expiryDate will expire soon (less than 1 day)")
                 UserDefaultsHelper.shared.removeCookie()
                 UserDefaultsHelper.shared.removeExpiryDate()
                 
