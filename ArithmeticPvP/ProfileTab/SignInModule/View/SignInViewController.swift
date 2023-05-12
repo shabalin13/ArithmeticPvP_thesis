@@ -87,6 +87,36 @@ final class SignInViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // MARK: - Func for displaying Email Auth alert
+    func displayEmailAlert() {
+        guard let _ = viewIfLoaded?.window else { return }
+        
+        let alert = UIAlertController(title: "Sign In", message: "This is only for testing emails", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Email"
+            textField.keyboardType = .emailAddress
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Password"
+            textField.isSecureTextEntry = true
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        
+        alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action) in
+            guard let email = alert.textFields?.first?.text,
+                  let password = alert.textFields?.last?.text else { return }
+            
+            self.viewModel.signInWithEmail(email: email, password: password)
+        }))
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 

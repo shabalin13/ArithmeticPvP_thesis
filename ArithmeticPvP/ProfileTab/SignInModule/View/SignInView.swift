@@ -85,8 +85,8 @@ class ReasonView: UIView {
         descriptionLabel.font = Design.shared.chillax(style: .regular, size: 16)
         descriptionLabel.textColor = Design.shared.signInReasonDescriptionLabelTextColor
         
-        descriptionLabel.adjustsFontSizeToFitWidth = true
         descriptionLabel.minimumScaleFactor = 0.5
+        descriptionLabel.adjustsFontSizeToFitWidth = true
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -117,6 +117,7 @@ class SignInView: UIView {
     
     var signInWithGoogleButton: UIButton!
     var signInWithAppleButton: UIButton!
+    var signInWithEmailButton: UIButton!
     
     // MARK: - Inits
     init(frame: CGRect, presentingVC: SignInViewController) {
@@ -137,12 +138,14 @@ class SignInView: UIView {
         super.traitCollectionDidChange(previousTraitCollection)
         signInWithGoogleButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.cgColor
         signInWithAppleButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.cgColor
+        signInWithEmailButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.cgColor
     }
     
     // MARK: - Initializing views
     private func initViews() {
         createSignInWithGoogleButton()
         createSignInWithAppleButton()
+        createSignInWithEmailButton()
         createMainLabel()
         createReasonsStackView()
     }
@@ -156,22 +159,22 @@ class SignInView: UIView {
         
         NSLayoutConstraint.activate([
             signInWithGoogleButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            signInWithGoogleButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            signInWithGoogleButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            signInWithGoogleButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            signInWithGoogleButton.heightAnchor.constraint(equalToConstant: 60)
+            signInWithGoogleButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            signInWithGoogleButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            signInWithGoogleButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            signInWithGoogleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         signInWithGoogleButton.backgroundColor = .none
         signInWithGoogleButton.layer.borderWidth = 2
         signInWithGoogleButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.resolvedColor(with: self.traitCollection).cgColor
         signInWithGoogleButton.layer.cornerRadius = 10
-        signInWithGoogleButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 22)
+        signInWithGoogleButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 20)
         
         let currentText = NSMutableAttributedString()
         let imageAttachment = NSTextAttachment()
-        let size = ("Continue with Google" as NSString).boundingRect(with: signInWithGoogleButton.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-        imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+        let size = ("Continue with Google" as NSString).boundingRect(with: signInWithGoogleButton.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+        imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
         imageAttachment.image = Design.shared.googleLogoImage
         currentText.append(NSAttributedString(attachment: imageAttachment))
         currentText.append(NSAttributedString(string: " Continue with Google", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
@@ -191,22 +194,22 @@ class SignInView: UIView {
         
         NSLayoutConstraint.activate([
             signInWithAppleButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            signInWithAppleButton.bottomAnchor.constraint(equalTo: signInWithGoogleButton.topAnchor, constant: -20),
-            signInWithAppleButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            signInWithAppleButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            signInWithAppleButton.heightAnchor.constraint(equalToConstant: 60)
+            signInWithAppleButton.bottomAnchor.constraint(equalTo: signInWithGoogleButton.topAnchor, constant: -15),
+            signInWithAppleButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            signInWithAppleButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            signInWithAppleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         signInWithAppleButton.backgroundColor = .none
         signInWithAppleButton.layer.borderWidth = 2
         signInWithAppleButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.resolvedColor(with: self.traitCollection).cgColor
         signInWithAppleButton.layer.cornerRadius = 10
-        signInWithAppleButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 22)
+        signInWithAppleButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 20)
         
         let currentText = NSMutableAttributedString()
         let imageAttachment = NSTextAttachment()
-        let size = ("Continue with Apple" as NSString).boundingRect(with: signInWithAppleButton.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-        imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+        let size = ("Continue with Apple" as NSString).boundingRect(with: signInWithAppleButton.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+        imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
         imageAttachment.image = Design.shared.appleLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
         currentText.append(NSAttributedString(attachment: imageAttachment))
         currentText.append(NSAttributedString(string: " Continue with Apple", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
@@ -215,6 +218,40 @@ class SignInView: UIView {
         signInWithAppleButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithAppleButtonTapped(_:)), for: .touchUpInside)
         signInWithAppleButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithAppleButtonTouchDown(_:)), for: .touchDown)
         signInWithAppleButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithAppleButtonTouchUpOutside(_:)), for: .touchUpOutside)
+    }
+    
+    private func createSignInWithEmailButton() {
+        signInWithEmailButton = UIButton()
+        self.addSubview(signInWithEmailButton)
+        
+        signInWithEmailButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            signInWithEmailButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            signInWithEmailButton.bottomAnchor.constraint(equalTo: signInWithAppleButton.topAnchor, constant: -15),
+            signInWithEmailButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            signInWithEmailButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            signInWithEmailButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        signInWithEmailButton.backgroundColor = .none
+        signInWithEmailButton.layer.borderWidth = 2
+        signInWithEmailButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.resolvedColor(with: self.traitCollection).cgColor
+        signInWithEmailButton.layer.cornerRadius = 10
+        signInWithEmailButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 20)
+        
+        let currentText = NSMutableAttributedString()
+        let imageAttachment = NSTextAttachment()
+        let size = ("Continue with Email" as NSString).boundingRect(with: signInWithEmailButton.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+        imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+        imageAttachment.image = Design.shared.emailLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
+        currentText.append(NSAttributedString(attachment: imageAttachment))
+        currentText.append(NSAttributedString(string: " Continue with Email", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
+        signInWithEmailButton.setAttributedTitle(currentText, for: .normal)
+    
+        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTapped(_:)), for: .touchUpInside)
+        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTouchDown(_:)), for: .touchDown)
+        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTouchUpOutside(_:)), for: .touchUpOutside)
     }
     
     // MARK: - Main Label
@@ -234,7 +271,7 @@ class SignInView: UIView {
         mainLabel.numberOfLines = 0
         mainLabel.font = Design.shared.chillax(style: .semibold, size: 28)
         mainLabel.textColor = Design.shared.signInMainLabelTextColor
-        mainLabel.minimumScaleFactor = 0.7
+        mainLabel.minimumScaleFactor = 0.5
         mainLabel.adjustsFontSizeToFitWidth = true
         
         let currentText = NSMutableAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .semibold, size: 28)])
@@ -265,7 +302,7 @@ class SignInView: UIView {
             reasonsStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             reasonsStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             reasonsStackView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
-            reasonsStackView.bottomAnchor.constraint(equalTo: signInWithAppleButton.topAnchor, constant: -20),
+            reasonsStackView.bottomAnchor.constraint(equalTo: signInWithEmailButton.topAnchor, constant: -15),
         ])
 
     }
@@ -281,8 +318,8 @@ extension SignInViewController {
             
             let currentText = NSMutableAttributedString()
             let imageAttachment = NSTextAttachment()
-            let size = ("Continue with Google" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            let size = ("Continue with Google" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
             imageAttachment.image = Design.shared.googleLogoImage
             currentText.append(NSAttributedString(attachment: imageAttachment))
             currentText.append(NSAttributedString(string: " Continue with Google", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
@@ -298,8 +335,8 @@ extension SignInViewController {
             
             let currentText = NSMutableAttributedString()
             let imageAttachment = NSTextAttachment()
-            let size = ("Continue with Google" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            let size = ("Continue with Google" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
             imageAttachment.image = Design.shared.googleLogoImage
             currentText.append(NSAttributedString(attachment: imageAttachment))
             currentText.append(NSAttributedString(string: " Continue with Google", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTappedTextColor]))
@@ -314,8 +351,8 @@ extension SignInViewController {
             
             let currentText = NSMutableAttributedString()
             let imageAttachment = NSTextAttachment()
-            let size = ("Continue with Google" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            let size = ("Continue with Google" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
             imageAttachment.image = Design.shared.googleLogoImage
             currentText.append(NSAttributedString(attachment: imageAttachment))
             currentText.append(NSAttributedString(string: " Continue with Google", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
@@ -331,8 +368,8 @@ extension SignInViewController {
             
             let currentText = NSMutableAttributedString()
             let imageAttachment = NSTextAttachment()
-            let size = ("Continue with Apple" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            let size = ("Continue with Apple" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
             imageAttachment.image = Design.shared.appleLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
             currentText.append(NSAttributedString(attachment: imageAttachment))
             currentText.append(NSAttributedString(string: " Continue with Apple", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
@@ -348,8 +385,8 @@ extension SignInViewController {
             
             let currentText = NSMutableAttributedString()
             let imageAttachment = NSTextAttachment()
-            let size = ("Continue with Apple" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            let size = ("Continue with Apple" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
             imageAttachment.image = Design.shared.appleLogoImage.withTintColor(Design.shared.signInWithAppleLogoHighlightedColor, renderingMode: .alwaysOriginal)
             currentText.append(NSAttributedString(attachment: imageAttachment))
             currentText.append(NSAttributedString(string: " Continue with Apple", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTappedTextColor]))
@@ -364,11 +401,61 @@ extension SignInViewController {
             
             let currentText = NSMutableAttributedString()
             let imageAttachment = NSTextAttachment()
-            let size = ("Continue with Apple" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 22)], context: nil).size
-            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 22).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            let size = ("Continue with Apple" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
             imageAttachment.image = Design.shared.appleLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
             currentText.append(NSAttributedString(attachment: imageAttachment))
             currentText.append(NSAttributedString(string: " Continue with Apple", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
+            sender.setAttributedTitle(currentText, for: .normal)
+            
+        }
+    }
+    
+    // MARK: - Obj funcs for Email's button actions
+    @objc func signInWithEmailButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            
+            let currentText = NSMutableAttributedString()
+            let imageAttachment = NSTextAttachment()
+            let size = ("Continue with Email" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            imageAttachment.image = Design.shared.emailLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
+            currentText.append(NSAttributedString(attachment: imageAttachment))
+            currentText.append(NSAttributedString(string: " Continue with Email", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
+            sender.setAttributedTitle(currentText, for: .normal)
+            
+        }
+        self.displayEmailAlert()
+    }
+    
+    @objc func signInWithEmailButtonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            sender.backgroundColor = Design.shared.signInWithGoogleButtonTappedColor
+            
+            let currentText = NSMutableAttributedString()
+            let imageAttachment = NSTextAttachment()
+            let size = ("Continue with Email" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            imageAttachment.image = Design.shared.emailLogoImage.withTintColor(Design.shared.signInWithAppleLogoHighlightedColor, renderingMode: .alwaysOriginal)
+            currentText.append(NSAttributedString(attachment: imageAttachment))
+            currentText.append(NSAttributedString(string: " Continue with Email", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTappedTextColor]))
+            sender.setAttributedTitle(currentText, for: .normal)
+            
+        }
+    }
+    
+    @objc func signInWithEmailButtonTouchUpOutside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = .none
+            
+            let currentText = NSMutableAttributedString()
+            let imageAttachment = NSTextAttachment()
+            let size = ("Continue with Email" as NSString).boundingRect(with: sender.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+            imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+            imageAttachment.image = Design.shared.emailLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
+            currentText.append(NSAttributedString(attachment: imageAttachment))
+            currentText.append(NSAttributedString(string: " Continue with Email", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
             sender.setAttributedTitle(currentText, for: .normal)
             
         }

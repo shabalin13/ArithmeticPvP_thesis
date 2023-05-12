@@ -100,6 +100,8 @@
 		B6CBBD6F29C490D100BF7A4B /* SettingsRegisteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD6E29C490D100BF7A4B /* SettingsRegisteredView.swift */; };
 		B6CBBD7129C4A47400BF7A4B /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD7029C4A47400BF7A4B /* InitialView.swift */; };
 		B6CBBD7329C5BE1C00BF7A4B /* ProfileErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */; };
+		B6E4290F2A0E3C7B00ABE080 /* emailLogo.svg in Resources */ = {isa = PBXBuildFile; fileRef = B6E4290E2A0E3C7B00ABE080 /* emailLogo.svg */; };
+		B6E429112A0E484100ABE080 /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E429102A0E484100ABE080 /* EmailService.swift */; };
 		B6F6CF3229C0FAC1001C8B68 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF3129C0FAC1001C8B68 /* Routers.swift */; };
 		B6F6CF3429C0FACD001C8B68 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF3329C0FACD001C8B68 /* Assembly.swift */; };
 		B6F6CF3A29C10BF2001C8B68 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6CF3929C10BF2001C8B68 /* SettingsViewModel.swift */; };
@@ -198,6 +200,8 @@
 		B6CBBD6E29C490D100BF7A4B /* SettingsRegisteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRegisteredView.swift; sourceTree = "<group>"; };
 		B6CBBD7029C4A47400BF7A4B /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		B6CBBD7229C5BE1C00BF7A4B /* ProfileErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileErrorView.swift; sourceTree = "<group>"; };
+		B6E4290E2A0E3C7B00ABE080 /* emailLogo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = emailLogo.svg; sourceTree = "<group>"; };
+		B6E429102A0E484100ABE080 /* EmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailService.swift; sourceTree = "<group>"; };
 		B6F6CF3129C0FAC1001C8B68 /* Routers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
 		B6F6CF3329C0FACD001C8B68 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		B6F6CF3929C10BF2001C8B68 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 		B649F04429F704D90028092C /* SVGimages */ = {
 			isa = PBXGroup;
 			children = (
+				B6E4290E2A0E3C7B00ABE080 /* emailLogo.svg */,
 				B605CCC929FC27F30052A695 /* appleLogo.svg */,
 				B680CF7429F9D2C30072E7D9 /* bronzeMedal.svg */,
 				B680CF7229F9D2BF0072E7D9 /* silverMedal.svg */,
@@ -487,6 +492,7 @@
 				B6749D2029BE4E4800BBD296 /* GoogleService.swift */,
 				B64A23B129D5C49400232C56 /* WebSocketService.swift */,
 				B605CCC529FBE7C00052A695 /* AppleService.swift */,
+				B6E429102A0E484100ABE080 /* EmailService.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				B649F06429F7D4770028092C /* internetError.svg in Resources */,
 				B6CA1BF629F9633B00DF180C /* cup.svg in Resources */,
 				B649F04629F704E60028092C /* notRegisteredImage.svg in Resources */,
+				B6E4290F2A0E3C7B00ABE080 /* emailLogo.svg in Resources */,
 				B680CF7129F9D2B90072E7D9 /* goldMedal.svg in Resources */,
 				B649F05429F705040028092C /* FFL.txt in Resources */,
 				B638891A29F841CB00CAAAC5 /* ownSkins.svg in Resources */,
@@ -796,6 +803,7 @@
 				B6F6CF3229C0FAC1001C8B68 /* Routers.swift in Sources */,
 				B6749D1629BE4DB800BBD296 /* User.swift in Sources */,
 				B605CCC629FBE7C00052A695 /* AppleService.swift in Sources */,
+				B6E429112A0E484100ABE080 /* EmailService.swift in Sources */,
 				B6749CFC29BE0B1200BBD296 /* AppDelegate.swift in Sources */,
 				B6749D1829BE4DD800BBD296 /* CurrentSkin.swift in Sources */,
 				B64A238E29CDDFEE00232C56 /* Achievement.swift in Sources */,

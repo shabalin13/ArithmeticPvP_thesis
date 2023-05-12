@@ -38,6 +38,7 @@ class Design {
     
     var googleLogoImage = SVGKImage(named: "googleLogo").uiImage!
     var appleLogoImage = SVGKImage(named: "appleLogo").uiImage!
+    var emailLogoImage = SVGKImage(named: "emailLogo").uiImage!
     
     var ratingImage = SVGKImage(named: "rating").uiImage!
     var cupImage = SVGKImage(named: "cup").uiImage!
