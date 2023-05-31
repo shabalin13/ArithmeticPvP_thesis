@@ -143,11 +143,45 @@ class SignInView: UIView {
     
     // MARK: - Initializing views
     private func initViews() {
+        createSignInWithEmailButton()
         createSignInWithGoogleButton()
         createSignInWithAppleButton()
-        createSignInWithEmailButton()
         createMainLabel()
         createReasonsStackView()
+    }
+    
+    private func createSignInWithEmailButton() {
+        signInWithEmailButton = UIButton()
+        self.addSubview(signInWithEmailButton)
+        
+        signInWithEmailButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            signInWithEmailButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            signInWithEmailButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            signInWithEmailButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            signInWithEmailButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            signInWithEmailButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        signInWithEmailButton.backgroundColor = .none
+        signInWithEmailButton.layer.borderWidth = 2
+        signInWithEmailButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.resolvedColor(with: self.traitCollection).cgColor
+        signInWithEmailButton.layer.cornerRadius = 10
+        signInWithEmailButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 20)
+        
+        let currentText = NSMutableAttributedString()
+        let imageAttachment = NSTextAttachment()
+        let size = ("Continue with Email" as NSString).boundingRect(with: signInWithEmailButton.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
+        imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
+        imageAttachment.image = Design.shared.emailLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
+        currentText.append(NSAttributedString(attachment: imageAttachment))
+        currentText.append(NSAttributedString(string: " Continue with Email", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
+        signInWithEmailButton.setAttributedTitle(currentText, for: .normal)
+    
+        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTapped(_:)), for: .touchUpInside)
+        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTouchDown(_:)), for: .touchDown)
+        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTouchUpOutside(_:)), for: .touchUpOutside)
     }
     
     // MARK: - Sign In With Google
@@ -159,7 +193,7 @@ class SignInView: UIView {
         
         NSLayoutConstraint.activate([
             signInWithGoogleButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            signInWithGoogleButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            signInWithGoogleButton.bottomAnchor.constraint(equalTo: signInWithEmailButton.topAnchor, constant: -15),
             signInWithGoogleButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             signInWithGoogleButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             signInWithGoogleButton.heightAnchor.constraint(equalToConstant: 50)
@@ -220,40 +254,6 @@ class SignInView: UIView {
         signInWithAppleButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithAppleButtonTouchUpOutside(_:)), for: .touchUpOutside)
     }
     
-    private func createSignInWithEmailButton() {
-        signInWithEmailButton = UIButton()
-        self.addSubview(signInWithEmailButton)
-        
-        signInWithEmailButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            signInWithEmailButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            signInWithEmailButton.bottomAnchor.constraint(equalTo: signInWithAppleButton.topAnchor, constant: -15),
-            signInWithEmailButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            signInWithEmailButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            signInWithEmailButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        signInWithEmailButton.backgroundColor = .none
-        signInWithEmailButton.layer.borderWidth = 2
-        signInWithEmailButton.layer.borderColor = Design.shared.signInWithGoogleButtonBorderColor.resolvedColor(with: self.traitCollection).cgColor
-        signInWithEmailButton.layer.cornerRadius = 10
-        signInWithEmailButton.titleLabel?.font = Design.shared.chillax(style: .medium, size: 20)
-        
-        let currentText = NSMutableAttributedString()
-        let imageAttachment = NSTextAttachment()
-        let size = ("Continue with Email" as NSString).boundingRect(with: signInWithEmailButton.bounds.size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: Design.shared.chillax(style: .medium, size: 20)], context: nil).size
-        imageAttachment.bounds = CGRect(x: 0, y: (Design.shared.chillax(style: .medium, size: 20).capHeight - size.height).rounded() / 2, width: size.height, height: size.height)
-        imageAttachment.image = Design.shared.emailLogoImage.withTintColor(Design.shared.signInWithAppleLogoColor, renderingMode: .alwaysOriginal)
-        currentText.append(NSAttributedString(attachment: imageAttachment))
-        currentText.append(NSAttributedString(string: " Continue with Email", attributes: [NSAttributedString.Key.foregroundColor : Design.shared.signInWithGoogleButtonTextColor]))
-        signInWithEmailButton.setAttributedTitle(currentText, for: .normal)
-    
-        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTapped(_:)), for: .touchUpInside)
-        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTouchDown(_:)), for: .touchDown)
-        signInWithEmailButton.addTarget(presentingVC, action: #selector(presentingVC.signInWithEmailButtonTouchUpOutside(_:)), for: .touchUpOutside)
-    }
-    
     // MARK: - Main Label
     private func createMainLabel() {
         mainLabel = UILabel()
@@ -302,7 +302,7 @@ class SignInView: UIView {
             reasonsStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             reasonsStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             reasonsStackView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
-            reasonsStackView.bottomAnchor.constraint(equalTo: signInWithEmailButton.topAnchor, constant: -15),
+            reasonsStackView.bottomAnchor.constraint(equalTo: signInWithAppleButton.topAnchor, constant: -15),
         ])
 
     }
